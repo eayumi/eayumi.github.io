@@ -1415,9 +1415,6 @@ function radial_comparison() {
                 d3.selectAll('#deselectAll').on('click', updateData);
 
 
-
-
-
                 /**
                  * function that deselects all bars of the given element at once.
                  */
@@ -1438,8 +1435,6 @@ function radial_comparison() {
                     angles[index] = [];
                     update_density_plots(dataset_inner_chart);
                     update_inner_chart(dataset_inner_chart);
-                    //console.log('reset' + index)
-
                 }
 
                 /**
