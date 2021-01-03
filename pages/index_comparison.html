@@ -33,7 +33,7 @@
         cursor: pointer;
         text-align: center;
         /* Mouse pointer on hover */
-        position: absolute;
+        position: relative;
         font-size: 30px;
         align-items: center;
         justify-content: center;
@@ -6422,7 +6422,7 @@
     <br><br>
     <div id='radial_barcharts_inp' style='position:relative;left: 0; overflow-x: hidden; width:100%'>
 
-        <div style='position: relative;left:150px;width:70% '>
+        <div style='position: relative;left:150px; '>
 
             <label id='input_label'> Angle grouping size: </label>
             <input style='width:100px' placeholder="range: 1 to 90" type="number" id='input_grouping' min='1' max='90'>
@@ -6436,10 +6436,11 @@
                 <option value=0>absolute</option>
                 <option value=1>relative</option>
             </select>
-        </div>
-        <button class="allButton" id='setAll0' title="select all bars">
+            <button class="allButton" id='setAll0' title="select all bars">
             <i class="material-icons" style='font-size: 15px; color:black'>check_circle_outline</i>
-        </button>
+             </button>
+        </div>
+
     </div>
 
     <br>
