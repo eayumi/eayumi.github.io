@@ -1447,6 +1447,7 @@ function radial_comparison() {
                     console.log(added)
                     console.log(removed)
                     console.log(angles[index])
+
                     for (var j = 0; j < dataset_outer_chart[index].length; j++) {
 
                         dataset_outer_chart[index][j].clicked = true;
