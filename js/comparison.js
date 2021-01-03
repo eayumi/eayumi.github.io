@@ -1436,6 +1436,7 @@ function radial_comparison() {
                     update_density_plots(dataset_inner_chart);
                     update_inner_chart(dataset_inner_chart);
                     //console.log('reset' + index)
+
                 }
 
                 /**
@@ -1458,6 +1459,7 @@ function radial_comparison() {
                         angles[index].push(k_ * grouping)
 
                     }
+                    console.log('Select All')
                     update_comparison_dataset_inner();
 
                     update_density_plots(dataset_inner_chart);
