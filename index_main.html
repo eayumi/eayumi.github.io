@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+
+<head>
+    <link rel='stylesheet' href='css/styles_densityPlot.css'>
+    <link rel='stylesheet' href='css/styles.css'>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css>
+
+</head>
+<header>
+    <div class="navbar">
+
+        <a style='background-color: dodgerblue;
+        color: white; border-radius:2px;' href="index_main.html">Home</a>
+        <!-- <div class="dropdown">
+            <button class="dropbtn">Overview
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                 <a href="pages/index_overview.html">Week Overview</a>
+                <a href="pages/index_freq_per_angle.html">Frequency per Angle</a> 
+            </div>
+        </div> -->
+        <a href="animation_view.html" style='border-radius:2px;'>Animation View</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Main View
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="pages/index_comparison.html">Two Group Comparison View</a>
+                <a href="pages/index_single_choice.html">Single Group View</a>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</header>
+
+<body style="overflow-x: hidden;">
+    <h1 style='position: relative; left:50px'>Home</h1>
+    <div style="position: relative;left:60px; width: 80%">
+        <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+        <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+
+        <!-- Load the element definition -->
+        <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+
+        <!-- Simply set the `src` attribute to your MD file and win -->
+        <zero-md src="README.md"></zero-md>
+    </div>
+
+
+</body>

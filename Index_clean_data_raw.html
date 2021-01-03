@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<title>Clean up the raw data</title>
+
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<script src="prepare js/clean_data.js"></script>
+
+<script src="prepare js/toJson.js"></script>
+<style>
+    div.cont {
+        height: 10em;
+        position: relative
+    }
+    
+    div.cont p {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+</style>
+
+<body>
+
+    <div class="cont">
+        <p>
+            Cleaning up the raw data by removing dates and intervals of special use of the Mock-up. <br> As soon as a file has downloaded automatically on to your desktop, the process is finished.
+            <br> Make sure to save the file as <b>data.json</b> in the data folder.
+        </p>
+    </div>
+
+
+    <script>
+        clean_data();
+    </script>
+
+</body>

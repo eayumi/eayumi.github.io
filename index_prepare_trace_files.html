@@ -1,0 +1,103 @@
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<script src="js/initialize.js"></script>
+
+<script src="prepare js/toJson.js"></script>
+<script src="prepare js/prepare_data_trace_new.js"></script>
+<script src="js/prepare_data_trace_prefiltered.js"></script>
+
+
+
+
+<style>
+    div.cont {
+        height: 10em;
+        position: relative
+    }
+    
+    div.cont p {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+</style>
+
+<body>
+    <script>
+        var view = 1;
+        initialize();
+
+        function step1(type, wordlength) {
+            prepare_data_trace(type, wordlength);
+        }
+
+        function step2(type, wordlength) {
+            prefilter_new(type, wordlength);
+        }
+    </script>
+
+    <div style="position: relative; left: 10%;width:80%;overflow-x: hidden;">
+        <p>
+            Preparing data files for trace view. <br> As soon as a file has downloaded automatically on to your desktop, the process is finished.
+            <br>Make sure the files are saved with their given names in the data folder. <br>
+            <br><b style="color: crimson;">This is computation intensive and takes a while.</b>
+
+            <br><br><br> This step will download a lot of files onto your desktop. Save them under the folder data/data_trace. <br><br>
+            <button onclick="step1('All',5)">Step 1.1 </button>: Normal modus and word length 5.
+            <br>
+            <br>
+            <button onclick="step1('RED',5)">Step 1.2 </button>: Reduced modus and word length 5.
+            <br>
+            <br>
+            <button onclick="step1('OC',5)">Step 1.3 </button>: Without-Closed modus and word length 5.
+            <br>
+            <br>
+            <button onclick="step1('All',10)">Step 1.4 </button>: Normal modus and word length 10.
+            <br>
+            <br>
+            <button onclick="step1('RED',10)">Step 1.5 </button>: Reduced modus and word length 10.
+            <br>
+            <br>
+            <button onclick="step1('OC',10)">Step 1.6 </button>: Without-Closed modus and word length 10.
+            <br>
+            <br> This step will download several hundered files in total onto your desktop: One file for each week, each modus and each time interval.
+            <br> i.e. 27 files per week. Save them under the folder data/data_trace_prefiltered.
+            <br> <br>
+            <button onclick="step2('All',5)">Step 2.1  </button>: Normal modus and word length 5.
+            <br>
+            <br>
+            <button onclick="step2('RED',5)">Step 2.2 </button>: Reduced modus and word length 5.
+            <br>
+            <br>
+            <button onclick="step2('OC',5)">Step 2.3 </button>: Without-Closed modus and word length 5.
+            <br>
+            <br>
+            <button onclick="step2('All',10)">Step 2.4 </button>: Normal modus and word length 10.
+            <br>
+            <br>
+            <button onclick="step2('RED',10)">Step 2.5 </button>: Reduced modus and word length 10.
+            <br>
+            <br>
+            <button onclick="step2('OC',10)">Step 2.6 </button>: Without-Closed modus and word length 10.
+            <br>
+            <br>
+        </p>
+    </div>
+
+    <br>
+    <div style="position: relative; left: 15%;">
+        Step 1 status: <br>
+        <p id='statS'>Waiting...</p>
+        <p id='doneS'>Waiting...</p>
+        <p id='statR'>Waiting...</p>
+        <p id='doneR'>Waiting...</p>
+        Step 2 status: <br>
+        <p id='doneStep2'>Waiting...</p>
+
+    </div>
+
+
+</body>
