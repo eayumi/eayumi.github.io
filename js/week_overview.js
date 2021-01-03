@@ -8,6 +8,7 @@
 function week_overview(data) {
     //the rotatable elements
     var elements = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand'];
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
 
     var margin = { top: 50, right: 100, bottom: 100, left: 50 };
     var week = d3.timeFormat('%V-%y')
@@ -149,7 +150,7 @@ function week_overview(data) {
 
     //draw the histogram for each element
     for (var i = 0; i < 4; i++) {
-        barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, i, dataset_weeks[i], dataset_avg[i], elements[i], margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday);
+        barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, i, dataset_weeks[i], dataset_avg[i], elements[i], names[i], margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday);
     }
 }
 
@@ -171,7 +172,7 @@ function week_overview(data) {
  * @param {scale} y_week 
  * @param {scale} y_weekday 
  */
-function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, perweekPadded, avg_wkd_freq, element, margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday) {
+function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, perweekPadded, avg_wkd_freq, element, elemetname, margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday) {
 
     var avg_weekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -181,7 +182,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
         .append("svg")
         .attr('id', 'overview_weeks_barchart')
         .attr("height", height)
-        .attr("width", width * 2)
+        .attr("width", width * 2.5)
         .append('g')
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -189,7 +190,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
         .append("svg")
         .attr('id', 'turnPerWeekday_barchart')
         .attr("height", height)
-        .attr("width", width * 1.5)
+        .attr("width", width * 1)
         .append('g')
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -290,7 +291,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
                 .style('font-size', '9px');
 
             overview_weeks.selectAll('#overviewweekstitle')
-                .text("Frequency of " + element + " per Week on a " + scaletype[toggle] + ' Scale');
+                .text("Frequency of " + elemetname + " per Week on a " + scaletype[toggle] + ' Scale');
 
         });
 
@@ -302,7 +303,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
         .attr('y', h + margin.top + 30)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
-        .text("Frequency of " + element + " per Week on a " + scaletype[toggle] + ' Scale');
+        .text("Frequency of " + elemetname + " per Week on a " + scaletype[toggle] + ' Scale');
 
     //---------------------------------------------------FREQUENCY OF USAGE PER WEEK: END ----------------------------------------------------
     //--------------------------------------------AVERAGE FREQUENCY OF USAGE PER WEEKDAY: START-------------------------------------------------
@@ -379,7 +380,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
                 .style('font-size', '9px');
 
             overview_avg_wkd.selectAll('#turnperweektitle')
-                .text("Average Frequency of" + element + " on a " + scaletype[toggle_avg] + " Scale");
+                .text("Average Frequency of" + elemetname + " on a " + scaletype[toggle_avg] + " Scale");
 
             var label = ['(Uniform Scale)', '']
             d3.selectAll('#week_label' + element).remove();
@@ -403,7 +404,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
         .attr('y', h + margin.top + 30)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
-        .text("Average Frequency of " + element + " on a " + scaletype[toggle_avg] + " Scale");
+        .text("Average Frequency of " + elemetname + " on a " + scaletype[toggle_avg] + " Scale");
 
 
     //---------------------------------------------AVERAGE FREQUENCY OF USAGE PER WEEKDAY: END---------------------------------------------

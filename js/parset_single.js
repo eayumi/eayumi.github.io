@@ -84,6 +84,15 @@ function parset(profile) {
             return 'unknown'
         }
     }
+
+    function wk(d) {
+        if (d == '') {
+            return "unknown";
+        } else {
+            return d.substring(0, 2);
+        }
+    }
+
     //the categories to be shwon in the parallel set, in the given order
     var keys_ = [
         'Age',
@@ -111,7 +120,7 @@ function parset(profile) {
                 // 'RoomsCat': era(datas[x].RoomsCat1),
                 'Household': househ(datas[x].LivingSize1),
                 'Recent Changes in Home': era(datas[x].ChangeCat1),
-                'Week_Year': era(datas[x].Week_Year),
+                'Week_Year': wk(datas[x].Week_Year),
                 'Gender of Pairs': 'not a pair'
 
             });
@@ -129,7 +138,7 @@ function parset(profile) {
                 'Household': househ(datas[x].LivingSize1),
                 'Recent Changes in Home': era(datas[x].ChangeCat1),
                 'Gender of Pairs': gender(datas[x].GendersCat),
-                'Week_Year': era(datas[x].Week_Year)
+                'Week_Year': wk(datas[x].Week_Year)
 
 
             });
@@ -144,7 +153,7 @@ function parset(profile) {
                 'Household': househ(datas[x].LivingSize2),
                 'Recent Changes in Home': era(datas[x].ChangeCat2),
                 'Gender of Pairs': gender(datas[x].GendersCat),
-                'Week_Year': era(datas[x].Week_Year)
+                'Week_Year': wk(datas[x].Week_Year)
 
 
 

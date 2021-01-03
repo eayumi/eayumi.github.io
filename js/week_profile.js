@@ -114,7 +114,7 @@ function week_profile(data_) {
 
     // set the dimensions and margins of the graph
     var margin = { top: 50, right: 100, bottom: 80, left: 50 },
-        width = window.innerHeight * 0.9,
+        width = window.innerHeight,
         w = width - margin.left - margin.right;
 
     var x = d3.scaleBand()
@@ -139,7 +139,7 @@ function draw_multiline_graph(index, data, name, keys, x, max_per_week) {
     // console.log(max_per_week)
     // set the dimensions and margins of the graph
     var margin = { top: 50, right: 100, bottom: 80, left: 50 },
-        width = window.innerHeight * 0.9,
+        width = window.innerHeight,
         height = width * 0.9,
         w = width - margin.left - margin.right,
         h = height - margin.top - margin.bottom;

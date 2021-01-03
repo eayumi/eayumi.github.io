@@ -110,7 +110,7 @@ function freq_per_angle_abs(data) {
                         "translate(" + (width / 2) + " ," +
                         (h + margin.bottom / 2) + ")")
                     .style("text-anchor", "middle")
-                    .style('font-size', '30px')
+                    .style('font-size', '13px')
                     .text("Angle");
             } else {
                 //add the x axis
@@ -130,7 +130,7 @@ function freq_per_angle_abs(data) {
                         "translate(" + (width / 2) + " ," +
                         (h + margin.top / 2) + ")")
                     .style("text-anchor", "middle")
-                    .style('font-size', '20px')
+                    .style('font-size', '13px')
                     .text(title);
 
             }
@@ -149,7 +149,7 @@ function freq_per_angle_abs(data) {
                     .attr("x", (margin.bottom) - (height / 2))
                     .attr("dy", "0.71em")
                     .attr("text-anchor", "end")
-                    .style('font-size', '30px')
+                    .style('font-size', '13px')
                     .text("Frequency");
             } else {
                 svg.append("text")
@@ -158,7 +158,7 @@ function freq_per_angle_abs(data) {
                     .attr("x", (margin.top / 2) - (height / 3))
                     .attr("dy", "0.71em")
                     .attr("text-anchor", "end")
-                    .style('font-size', '30px')
+                    .style('font-size', '13px')
                     .text("Frequency");
 
             }

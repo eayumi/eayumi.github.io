@@ -109,7 +109,7 @@ function freq_per_angle(data) {
                 "translate(" + (width / 2) + " ," +
                 (h + margin.top / 2 - 10) + ")")
             .style("text-anchor", "middle")
-            .attr('font-size', '15px')
+            .attr('font-size', '13px')
             .text("Angle");
 
         //add the y axis
@@ -125,7 +125,7 @@ function freq_per_angle(data) {
             .attr("x", (margin.bottom * 2 - h))
             .attr("dy", "0.71em")
             .attr("text-anchor", "end")
-            .attr('font-size', '15px')
+            .attr('font-size', '13px')
             .text("Frequency");
 
         //the bars
