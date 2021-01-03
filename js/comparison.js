@@ -1447,6 +1447,8 @@ function radial_comparison() {
                     console.log(added)
                     console.log(removed)
                     console.log(angles[index])
+                    added = [];
+                    angles[index] = [];
 
                     for (var j = 0; j < dataset_outer_chart[index].length; j++) {
 
@@ -1758,6 +1760,7 @@ function radial_comparison() {
                  * We make the assumption that no two elements were moved at the same time (ms precision), which makes all Timestamps unique.
                  */
                 function update_comparison_dataset_inner() {
+
                     var j = 0;
                     //remove all angles both added and removed
                     while (j < added.length) {
@@ -1769,7 +1772,8 @@ function radial_comparison() {
                         }
                         j++;
                     }
-
+                    console.log('added')
+                    console.log(added)
                     var data_inner_updated = [
                         [],
                         [],
