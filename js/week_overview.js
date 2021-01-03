@@ -182,7 +182,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
         .append("svg")
         .attr('id', 'overview_weeks_barchart')
         .attr("height", height)
-        .attr("width", width * 2.5)
+        .attr("width", width * 2)
         .append('g')
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -190,7 +190,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
         .append("svg")
         .attr('id', 'turnPerWeekday_barchart')
         .attr("height", height)
-        .attr("width", width * 1)
+        .attr("width", width * 1.5)
         .append('g')
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

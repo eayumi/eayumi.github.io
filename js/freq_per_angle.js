@@ -4,6 +4,8 @@
  */
 function freq_per_angle(data) {
     var element = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand'];
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
+
     var maxrange = [237, 186, 157, 320];
 
     // set the dimensions and margins of the graph
@@ -155,9 +157,9 @@ function freq_per_angle(data) {
             .attr('x', width / 2).attr('y', h + margin.top - 20)
             .attr("text-anchor", "middle")
             .style("font-size", "13px")
-            .text("Frequency of Use per Angle for " + element[index])
+            .text("Frequency of Use per Angle for " + names[index])
             .append('tspan')
-            .text('to')
+            .text(' to')
             .style('font-style', 'italic');
 
     }

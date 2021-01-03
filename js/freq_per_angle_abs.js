@@ -4,6 +4,8 @@
  */
 function freq_per_angle_abs(data) {
     var elements = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand'];
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
+
     // set the dimensions and margins of the graph
     var margin = { top: 20, right: 90, bottom: 100, left: 90 },
         width = window.innerWidth * 0.7;
@@ -51,13 +53,13 @@ function freq_per_angle_abs(data) {
             return d3.ascending(parseInt(x.angle), parseInt(y.angle));
         });
 
-        draw_charts(true, width, height, margin, '#freq_per_ang_abs_', 20, "Frequency " + elements[index] + " is Rotated by Given Amount in degrees ");
+        draw_charts(true, width, height, margin, '#freq_per_ang_abs_', 20, "Frequency " + names[index] + " is Rotated by Given Amount in degrees ");
 
 
         ih = window.innerHeight / 2 * 0.8;
         //consle.log(ih)
         ih = (ih - 100 < 0) ? 200 : ih;
-        draw_charts(false, width / 2, ih, { top: 40, right: 90, bottom: 50, left: 90 }, '#freq_per_ang_abs_tog_', 0, elements[index]);
+        draw_charts(false, width / 2, ih, { top: 40, right: 90, bottom: 50, left: 90 }, '#freq_per_ang_abs_tog_', 0, names[index]);
 
 
         function draw_charts(draw, width, height, margin, name, ticks, title) {
@@ -191,8 +193,8 @@ function freq_per_angle_abs(data) {
                     .attr('x', width / 2)
                     .attr('y', h + margin.bottom - 12)
                     .attr("text-anchor", "middle")
-                    .style("font-size", "16x")
-                    .text("Frequency of Size of Rotations per Angle for " + elements[index])
+                    .style("font-size", "13x")
+                    .text("Frequency of Size of Rotations per Angle for " + names[index])
             }
 
         }
