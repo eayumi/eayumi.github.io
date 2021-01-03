@@ -687,6 +687,26 @@
     display: flex;
 }
 
+.allButton {
+    background: white;
+    /* Blue background */
+    border: none;
+    /* Remove borders */
+    padding: 8px 8px 8px 8px;
+    /* Some padding */
+    font-size: 15px;
+    border-radius: 8px;
+    /* Set a font size */
+    cursor: pointer;
+    text-align: center;
+    /* Mouse pointer on hover */
+    position: absolute;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
 .resetButton_big {
     background: white;
     /* Blue background */
