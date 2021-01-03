@@ -1451,8 +1451,8 @@ function radial_comparison() {
                         dataset_outer_chart[index][j].clicked = true;
                         dataset_outer_chart[index][j].clicked = true;
 
-                        d3.selectAll(".bar" + k_ + '_left' + index).attr("fill", darkcol[index]);
-                        d3.selectAll(".bar" + k_ + '_right' + index).attr("fill", texture_g2_com[index].url());
+                        //  d3.selectAll(".bar" + k_ + '_left' + index).attr("fill", darkcol[index]);
+                        // d3.selectAll(".bar" + k_ + '_right' + index).attr("fill", texture_g2_com[index].url());
                         k_ += 1;
                         added.push(k_ * grouping)
                         angles[index].push(k_ * grouping)
