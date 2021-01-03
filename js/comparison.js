@@ -2087,7 +2087,8 @@ function radial_comparison() {
                  * @param {*} arr2 
                  */
                 function arrayUnion(arr1, arr2) { // no duplicates
-                    console.log(arr1, arr2)
+                    console.log(arr1)
+                    console.log(arr2)
                     var a = arr1.concat(arr2);
 
                     return a;
