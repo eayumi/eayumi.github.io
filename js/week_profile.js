@@ -124,16 +124,16 @@ function week_profile(data_) {
 
     var keys = nest_weeks_and_days[d].map(function(x) { return { key: x.key, selected: false } })
 
-
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
     for (d in nest_weeks_and_days) {
 
         //d is the dth element of [DW,DS,LA,LD]
-        draw_multiline_graph(d, nest_weeks_and_days[d], sensors[d], keys, x, nest_weeks_and_days[d].map(j => d3.max(j.values, k => k.freq)));
+        draw_multiline_graph(d, nest_weeks_and_days[d], sensors[d], names[d], keys, x, nest_weeks_and_days[d].map(j => d3.max(j.values, k => k.freq)));
     }
 
 }
 // append the svg object to the body of the page
-function draw_multiline_graph(index, data, name, keys, x, max_per_week) {
+function draw_multiline_graph(index, data, name, titlename, keys, x, max_per_week) {
 
     const ELEMENTS = max_per_week.length - 1;
     // console.log(max_per_week)
@@ -204,8 +204,8 @@ function draw_multiline_graph(index, data, name, keys, x, max_per_week) {
         .attr('x', w / 2).attr('y', h + margin.top)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
-        .text("Movement Frequency of " +
-            name + " per Day per Week");
+        .text("Frequency of Usage" +
+            titlename + " per Day per Week");
 
 
 

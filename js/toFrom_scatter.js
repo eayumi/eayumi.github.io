@@ -8,14 +8,16 @@
  */
 function ToFromScatter(data) {
     datafile = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand'];
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
+
     var margin = { top: 70, right: 50, bottom: 90, left: 70 },
         width = window.innerHeight * 0.9 - 10;
 
     var margin_tog = { top: 20, right: 50, bottom: 50, left: 20 },
         width_tog = (window.innerHeight * 0.9) / 2;
     for (var i = 0; i < 4; i++) {
-        plotToFromScatter(false, ("#scatter_" + i), data.filter(d => d.Sensorname == datafile[i]), margin, width);
-        plotToFromScatter(true, ("#scatter_tog_" + i), data.filter(d => d.Sensorname == datafile[i]), margin_tog, width_tog); //for the one-window-view
+        plotToFromScatter(false, ("#scatter_" + i), data.filter(d => d.Sensorname == datafile[i]), margin, width, name);
+        plotToFromScatter(true, ("#scatter_tog_" + i), data.filter(d => d.Sensorname == datafile[i]), margin_tog, width_tog, name); //for the one-window-view
 
     }
 }
@@ -33,7 +35,7 @@ function ToFromScatter(data) {
  * @param {int} margin 
  * @param {int} width 
  */
-function plotToFromScatter(summary, div, data, margin, width) {
+function plotToFromScatter(summary, div, data, margin, width, name) {
     // set the dimensions and margins of the graph
 
     var height = width,
@@ -188,7 +190,7 @@ function plotToFromScatter(summary, div, data, margin, width) {
         .attr('x', width / 2).attr('y', h + margin.top + 10)
         .attr("text-anchor", "middle")
         .style("font-size", "13px")
-        .text(data[0].Sensorname);
+        .text(name);
 
 
 }
