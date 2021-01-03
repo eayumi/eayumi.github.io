@@ -1444,7 +1444,9 @@ function radial_comparison() {
                  */
                 function updateSelectAll() {
                     k_ = 0
-
+                    console.log(added)
+                    console.log(removed)
+                    console.log(angles[index])
                     for (var j = 0; j < dataset_outer_chart[index].length; j++) {
 
                         dataset_outer_chart[index][j].clicked = true;
@@ -1458,6 +1460,9 @@ function radial_comparison() {
 
                     }
                     console.log('Select All')
+                    console.log(added)
+                    console.log(removed)
+                    console.log(angles[index])
                     update_comparison_dataset_inner();
                     update_density_plots(dataset_inner_chart);
                     update_inner_chart(dataset_inner_chart);
