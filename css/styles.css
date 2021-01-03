@@ -1,0 +1,341 @@
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header {
+    background: black;
+    color: white;
+    padding: 7px;
+}
+
+li {
+    display: inline-block;
+    color: black;
+    margin-left: 20px;
+}
+
+
+/* Style the active/current link*/
+
+.navbar a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+tab1 {
+    padding-left: 4.5em;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: black;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: #ddd;
+    color: black;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.introtext {
+    top: 10px;
+    border-style: groove;
+    width: 85%;
+    padding: 10px;
+    position: relative;
+    left: 90px;
+    font-size: 14px;
+    background-color: rgb(231, 231, 231);
+}
+
+.p_text {
+    margin-left: 30px;
+}
+
+.d3-tip {
+    line-height: 1;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font: 12px Arial, sans-serif;
+    position: relative;
+    right: 90%+100px;
+    left: auto;
+    width: auto;
+}
+
+
+/* Creates a small triangle extender for the tooltip */
+
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 8px;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    text-align: right;
+    right: 90%+100px;
+    left: auto;
+}
+
+
+/* Style northward tooltips differently */
+
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+.bar2:hover {
+    fill: rgb(44, 66, 83)
+}
+
+.bar {
+    fill: steelblue;
+}
+
+.bar:hover {
+    fill: rgb(44, 66, 83);
+}
+
+.bar_:hover {
+    fill: rgb(44, 66, 83);
+}
+
+.axis {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: 'white';
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axis {
+    font: 10px sans-serif;
+}
+
+.grid line {
+    stroke: grey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+.text {
+    fill: white;
+    stroke: black;
+    font-family: sans-serif;
+}
+
+.btn-info {
+    background-color: none;
+    border-color: black
+}
+
+.dimension {
+    cursor: ns-resize;
+}
+
+.category {
+    cursor: ew-resize;
+}
+
+.dimension tspan.name {
+    font-size: 1.5em;
+    fill: #333;
+    font-weight: bold;
+}
+
+.dimension tspan.sort {
+    fill: #000;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.dimension tspan.sort:hover {
+    fill: #333;
+}
+
+.dimension:hover tspan.name {
+    fill: #000;
+}
+
+.dimension:hover tspan.sort {
+    opacity: 1;
+}
+
+.dimension line {
+    stroke: #000;
+}
+
+.dimension rect {
+    stroke: none;
+    fill-opacity: 0;
+}
+
+.dimension>rect,
+.category-background {
+    fill: #fff;
+}
+
+.dimension>rect {
+    display: none;
+}
+
+.category:hover rect {
+    fill-opacity: .3;
+}
+
+.dimension:hover>rect {
+    fill-opacity: .3;
+}
+
+.ribbon path {
+    stroke-opacity: 0;
+    fill-opacity: .5;
+}
+
+.ribbon path.active {
+    fill-opacity: .9;
+}
+
+.ribbon-mouse path {
+    fill-opacity: 0;
+}
+
+.category-0 {
+    fill: #1f77b4;
+    stroke: #1f77b4;
+}
+
+.category-1 {
+    fill: #ff7f0e;
+    stroke: #ff7f0e;
+}
+
+.category-2 {
+    fill: #2ca02c;
+    stroke: #2ca02c;
+}
+
+.category-3 {
+    fill: #d62728;
+    stroke: #d62728;
+}
+
+.category-4 {
+    fill: #9467bd;
+    stroke: #9467bd;
+}
+
+.category-5 {
+    fill: #8c564b;
+    stroke: #8c564b;
+}
+
+.category-6 {
+    fill: #e377c2;
+    stroke: #e377c2;
+}
+
+.category-7 {
+    fill: #7f7f7f;
+    stroke: #7f7f7f;
+}
+
+.category-8 {
+    fill: #bcbd22;
+    stroke: #bcbd22;
+}
+
+.category-9 {
+    fill: #17becf;
+    stroke: #17becf;
+}
+
+.parsetstooltip {
+    background-color: rgba(242, 242, 242, .6);
+    position: absolute;
+    padding: 5px;
+}
+
+.tracecircle {
+    color: red;
+    fill: red;
+    opacity: 0.9;
+    visibility: hidden;
+}
+
+.traceline {
+    stroke: red;
+    opacity: 0.9;
+    visibility: hidden;
+}

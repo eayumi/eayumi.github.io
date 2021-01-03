@@ -1,0 +1,828 @@
+.cls-1,
+.cls-10,
+.cls-11,
+.cls-2,
+.cls-5,
+.cls-7,
+.cls-8,
+.cls-9 {
+    fill: none;
+}
+
+.cls-1 {
+    clip-rule: evenodd;
+}
+
+.cls-13,
+.cls-2 {
+    fill-rule: evenodd;
+}
+
+.cls-3 {
+    font-size: 4px;
+    fill: #fff;
+    font-family: ArialMT, Arial;
+}
+
+.cls-4 {
+    clip-path: url(#clip-path);
+}
+
+.cls-10,
+.cls-11,
+.cls-5,
+.cls-7,
+.cls-8,
+.cls-9 {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cls-5 {
+    stroke-width: 0.51px;
+}
+
+.cls-6 {
+    clip-path: url(#clip-path-2);
+}
+
+.cls-7 {
+    stroke-width: 0.09px;
+}
+
+.cls-8 {
+    stroke-width: 0.37px;
+}
+
+.cls-9 {
+    stroke-width: 0.28px;
+}
+
+.cls-10 {
+    stroke-width: 0;
+}
+
+.cls-11 {
+    stroke-width: 0.09px;
+}
+
+.cls-12 {
+    clip-path: url(#clip-path-205);
+}
+
+.cls-13 {
+    fill: #2b357b;
+}
+
+.DS-7 {
+    stroke-width: 0.09px;
+    stroke: green;
+}
+
+.DS-8 {
+    stroke-width: 0.37px;
+    stroke: green;
+}
+
+.DS-9 {
+    stroke-width: 0.28px;
+    stroke: green;
+}
+
+.DS-lines {
+    stroke-width: 0.51px;
+    fill: green;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-7 {
+    stroke-width: 0.19px;
+    stroke: purple;
+    fill: none
+}
+
+.LD-6 {
+    clip-path: url(#clip-path-2);
+    stroke: purple;
+    fill: none
+}
+
+.LD-lines {
+    stroke-width: 0.51px;
+    fill: none;
+    stroke: purple;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_bulb {
+    stroke-width: 0.51px;
+    stroke: none;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect1 {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect2 {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect3 {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+#input_grouping:valid {
+    background-color: none;
+}
+
+#input_grouping:invalid {
+    background-color: #ffdddd;
+}
+
+.DW-5 {
+    stroke-width: 0.51px;
+    stroke: red;
+}
+
+.DW-lines {
+    stroke-width: 0.51px;
+    fill: red;
+    pointer-events: none
+}
+
+.DW-4 {
+    clip-path: url(#clip-path);
+}
+
+.LA-7 {
+    stroke-width: 0.19px;
+    stroke: rgb(0, 47, 255);
+    fill: none
+}
+
+.LA-6 {
+    clip-path: url(#clip-path-2);
+    stroke: rgb(0, 47, 255);
+    fill: none
+}
+
+.LA-lines_bulb {
+    stroke-width: 0.51px;
+    stroke: none;
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect1 {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect2 {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect3 {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+#drehwandbar,
+#temp0 {
+    -o-transform: rotate(-29deg);
+    -ms-transform: rotate(-29deg);
+    transform: rotate(-29deg);
+}
+
+#drehschrankbar,
+#temp1 {
+    -o-transform: rotate(-103deg);
+    -ms-transform: rotate(-103deg);
+    transform: rotate(-103deg);
+}
+
+#lampeAussenwandbar,
+#temp2 {
+    -o-transform: rotate(-92deg);
+    -ms-transform: rotate(-92deg);
+    transform: rotate(-92deg);
+}
+
+#lampeDrehwandbar,
+#temp3 {
+    -o-transform: rotate(-104deg);
+    -ms-transform: rotate(-104deg);
+    transform: rotate(-104deg);
+}
+
+.drawDS {
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 55px;
+    height: 40px;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    margin-top: -30px;
+    font: 10px sans-serif;
+    background: white;
+    color: black;
+    pointer-events: none;
+}
+
+#temp0,
+#temp1,
+#temp2,
+#temp3 {
+    pointer-events: none;
+}
+
+.DS-7_left,
+.DS-8_left,
+.DS-9_left,
+.DS-7_right,
+.DS-8_right,
+.DS-9_right {
+    transform-origin: 545.73px 505.05px
+}
+
+.DW-5_left,
+.DW-5_right {
+    transform-origin: 455.8px 407.28px
+}
+
+.LA-6_left,
+.LA-6_right {
+    transform-origin: 726.8px 522.78px
+}
+
+.LD-6_right,
+.LD-6_left {
+    transform-origin: 455.8px 407.28px
+}
+
+.DS-7_left {
+    stroke-width: 0.09px;
+    stroke: green;
+}
+
+.DS-8_left {
+    stroke-width: 0.37px;
+    stroke: green;
+}
+
+.DS-9_left {
+    stroke-width: 0.28px;
+    stroke: green;
+}
+
+.DS-lines_left {
+    stroke-width: 0.51px;
+    fill: green;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-7_left {
+    stroke-width: 0.19px;
+    stroke: purple;
+    fill: none
+}
+
+.LD-6_left {
+    clip-path: url(#clip-path-2);
+    stroke: purple;
+    fill: none
+}
+
+.LD-lines_left {
+    stroke-width: 0.51px;
+    fill: none;
+    stroke: purple;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_bulb_left {
+    stroke-width: 0.51px;
+    stroke: none;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect1_left {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect2_left {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect3_left {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.DW-5_left {
+    stroke-width: 0.51px;
+    stroke: red;
+}
+
+.DW-lines_left {
+    stroke-width: 0.51px;
+    fill: red;
+    pointer-events: none
+}
+
+.DW-4_left {
+    clip-path: url(#clip-path);
+}
+
+.LA-7_left {
+    stroke-width: 0.19px;
+    stroke: rgb(0, 47, 255);
+    fill: none
+}
+
+.LA-6_left {
+    clip-path: url(#clip-path-2);
+    stroke: rgb(0, 47, 255);
+    fill: none
+}
+
+.LA-lines_bulb_left {
+    stroke-width: 0.51px;
+    stroke: none;
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect1_left {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect2_left {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect3_left {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.DS-7_right {
+    stroke-width: 0.09px;
+    stroke: green;
+}
+
+.DS-8_right {
+    stroke-width: 0.37px;
+    stroke: green;
+}
+
+.DS-9_right {
+    stroke-width: 0.28px;
+    stroke: green;
+}
+
+.DS-lines_right {
+    stroke-width: 0.51px;
+    fill: green;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-7_right {
+    stroke-width: 0.19px;
+    stroke: purple;
+    fill: none
+}
+
+.LD-6_right {
+    clip-path: url(#clip-path-2);
+    stroke: purple;
+    fill: none
+}
+
+.LD-lines_right {
+    stroke-width: 0.51px;
+    fill: none;
+    stroke: purple;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_bulb_right {
+    stroke-width: 0.51px;
+    stroke: none;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect1_right {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect2_right {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LD-lines_rect3_right {
+    stroke-width: 0.51px;
+    stroke: purple;
+    fill: purple;
+    transform-origin: 455.8px 407.28px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.DW-5_right {
+    stroke-width: 0.51px;
+    stroke: red;
+}
+
+.DW-lines_right {
+    stroke-width: 0.51px;
+    fill: red;
+    pointer-events: none
+}
+
+.DW-4_right {
+    clip-path: url(#clip-path);
+}
+
+.LA-7_right {
+    stroke-width: 0.19px;
+    stroke: rgb(0, 47, 255);
+    fill: none
+}
+
+.LA-6_right {
+    clip-path: url(#clip-path-2);
+    stroke: rgb(0, 47, 255);
+    fill: none
+}
+
+.LA-lines_bulb_right {
+    stroke-width: 0.51px;
+    stroke: none;
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect1_right {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect2_right {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.LA-lines_rect3_right {
+    stroke-width: 0.51px;
+    stroke: rgb(0, 47, 255);
+    fill: rgb(0, 47, 255);
+    transform-origin: 728.8px 522.78px;
+    pointer-events: none;
+    isolation: isolate;
+    mix-blend-mode: normal;
+}
+
+.collapsible {
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    width: 80%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #555;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.content {
+    padding: 0 3%;
+    max-height: 0;
+    width: 74%;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+    display: inline-block;
+    text-align: left
+}
+
+#input_label {
+    display: inline-block;
+    width: 145px;
+    text-align: left;
+    line-height: 170%
+}
+
+.filter_field {
+    width: 170px;
+    margin-left: 30px;
+}
+
+.resetButton {
+    background: white;
+    /* Blue background */
+    border: none;
+    /* Remove borders */
+    padding: 8px 8px 8px 8px;
+    /* Some padding */
+    font-size: 15px;
+    border-radius: 8px;
+    /* Set a font size */
+    cursor: pointer;
+    text-align: center;
+    /* Mouse pointer on hover */
+    position: absolute;
+    z-index: 1;
+    left: 80%;
+    top: 80%;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.resetButton_big {
+    background: white;
+    /* Blue background */
+    border: none;
+    /* Remove borders */
+    padding: 8px 8px 8px 8px;
+    /* Some padding */
+    font-size: 20px;
+    border-radius: 8px;
+    /* Set a font size */
+    cursor: pointer;
+    text-align: center;
+    /* Mouse pointer on hover */
+    position: absolute;
+    z-index: 1;
+    left: 90%;
+    top: 65%;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.collapse {
+    display: none
+}
+
+.collapse.in {
+    display: block
+}
+
+tr.collapse.in {
+    display: table-row
+}
+
+tbody.collapse.in {
+    display: table-row-group
+}
+
+.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition-property: height, visibility;
+    -o-transition-property: height, visibility;
+    transition-property: height, visibility;
+    -webkit-transition-duration: 2s;
+    -o-transition-duration: 2s;
+    transition-duration: 2s;
+    -webkit-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease
+}
+
+.container-fluid>.navbar-collapse,
+.container-fluid>.navbar-header,
+.container>.navbar-collapse,
+.container>.navbar-header {
+    margin-right: -15px;
+    margin-left: -15px
+}
+
+@media (min-width:768px) {
+    .container-fluid>.navbar-collapse,
+    .container-fluid>.navbar-header,
+    .container>.navbar-collapse,
+    .container>.navbar-header {
+        margin-right: 0;
+        margin-left: 0
+    }
+}
+
+@media (min-width:768px) {
+    .navbar>.container .navbar-brand,
+    .navbar>.container-fluid .navbar-brand {
+        margin-left: -15px
+    }
+}
+
+.container .jumbotron,
+.container-fluid .jumbotron {
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 6px
+}
+
+.jumbotron .container {
+    max-width: 100%
+}
+
+@media screen and (min-width:768px) {
+    .jumbotron {
+        padding-top: 48px;
+        padding-bottom: 48px
+    }
+    .container .jumbotron,
+    .container-fluid .jumbotron {
+        padding-right: 60px;
+        padding-left: 60px
+    }
+    .jumbotron .h1,
+    .jumbotron h1 {
+        font-size: 63px
+    }
+}
+
+.container-fluid:after,
+.container-fluid:before,
+.container:after,
+.container:before {
+    display: table;
+    content: " "
+}
+
+.container-fluid:after,
+.container:after.row:after {
+    clear: both
+}
+
+.icn-spinner {
+    animation: spin-animation 2s 2;
+    display: inline-block;
+    animation-timing-function: linear;
+}
+
+.icn-spinner-time {
+    animation: spin-animation 1s 2;
+    display: inline-block;
+    animation-timing-function: linear;
+}
+
+@keyframes spin-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
