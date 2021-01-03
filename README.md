@@ -15,6 +15,9 @@ The animation view contains animation of the sensor data.
 A description and instuctions when needed are included in the tool.
 
 ## Usage
+There are two ways to use the tool.
+The first is to open the application in a webbrowser of your choosing at https://eayumi.github.io.
+The second option is to use a local host. Users with a Mac computer should use the first option.
 
 The user needs only internet access and open a local host.
 To use the tool, open the file index_main.html with a local host in the browser of your choosing.

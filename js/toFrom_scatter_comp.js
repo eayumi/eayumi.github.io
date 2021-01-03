@@ -218,10 +218,10 @@ function plotToFromScatter_comp(index, summary, div, data_g1, data_g2, margin) {
             .attr("cx", function(d) { return x(d.To); })
             .attr("cy", function(d) { return y(d.From); })
             .attr("r", function() {
-                return 1.5
+                return 1.1
             })
             .style("fill", group_color[g])
-            .attr('opacity', 0.7)
+            .attr('opacity', 0.5)
 
     }
 
@@ -257,11 +257,11 @@ function plotToFromScatter_comp(index, summary, div, data_g1, data_g2, margin) {
         .attr("cx", function(d) { return x(d.To); })
         .attr("cy", function(d) { return y(d.From); })
         .attr("r", function() {
-            if (summary) { return 0.7 }
-            return 1.5
+            if (summary) { return 0.5 }
+            return 1.1
         })
         .style("fill", group_color[0])
-        .attr('opacity', 0.7)
+        .attr('opacity', 0.5)
     svg.selectAll("dot")
         .data(data_g2)
         .enter()
@@ -271,11 +271,11 @@ function plotToFromScatter_comp(index, summary, div, data_g1, data_g2, margin) {
         .attr("cx", function(d) { return x(d.To); })
         .attr("cy", function(d) { return y(d.From); })
         .attr("r", function() {
-            if (summary) { return 0.7 }
-            return 1.5
+            if (summary) { return 0.5 }
+            return 1.1
         })
         .style("fill", group_color[1])
-        .attr('opacity', 0.7)
+        .attr('opacity', 0.5)
 
     //adding title
     svg.append("text")
