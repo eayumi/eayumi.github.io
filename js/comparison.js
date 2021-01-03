@@ -1444,9 +1444,7 @@ function radial_comparison() {
                  */
                 function updateSelectAll() {
                     k_ = 0
-                    removed = [];
-                    added = [];
-                    angles[index] = [];
+
                     for (var j = 0; j < dataset_outer_chart[index].length; j++) {
 
                         dataset_outer_chart[index][j].clicked = true;
@@ -1454,14 +1452,13 @@ function radial_comparison() {
 
                         //  d3.selectAll(".bar" + k_ + '_left' + index).attr("fill", darkcol[index]);
                         // d3.selectAll(".bar" + k_ + '_right' + index).attr("fill", texture_g2_com[index].url());
-                        k_ += 1;
                         added.push(k_ * grouping)
                         angles[index].push(k_ * grouping)
+                        k_ += 1;
 
                     }
                     console.log('Select All')
                     update_comparison_dataset_inner();
-
                     update_density_plots(dataset_inner_chart);
                     update_inner_chart(dataset_inner_chart);
                 }
