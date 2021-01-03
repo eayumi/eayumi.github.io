@@ -13,6 +13,7 @@ function week_overview_comp(data_g1, data_g2) {
     //the rotatable elements
 
     var elements = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand'];
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
 
     var margin = { top: 50, right: 60, bottom: 100, left: 50 };
     var week = d3.timeFormat('%V-%y')
@@ -220,7 +221,7 @@ function week_overview_comp(data_g1, data_g2) {
     y_weekday.domain([0, max_avg[0]])
         //draw the histogram for each element
     for (var i = 0; i < elements.length; i++) {
-        barchart_week_and_avg_weekday_overview_comp(both, i, dataset_weeks[i], dataset_avg[i], elements[i], margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday);
+        barchart_week_and_avg_weekday_overview_comp(both, i, dataset_weeks[i], dataset_avg[i], elements[i], names[i], margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday);
     }
 }
 
@@ -242,7 +243,7 @@ function week_overview_comp(data_g1, data_g2) {
  * @param {*} y_week 
  * @param {*} y_weekday 
  */
-function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg_wkd_freq, element, margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday) {
+function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg_wkd_freq, element, name, margin, width, height, w, h, x_week, x_weekday, y_week, y_weekday) {
     var avg_weekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     var overview_avg_wkd = d3.selectAll('#week_avg_comp_' + element)
@@ -392,7 +393,7 @@ function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg
         .attr('x', width).attr('y', h + margin.top + 30)
         .attr("text-anchor", "middle")
         .style("font-size", "17px")
-        .text("Frequency of Use per Week for " + element);
+        .text("Frequency of Use per Week for " + name);
 
     //---------------------------------------------------FREQUENCY OF USAGE PER WEEK: END ----------------------------------------------------
     //--------------------------------------------AVERAGE FREQUENCY OF USAGE PER WEEKDAY: START-------------------------------------------------
@@ -459,7 +460,7 @@ function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg
         .attr('y', h + margin.top + 30)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
-        .text("Average Frequency of Use per Weekday for " + element);
+        .text("Average Frequency of Use per Weekday for " + name);
 
 
     //---------------------------------------------AVERAGE FREQUENCY OF USAGE PER WEEKDAY: END---------------------------------------------

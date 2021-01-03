@@ -6,6 +6,7 @@ function week_profile_comp(data_g1, data_g2) {
     //date formats
     var sensors = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand'];
 
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
 
     var wd = { 'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6 };
     var dw = { 0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun' };
@@ -169,11 +170,11 @@ function week_profile_comp(data_g1, data_g2) {
         for (var index = 0; index < 4; index++) {
 
             //d is the dth element of [DW,DS,LA,LD]
-            draw_multiline_graph(index, data_proc[0][index], data_proc[1][index], sensors[index], keys[0][index], keys[1][index], x, max_per_week_g1[index], max_per_week_g2[index], l, r);
+            draw_multiline_graph(index, data_proc[0][index], data_proc[1][index], sensors[index], names[index], keys[0][index], keys[1][index], x, max_per_week_g1[index], max_per_week_g2[index], l, r);
         }
 
         // append the svg object to the body of the page
-        function draw_multiline_graph(index, data_g1, data_g2, name, keys_g1, keys_g2, x, max_per_week_g1, max_per_week_g2, l, r) {
+        function draw_multiline_graph(index, data_g1, data_g2, name, titlename, keys_g1, keys_g2, x, max_per_week_g1, max_per_week_g2, l, r) {
             // set the dimensions and margins of the graph
             const ELEMENT1 = max_per_week_g1.length - 1;
             const ELEMENT2 = max_per_week_g2.length - 1;
@@ -255,12 +256,12 @@ function week_profile_comp(data_g1, data_g2) {
                 .attr('x', w / 2).attr('y', h + margin.top)
                 .attr("text-anchor", "middle")
                 .style("font-size", "13px")
-                .text("Frequency of Use per Day  and per Week of Group " + 1 + " for " + name);
+                .text("Frequency of Use per Day  and per Week of Group " + 1 + " for " + titlename);
             svg_g2.append("text")
                 .attr('x', w / 2).attr('y', h + margin.top)
                 .attr("text-anchor", "middle")
                 .style("font-size", "13px")
-                .text("Frequency of Use per Day  and per Week of Group " + 2 + " for " + name);
+                .text("Frequency of Use per Day  and per Week of Group " + 2 + " for " + titlename);
 
 
             var s_g1 = keys_g1.length - 1;

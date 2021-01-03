@@ -9,6 +9,8 @@
  */
 function freqDistr_abs_comp(data_g1, data_g2) {
     var element = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand'];
+    var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
+
 
     // set the dimensions and margins of the graph
     var margin = { top: 100, right: 90, bottom: 100, left: 70 },
@@ -163,7 +165,7 @@ function freqDistr_abs_comp(data_g1, data_g2) {
             .attr('x', width / 2).attr('y', h + margin.top - 30)
             .attr("text-anchor", "middle")
             .style("font-size", "13px")
-            .text("Frequency of Use per Angle for of Group " + (1 + g) + ' for ' + element[index])
+            .text("Frequency of Use per Angle for of Group " + (1 + g) + ' for ' + names[index])
             .style("font-size", "13px")
             .style('font-style', 'normal');
 
@@ -333,7 +335,7 @@ function freqDistr_rot_comp(data_g1, data_g2) {
             .attr('x', width / 2).attr('y', h + margin.top - 30)
             .attr("text-anchor", "middle")
             .style("font-size", "13px")
-            .text("Frequency of Size of Rotations per Angle of Group" + +(1 + g) + ' for ' + element[index])
+            .text("Frequency of Size of Rotations per Angle of Group" + +(1 + g) + ' for ' + names[index])
             .style("font-size", "13px")
             .style('font-style', 'normal');
 
