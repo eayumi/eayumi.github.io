@@ -1412,6 +1412,9 @@ function radial_comparison() {
 
                 d3.selectAll('#reset' + index).on('click', updateData);
                 d3.selectAll('#setAll' + index).on('click', updateSelectAll);
+                d3.selectAll('#deselectAll').on('click', updateData);
+
+
 
 
 
