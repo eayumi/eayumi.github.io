@@ -1,0 +1,35 @@
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="../js/initialize.js"></script>
+<script src="../js/overview_table.js"></script>
+<style>
+    thead th {
+        position: sticky;
+        top: 0;
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+    
+    th,
+    td {
+        padding: 6px 16px;
+    }
+    
+    th {
+        background: #eee;
+    }
+    
+    tr:nth-child(even) {
+        background: lightgrey
+    }
+    
+    tr:nth-child(odd) {
+        background: #FFF
+    }
+</style>
+<script>
+    view = 2;
+    initialize();
+    factcheck();
+</script>
