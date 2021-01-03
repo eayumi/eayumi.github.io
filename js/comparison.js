@@ -1411,6 +1411,9 @@ function radial_comparison() {
                     .domain(dataset_outer_chart[index].map(function(d, i) { return i })); // The domain of the X axis are the angles (360deg).
 
                 d3.selectAll('#reset' + index).on('click', updateData);
+                d3.selectAll('#setAll' + index).on('click', updateSelectAll);
+
+
 
                 /**
                  * function that deselects all bars of the given element at once.
@@ -1433,6 +1436,32 @@ function radial_comparison() {
                     update_density_plots(dataset_inner_chart);
                     update_inner_chart(dataset_inner_chart);
                     //console.log('reset' + index)
+                }
+
+                /**
+                 * function that selects all bars of the given element at once.
+                 */
+                function updateSelectAll() {
+                    k_ = 0
+                    removed = [];
+                    added = [];
+                    angles[index] = [];
+                    for (var j = 0; j < dataset_outer_chart[index].length; j++) {
+
+                        dataset_outer_chart[index][j].clicked = true;
+                        dataset_outer_chart[index][j].clicked = true;
+
+                        d3.selectAll(".bar" + k_ + '_left' + index).attr("fill", darkcol[index]);
+                        d3.selectAll(".bar" + k_ + '_right' + index).attr("fill", texture_g2_com[index].url());
+                        k_ += 1;
+                        added.push(k_ * grouping)
+                        angles[index].push(k_ * grouping)
+
+                    }
+                    update_comparison_dataset_inner();
+
+                    update_density_plots(dataset_inner_chart);
+                    update_inner_chart(dataset_inner_chart);
                 }
 
                 off = Math.floor(rotate[index] / (grouping));

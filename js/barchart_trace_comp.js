@@ -30,47 +30,8 @@ function drawBar(g) {
         'W_Schub_Bad_cyr', 'W_Schub_Wand_cyr', 'W_Boden_Bad_cyr', 'W_Boden_Wand_cyr', 'W_Fen_Bad_Str', 'W_Fen_Wand_Str',
         'K_Schrank_Oben_01_cyr', 'K_Schrank_Oben_02_cyr', 'K_Schrank_Oben_03_cyr', 'K_Schrank_Oben_04_cyr', 'K_Schrank_Oben_05_cyr', 'K_Kuehl_cyr', 'K_Abfall_cyr', 'K_Wasch_Str', 'K_Ofen_Str', 'K_Ofen_Schub_cyr', 'K_Schub_Oben_cyr', 'K_Schub_Mitte_cyr', 'K_Schub_Unten_cyr'
     ];
+    var names_R = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'] //English name
     var names_rooms = { 'R': 'Rotation Element', 'K': 'Kitchen', 'S': 'Bedroom', 'H': 'Entrance', 'B': 'Bathroom', 'W': 'Livingroom' };
-
-    var selector_list = [
-        ['.drehwand'],
-        ['.drehschrank', '.drehschrank-6', '.drehschrank-7', '.drehschrank-8', '.drehschrank-9', '.H_Putz_cyr-7', '.H_Putz_cyr-8', '.H_Graderobe_cyr-7', '.H_Graderobe_cyr-8'],
-        ['.LA', '.LA5'],
-        ['.LD', '.LD5'],
-        ['.K_Fen_Oben_Str-6', '.K_Fen_Oben_Str-7', '.K_Fen_Oben_Str-8', '.K_Fen_Oben_Str-9'],
-        ['.K_Fen_Unten_Str-6', '.K_Fen_Unten_Str-7', '.K_Fen_Unten_Str-8', '.K_Fen_Unten_Str-9'],
-        ['.S_Fen_Oben_Str-6', '.S_Fen_Oben_Str-7', '.S_Fen_Oben_Str-8', '.S_Fen_Oben_Str-9'],
-        ['.S_Fen_Unten_Str-6', '.S_Fen_Unten_Str-7', '.S_Fen_Unten_Str-8', '.S_Fen_Unten_Str-9'],
-        ['.S_Boden_Wand_cyr'],
-        ['.S_Boden_Kueche_cyr'],
-        ['.S_Schub_Wand_cyr', '.S_Schub_Wand_cyr-6', '.S_Schub_Wand_cyr-7'],
-        ['.S_Schub_Kueche_cyr', '.S_Schub_Kueche_cyr-6', '.S_Schub_Kueche_cyr-7'],
-        ['.H_Putz_cyr-7', '.H_Putz_cyr-8'],
-        ['.H_Garderobe_cyr-7', '.H_Garderobe_cyr-8'],
-        ['.H_Tuer_Str-7', '.H_Tuer_Str-8'],
-        ['.B_Tuer_Str-6', '.B_Tuer_Str-7', '.B_Tuer_Str-8', '.B_Tuer_Str-9'],
-        ['.B_Schrank_cyr-8'],
-        ['.B_Wasch_cyr'], //
-        ['.W_Schub_Bad_cyr', '.W_Schub_Bad_cyr-6', '.W_Schub_Bad_cyr-7'],
-        ['.W_Schub_Wand_cyr', '.W_Schub_Wand_cyr-6', '.W_Schub_Wand_cyr-7'],
-        ['.W_Boden_Bad_cyr'],
-        ['.W_Boden_Wand_cyr'],
-        ['.W_Fen_Bad_Str-6', '.W_Fen_Bad_Str-7', '.W_Fen_Bad_Str-8', '.W_Fen_Bad_Str-9'],
-        ['.W_Fen_Wand_Str-6', '.W_Fen_Wand_Str-7', '.W_Fen_Wand_Str-8', '.W_Fen_Wand_Str-9'],
-        ['.K_Schrank_Oben_01_cyr-8'],
-        ['.K_Schrank_Oben_02_cyr-8'],
-        ['.K_Schrank_Oben_03_cyr-8'],
-        ['.K_Schrank_Oben_04_cyr-8'],
-        ['.K_Schrank_Oben_05_cyr-8'],
-        ['.K_Kuehl_cyr-7'],
-        ['.K_Abfall_cyr-8'],
-        ['.K_Wasch_Str-8'],
-        ['.K_Ofen_Str-8'],
-        ['.K_Ofen_Schub_cyr-8'],
-        ['.K_Schub_Oben_cyr-8'],
-        ['.K_Schub_Mitte_cyr-8'],
-        ['.K_Schub_Unten_cyr-8']
-    ];
 
     var letters_sensor = ['A', 'B', 'C', 'D',
         'E', 'F',
@@ -292,7 +253,12 @@ function drawBar(g) {
                 var sensors = [];
                 if (sensorletterstring == 'S') {
                     for (var j = 0; j < letters.length; j++) {
-                        sensors.push('<br>' + letters[j] + ':  ' + names[letters_sensor.indexOf(letters[j])])
+                        if (letters_sensor.indexOf(letters[j]) < 4) {
+
+                            sensors.push('<br>' + letters[j] + ':  ' + names_R[letters_sensor.indexOf(letters[j])])
+                        } else {
+                            sensors.push('<br>' + letters[j] + ':  ' + names[letters_sensor.indexOf(letters[j])])
+                        }
                     }
 
                 } else {
@@ -643,45 +609,7 @@ function approximate_path(words, lettermode) {
         'ld': 'DW'
     }
 
-    var line_room_letter = {
-        'A': 'ds',
-        'B': 'ds',
-        'C': 'ds',
-        'D': 'ds',
-        'E': 'K',
-        'F': 'K',
-        'Y': 'K',
-        'Z': 'K',
-        'a': 'K',
-        'b': 'K',
-        'c': 'K',
-        'd': 'K',
-        'e': 'K',
-        'f': 'K',
-        'g': 'K',
-        'h': 'K',
-        'i': 'K',
-        'j': 'K',
-        'k': 'K',
-        'G': 'S',
-        'H': 'S',
-        'I': 'S',
-        'J': 'S',
-        'K': 'S',
-        'L': 'S',
-        'M': 'Hin',
-        'N': 'Hin',
-        'O': 'Hin',
-        'P': 'B',
-        'Q': 'B',
-        'R': 'B',
-        'S': 'W',
-        'T': 'W',
-        'U': 'W',
-        'V': 'W',
-        'W': 'W',
-        'X': 'W'
-    }
+
     var line_letter = {
         'A': 'dw',
         'B': 'ds',
@@ -743,15 +671,6 @@ function approximate_path(words, lettermode) {
         'Hin': 'Hin_point'
 
     }
-    var circlename_room = {
-        'S': 'S_point',
-        'K': 'K1_point',
-        'W': 'W_point',
-        'B': 'B_point',
-        'ds': 'DS_point',
-        'H': 'Hin_point'
-    }
-
 
     var indirect_next = {
         'S': 's',
