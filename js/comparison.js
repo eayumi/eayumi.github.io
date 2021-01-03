@@ -1457,9 +1457,11 @@ function radial_comparison() {
 
                         //  d3.selectAll(".bar" + k_ + '_left' + index).attr("fill", darkcol[index]);
                         // d3.selectAll(".bar" + k_ + '_right' + index).attr("fill", texture_g2_com[index].url());
-                        added.push(k_ * grouping)
-                        angles[index].push(k_ * grouping)
-                        k_ += 1;
+                        if (j % 2 == 0) {
+                            added.push(k_ * grouping)
+                            angles[index].push(k_ * grouping)
+                            k_ += 1;
+                        }
 
                     }
                     console.log('Select All')
@@ -2087,8 +2089,8 @@ function radial_comparison() {
                  * @param {*} arr2 
                  */
                 function arrayUnion(arr1, arr2) { // no duplicates
-                    console.log(arr1)
-                    console.log(arr2)
+                    console.log(arr1);
+                    console.log(arr2);
                     var a = arr1.concat(arr2);
 
                     return a;
