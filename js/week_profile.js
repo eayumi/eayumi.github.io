@@ -204,7 +204,7 @@ function draw_multiline_graph(index, data, name, titlename, keys, x, max_per_wee
         .attr('x', w / 2).attr('y', h + margin.top)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
-        .text("Frequency of Usage" +
+        .text("Frequency of Usage " +
             titlename + " per Day per Week");
 
 
