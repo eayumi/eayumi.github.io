@@ -16,8 +16,8 @@ function ToFromScatter(data) {
     var margin_tog = { top: 20, right: 50, bottom: 50, left: 20 },
         width_tog = (window.innerHeight * 0.9) / 2;
     for (var i = 0; i < 4; i++) {
-        plotToFromScatter(false, ("#scatter_" + i), data.filter(d => d.Sensorname == datafile[i]), margin, width, name);
-        plotToFromScatter(true, ("#scatter_tog_" + i), data.filter(d => d.Sensorname == datafile[i]), margin_tog, width_tog, name); //for the one-window-view
+        plotToFromScatter(false, ("#scatter_" + i), data.filter(d => d.Sensorname == datafile[i]), margin, width, names[i]);
+        plotToFromScatter(true, ("#scatter_tog_" + i), data.filter(d => d.Sensorname == datafile[i]), margin_tog, width_tog, names[i]); //for the one-window-view
 
     }
 }
