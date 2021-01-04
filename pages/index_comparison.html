@@ -99,7 +99,10 @@
 </style>
 
 <h1 style='text-align: center;'>Two Group Comparison View</h1>
-
+<p style='position: relative;left:100px;width: 80%'>
+    <b style="color: red;">It take a few seconds to completly load the page. </b><br>
+    <br>This page shows all visualizations for two groups <i>Group 1</i> and <i>Group 2</i> that can be defined by the filters found in the <i>Spatial Mapping of Probability Distribution</i> section.
+</p>
 <h1 style='position:relative;left:50px; width: 500px'>Overview</h1>
 
 <p style='position: relative;left:100px;width: 80%'>
@@ -108,12 +111,15 @@
     <br> Below each floor plan of the Mock-up below, there are two collapisble filters. Each filter can be used to define a group with attribute and temporal filters.
     <br><br> <b>Terminology</b>
     <ul style='position: relative;left:100px;'>
-        <li>State of an element: Orientation (angle) and Timestamp.</li>
-        <li>State of the Mockup: Quadruple of the states of the four rotatable elements. </li>
+        <li><b>State of an element</b>: Given by the orientation (angle) and timestamp of when the element was rotated to that position.</li>
+        <li><b>State of the Mockup</b>: Given by all orientations of the four rotatable elements and timestamp. </li>
+        <li><b>Frequency of a state</b>: Number of times the element was rotated to a given angle. </li>
+        <li><b>Duration of a state</b>: Amount of time (ms) the element was kept at a given angle. </li>
+
 
     </ul>
     <br>
-    <text style='position: relative;left:100px;width: 80%'>Note, some visualizations are hidden at the beginning. Click on
+    <text style='position: relative;left:100px;width: 80%'>Note, some visualizations are hidden at the beginning to reduce inital load time. Click on
     <i style='color: black;transform: rotate(180deg)' class="fas fa-angle-left"></i> to toggle the view.</text>
 
 </p>
@@ -121,8 +127,8 @@
 <h2 style='position:relative;left:60px;'>Spatial Mapping & Radial Histogram</h2>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
 <div class='introtext'>
-    <p class='p_text'> <b>Spatial Mapping of Probability Distribution</b><br><br> This view contains the floor plan of the Mock-up showing each rotatable element at the angles previously selected in the radial histograms. <br> The opacity for each drawn element reflects
-        the probability of it being in that state. The probability depends on the <i>Scale</i> that is set: frequency or duration of a state.
+    <p class='p_text'> <b>Spatial Mapping of Probability Distribution</b><br><br> This view contains the floor plan of the Mock-up showing each rotatable element at the angles previously selected in the radial histograms (see below). <br> The opacity for each drawn element
+        reflects the probability of the element being in the given state. The probability depends on the <i><b>Scale</b></i> that is set (frequency or duration of a state).
         <br> The probability <i>p</i> of an element <i>j</i> at angle <i>i</i> with value &alpha;<sub><i>i</i></sub> (frequency or duration at angle <i>i</i>) is calculated as follows:
         <br> $$ p_j(\alpha_i) = 1-c_j^{\frac{\alpha_i}{max_j}} \quad, \text{ and } max_j = max \{ \alpha_i | \text{ angle $ i $ is selected for element $ j $\}}$$
         <br> The left floor plan shows the mapping for <i>Group 1</i> and the right for <i>Group 2</i>. Note, the
@@ -137,15 +143,15 @@
 
         <br> This view contains a grouped histogram for each rotatable element with a radial x-axis representing the orientation of the element.
         <br> It consists of two parts: an <i>outer</i> and <i>inner</i> radial histogram. The <i>outer</i> is fixed and only changes when new filters are applied. It shows the distribution of frequency and duration of states of the element over all angles.
-        The <i>inner</i> changes through selection of the bars of all four histograms, and its bars are coloured darker. It also shows the distribution of frequency and duration of states of the elements but only over selected angles. There are always
-        two setes of bars. They are either coloured fully, or appear lighter. The former are the bars for <i>Group
+        The <i>inner</i> changes through selection of the bars of any of the four histograms, and its bars are coloured darker. It also shows the distribution of frequency and duration of states of the elements but only over selected angles. There are
+        always two setes of bars. They are either coloured fully, or appear lighter. The former are the bars for <i>Group
             1</i>, while the latter are the bars of <i>Group 2</i>.
         <br> There are three modes that can be set: <br>
         <ul>
-            <li>Angle grouping size: Set the bucket size in degrees by entering an integer between 1 and 90 and pressing ENTER. The default is 8 degrees.</li>
-            <li>Scale: Choose either <i>Frequency of States</i> or <i>Duration of States</i> for the radius.</li>
-            <li>Reference Type: Chose either <i>absolute</i> or <i>relative</i> scaling to compare the bars of the two groups.
-            </li>
+            <li<b>Angle grouping size</b>: Set the bucket size in degrees by entering an integer between 1 and 90 and pressing ENTER. The default is 8 degrees.</li>
+                <li><b>Scale: Choose either </b><i>Frequency of States</i> or <i>Duration of States</i> for the radius.</li>
+                <li><b>Reference Type</b>: Chose either <i>absolute</i> or <i>relative</i> scaling to compare the bars of the two groups.
+                </li>
         </ul>
         <br><text class='p_text'> Possible interactive actions include:</text> <br><br>
         <ul>
@@ -157,6 +163,8 @@
                 <br> That is, in all <i>inner</i> radial histograms only frequency and duration of the set of states of the Mock-up are displayed, where the elements are in either of the selected states (if there are any).
             </li>
             <li>Deselection: This is done by simply clicking on the bars again. If all bars are to be deselcted for a histogram, use the <i class="material-icons" style="font-size:1.3em">highlight_off</i> button instead.</li>
+            <li>Select All: This is done by simply clicking on the <i class="material-icons" style="font-size:1.3em">check_circle_outline</i> button. To reverse this, click on <i class="material-icons" style="font-size:1.3em; color:red">highlight_off</i>.</li>
+
         </ul>
 
         <p class='p_text'> Note, each histogram is coloured differently. The same colour is used to draw the elements in the spatial mapping. Also, any angle measured by the sensors that is outside the pre-defined range of the element was truncated.</p>
