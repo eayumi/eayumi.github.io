@@ -119,7 +119,8 @@
 
     </ul>
     <br>
-    <text style='position: relative;left:100px;width: 80%'>Note, some visualizations are hidden at the beginning to reduce inital load time. Click on
+    <text style='position: relative;left:100px;width: 80%'>Note, some visualizations are hidden at the beginning to reduce
+    inital load time. Click on
     <i style='color: black;transform: rotate(180deg)' class="fas fa-angle-left"></i> to toggle the view.</text>
 
 </p>
@@ -128,7 +129,8 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
 <div class='introtext'>
     <p class='p_text'> <b>Spatial Mapping of Probability Distribution</b><br><br> This view contains the floor plan of the Mock-up showing each rotatable element at the angles previously selected in the radial histograms (see below). <br> The opacity for each drawn element
-        reflects the probability of the element being in the given state. The probability depends on the <i><b>Scale</b></i> that is set (frequency or duration of a state).
+        reflects the probability of the element being in the given state. The probability depends on the
+        <i><b>Scale</b></i> that is set (frequency or duration of a state).
         <br> The probability <i>p</i> of an element <i>j</i> at angle <i>i</i> with value &alpha;<sub><i>i</i></sub> (frequency or duration at angle <i>i</i>) is calculated as follows:
         <br> $$ p_j(\alpha_i) = 1-c_j^{\frac{\alpha_i}{max_j}} \quad, \text{ and } max_j = max \{ \alpha_i | \text{ angle $ i $ is selected for element $ j $\}}$$
         <br> The left floor plan shows the mapping for <i>Group 1</i> and the right for <i>Group 2</i>. Note, the
@@ -144,7 +146,8 @@
         <br> This view contains a grouped histogram for each rotatable element with a radial x-axis representing the orientation of the element.
         <br> It consists of two parts: an <i>outer</i> and <i>inner</i> radial histogram. The <i>outer</i> is fixed and only changes when new filters are applied. It shows the distribution of frequency and duration of states of the element over all angles.
         The <i>inner</i> changes through selection of the bars of any of the four histograms, and its bars are coloured darker. It also shows the distribution of frequency and duration of states of the elements but only over selected angles. There are
-        always two setes of bars. They are either coloured fully, or appear lighter. The former are the bars for <i>Group
+        always two setes of bars. They are either coloured fully, or appear lighter. The former are the bars for
+        <i>Group
             1</i>, while the latter are the bars of <i>Group 2</i>.
         <br> There are three modes that can be set: <br>
         <ul>
@@ -6445,8 +6448,8 @@
                 <option value=1>relative</option>
             </select>
             <button class="allButton" id='setAll0' title="select all bars">
-            <i class="material-icons" style='font-size: 15px; color:black'>check_circle_outline</i>
-             </button>
+                <i class="material-icons" style='font-size: 15px; color:black'>check_circle_outline</i>
+            </button>
         </div>
 
     </div>
@@ -6717,10 +6720,8 @@
                     <div style="position:relative; ;display:inline-block;width: 45%;" id='freq_per_ang_abs_3_right'>
                     </div>
                 </div>
-
             </div>
         </div>
-
 
     </div>
 
@@ -6884,7 +6885,8 @@
             <li>letter per: Every sensor either maps uniquely to a letter (<i>sensor</i>) or every sensor in the same room map to the same letter (<i>room</i>). </li>
             <li>modus: This sets how to create the long string. The <i>normal</i> mode applies no modification, while
                 <i>reduced</i> removes any consecutive duplicate sensors (e.g. AABCCCD turns to ABCD). And latly
-                <i>no-closed</i> removes any sensor meauserments for 'CLOSED' events.</li>
+                <i>no-closed</i> removes any sensor meauserments for 'CLOSED' events.
+            </li>
             <li>Time-Interval: This implementation is still slow, and in order to compensate for this, the time filters on top are NOT applied for this view. Instead, intervals of 3 hours can be selected separately for each group to filter the data for.</li>
         </ul>
         <p class='p_text'>
