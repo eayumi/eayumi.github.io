@@ -288,7 +288,7 @@ function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
         .attr("transform", function(d) {
-            return "rotate(-45)"
+            return "rotate(-60)"
         });
 
     //lable for x axis
@@ -297,11 +297,11 @@ function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg
             "translate(" + (width) + " ," +
             (h + margin.top) + ")")
         .style("text-anchor", "middle")
-        .style('font-size', '17px')
+        .style('font-size', '12px')
         .text("Week ")
         .append('tspan')
         .text('(week_year)')
-        .style('font-size', '15px')
+        .style('font-size', '10px')
         .style('font-style', 'italic')
 
     //add the y axis
@@ -319,7 +319,7 @@ function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg
         .attr("x", (margin.top * 2) - (height / 2))
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
-        .style('font-size', '17px')
+        .style('font-size', '12px')
         .text("Frequency");
 
     //the bars
@@ -392,7 +392,7 @@ function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg
     overview_weeks.append("text")
         .attr('x', width).attr('y', h + margin.top + 30)
         .attr("text-anchor", "middle")
-        .style("font-size", "17px")
+        .style("font-size", "13px")
         .text("Frequency of Use per Week for " + name);
 
     //---------------------------------------------------FREQUENCY OF USAGE PER WEEK: END ----------------------------------------------------
@@ -459,7 +459,7 @@ function barchart_week_and_avg_weekday_overview_comp(both, i, perweekPadded, avg
         .attr('x', ((width - margin.right - margin.left) * 0.5 + margin.right + margin.left))
         .attr('y', h + margin.top + 30)
         .attr("text-anchor", "middle")
-        .style("font-size", "12px")
+        .style("font-size", "13px")
         .text("Average Frequency of Use per Weekday for " + name);
 
 

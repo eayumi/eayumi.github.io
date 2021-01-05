@@ -224,7 +224,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
         .attr("transform", function(d) {
-            return "rotate(-45)"
+            return "rotate(-60)"
         });
 
     //lable for x axis
@@ -286,7 +286,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
             overview_weeks.selectAll('#yax_weekoverview').remove();
             overview_weeks.append('g').attr('id', 'yax_weekoverview')
                 .attr("class", "axis")
-                .attr('transform', 'translate(0' + (margin.left + margin.right) + ', 0)')
+                .attr('transform', 'translate(0' + (margin.left) + ', 0)')
                 .call(d3.axisLeft(y_week))
                 .style('font-size', '9px');
 
@@ -374,7 +374,7 @@ function barchart_week_and_avg_weekday_overview_comp(max_weeks, max_avg, index, 
             overview_avg_wkd.append('g').attr('id', 'yax_weekoverview_avg')
                 .attr("class", "axis")
                 .attr('transform',
-                    "translate(" + ((width) * 0.5) + " ," +
+                    "translate(" +
                     margin.left + ', 0)')
                 .call(d3.axisLeft(y_weekday))
                 .style('font-size', '9px');

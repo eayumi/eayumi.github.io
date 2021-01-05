@@ -49,7 +49,7 @@ function parset_comp(profile) {
         if (d == '') {
             return "unknown";
         } else {
-            return d.substring(0, 2);
+            return d // d.substring(0, 2);
         }
     }
 

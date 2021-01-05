@@ -173,6 +173,7 @@
                                     .attr("transform", "translate(0," + d.y + ")")
                                     .tween("ribbon", ribbonTweenY);
                             }));
+                    updateCategories(dimension);
                     dimension.select("text").select("tspan.sort.alpha")
                         .on("click.parsets", sortBy("alpha", function(a, b) { return a.name < b.name ? 1 : -1; }, dimension));
                     dimension.select("text").select("tspan.sort.size")
@@ -182,7 +183,7 @@
                         .tween("ribbon", ribbonTweenY);
                     dimension.exit().remove();
 
-                    updateCategories(dimension);
+
                     updateRibbons();
                 }
 
@@ -358,6 +359,7 @@
                     category.select("text")
                         .text(truncateText(function(d) { return d.name; }, function(d) { return d.dx; }));
                 }
+
             });
         }
 
@@ -599,7 +601,7 @@
                 if ((x = this.getSubStringLength(0, mid)) < w) lo = mid + 1;
                 else hi = mid;
             }
-            return lo > 1 ? t.substr(0, lo - 2) + "" : "";
+            return lo > 1 ? t.substr(0, lo - 2) + "" : ""; //change ending 
         };
     }
 

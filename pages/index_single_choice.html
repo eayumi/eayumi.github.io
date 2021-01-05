@@ -133,21 +133,26 @@
 </svg>
 
 <h1 style='text-align: center;'>Single Group View</h1>
-
-<h1 style='position:relative;left:50px; width: 500px'>Overview</h1>
 <p style='position: relative;left:100px;width: 80%'>
-    <b style="color: red;">It might take a few seconds to completly load the page. </b><br>
-    <br> This section gives an overview of the sensor and test subject data and puts the former into a spatial context. <br> On the right of the floor plan of the Mock-up below, there is a collapsible filter for the sensor data including attribute and
-    temporal filters.
+    <b style="color: red;">It takes a few seconds to completly load the page. It is advised to open the page either using Chrome or Microsoft Edge browser.</b><br>
+    <br>This page shows all visualizations for a subset of test-subjects that can be defined by the filters found in the <i>Spatial Mapping of Probability Distribution</i> subsection. <br> The page is divided into three sections: Overview, Detailed View
+    and Trace View.
     <br><br> <b>Terminology</b>
     <ul style='position: relative;left:100px;'>
-        <li>State of an element: Orientation (angle) and Timestamp.</li>
-        <li>State of the Mockup: Quadruple of the states of the four rotatable elements. </li>
+        <li><b>State of an element</b>: Given by the orientation (angle) and timestamp of when the element was rotated to that position.</li>
+        <li><b>State of the Mockup</b>: Given by all orientations of the four rotatable elements and timestamp. </li>
+        <li><b>Frequency of a state</b>: Number of times the element was rotated to a given angle. </li>
+        <li><b>Duration of a state</b>: Amount of time (ms) the element was kept at a given angle. </li>
     </ul>
     <br>
-    <text style='position: relative;left:100px;width: 80%'>Note, some visualizations are hidden at the beginning. Click on
-    <i style='color: black;transform: rotate(180deg)' class="fas fa-angle-left"></i> to toggle the view.</text>
-
+    <text style='position: relative;left:100px;width: 80%'>Note, some visualizations are hidden at the beginning to reduce
+        inital load time. Click on
+        <i style='color: black;transform: rotate(180deg)' class="fas fa-angle-left"></i> to toggle the view.</text>
+</p>
+<h1 style='position:relative;left:50px; width: 500px'>Overview</h1>
+<p style='position: relative;left:100px;width: 80%'>
+    This section gives an overview of the sensor and test subject data and puts the former into a spatial context. <br> On the right of the floor plan of the Mock-up below, there is a collapsible filter for the sensor data. It opens when clicking on the
+    <b>+</b> symbol. The filter consists of attribute and temporal filters.
 </p>
 
 <h2 style='position:relative;left:60px;'>Spatial Mapping & Radial Histogram</h2>
@@ -159,7 +164,7 @@
         <br> $$ p_j(\alpha_i) = 1-c_j^{\frac{\alpha_i}{max_j}} \quad, \text{ and } max_j = max \{ \alpha_i | \text{ angle $ i $ is selected for element $ j $\}}$$
 
 
-        <br><br>
+        <br>
 
         <b>Filter </b> <i class="material-icons" style="font-size:1em">filter_list</i><br><br> Clicking on the grey bar with the title <i>Filter</i> reveals the filters that can be set. To apply them onto the data, click on the <i class="fas fa-sync-alt"></i>        symbol.
         <br><br>
@@ -170,20 +175,21 @@
         The <i>inner</i> changes through selection of the bars of all four histograms, and its bars are coloured darker. It also shows the distribution of frequency and duration of states of the elements but only over selected angles.
         <br> There are three modes that can be set within the filter: <br>
         <ul>
-            <li>Angle grouping size: Set the bucket size in degrees by entering an integer between 1 and 90 and pressing ENTER. The default is 8 degrees.</li>
-            <li>Scale: Choose either <i>Frequency of States</i> or <i>Duration of States</i> for the radius.</li>
+            <li><b>Angle grouping size</b>: Set the bucket size in degrees by entering an integer between 1 and 90 and pressing ENTER. The default is 8 degrees.</li>
+            <li><b>Scale</b>: Choose either <i>Frequency of States</i> or <i>Duration of States</i> for the radius.</li>
         </ul>
         <br><text class='p_text'> Possible interactive actions include:</text> <br><br>
         <ul>
             <li>Hovering: When hovering over a bar, that bar is highlighted in orange and the exact <i>Scale</i> value and angles are shown below the radial histogram.</li>
             <li>Selection: A single bar can be selected by clicking on it. Multiple bars can be selected by dragging over bars while holding the left mouse down.
-                <br> By selecting bars one restricts the states of the respective element that are considered for the <i>inner</i> radial histograms.
-                <br> That is, in all <i>inner</i> radial histograms only frequency and duration of the set of states of the Mock-up are displayed, where the elements are in either of the selected states (if there are any).
-            </li>
+                <br> By selecting bars one restricts the states of the respective element that are considered for the <i>inner</i> radial histograms. That is, in all <i>inner</i> radial histograms only frequency and duration of the set of states of the
+                Mock-up are displayed, where the elements are in either of the selected states (if there are any).
+                <br>Generally, the more bars are selected the slower the process becomes. </li>
             <li>Deselection: This is done by simply clicking on the bars again. If all bars are to be deselcted for a histogram, use the <i class="material-icons" style="font-size:1.3em">highlight_off</i> button instead.</li>
         </ul>
 
-        <p class='p_text'> Note, each histogram is coloured differently. The same colour is used to draw the elements in the spatial mapping. Also, any angle measured by the sensors that is outside the pre-defined range of the element was truncated.
+        <p class='p_text'> Note, each histogram is coloured differently. The same colour is used to draw the elements in the spatial mapping. Also, any angle measured by the sensors that is outside the pre-defined range of the element was truncated to 0 or to the max possible
+            angle.
             <br><br>
 
             <b>View per Weekday </b>
@@ -3183,13 +3189,13 @@
             <label id='input_label'> Angle per Bar: </label>
             <input style='width : 162px;   margin-left: 30px;' placeholder="range: 1 to 90" type="number" id='input_grouping' min='1' max='90'>
             <br>
-            <label id='input_label'> y Axis Scale: </label>
+            <label id='input_label'>Scale: </label>
             <select style='width : 170px; ' class='filter_field' id='input_scale'>
                 <option value="0">Freqency of States</option>
                 <option value="1">Duration of States</option>
             </select>
             <label> Reference Type: </label>
-            <select id='input_referenceType'>
+            <select id='input_referenceType' style='width : 170px;margin-left: 57px;' class='filter_field'>
                 <option value=0>absolute</option>
                 <option value=1>relative</option>
             </select>
@@ -3430,9 +3436,11 @@
 <br>
 <h2 style='position:relative;left:100px; width: 500px'>Selection to Week Mapping</h2>
 <div class='introtext'>
-    <p class='p_text'>This view contains a bar chart that shows for each week the percentage of the states of the Mock-up, previously selected in the radial histograms above, that were observed in that week. When hovering over a bar, it shows the exact <i>Scale</i> value
-        and percentage.
+    <p class='p_text'> While the radial histograms show how often/long different states of the Mockup could be observed, it does not show in what weeks. <br> This view contains a bar chart that shows just that. A bar shows the percentage of states (either in frequency or
+        duration) of the total observed states that were observed in the given week. The total observed states are defined through selection in the radial histogram. There is one bar chart for each group. When hovering over a bar, it shows the exact
+        <i>Scale</i> value and percentage.
         <br>Note, this chart is empty if no bars are selected.
+
     </p>
 </div>
 
@@ -3454,8 +3462,8 @@
     </h2>
     <div class='introtext'>
         <p class='p_text'>This view shows a parallel set. It shows the attributes and their distribution for all test subjects that have not been filtered out.
-            <br> Attributes include <i>Age, Occupation, Gender</i> (of individuals), <i>Gender of Pairs, Test Subject, Actual Household, Current
-                Housing Situation, Amount of Recent Changes</i> and <i>Week</i>. The distribution can be exlored by actions like:
+            <br> Attributes include <i>Age, Occupation, Gender</i> (of individuals), <i>Gender of Pairs, Test Subject,
+                Actual Household, Current Housing Situation, Recent Changes in Home, Group</i> and <i>Week_Year</i>. The distribution can be exlored by actions like:
             <ul>
                 <li> Reorder attribute values by dragging the value label. A symbol &harr; will appear and the exact number of test subjects and the percentage are shown, for which this value applies.</li>
                 <li> Reorder attributes by dragging the attribute label. A symbol &varr; will appear.</li>
@@ -3491,13 +3499,13 @@
                 <li>On the left, you see the <i>Bar Chart of Frequency of Use per Week</i>.</li>
                 <li>On the right, you see the <i>Histogram of Average Frequency of Use per Weekday</i>. It shows the average freuqency of use for each weekday.</li>
             </ul>
-            <br>
-            <text class='p_text'>  The y-scale are global in both charts. That is, the y axis has the same scale for all four rotatable elements. Upon hovering over a bar, the exact frequency values are displayed.</text>
+            <p class='p_text'> The y-scale are global in both charts. That is, the y axis has the same scale for all four rotatable elements. On click of any bar in the charts, the y axis scale can be toggled between local and global scale. The current scale is indicated
+                in the respective titles of the chart. Upon hovering over a bar, the exact frequency values are displayed.</p>
 
         </p>
 
 
-    </div> <br><br>
+    </div>
     <div id="OverviewWeeks" class="collapse">
 
         <div style='text-align: center;'>
@@ -3568,8 +3576,8 @@
     </h2>
     <div class='introtext'>
         <p class='p_text'>
-            The view shows the histogram of frequency of usage of a rotatable element per angle. <br> More precisely, it shows how many times a rotatable elements was moved
-            <italic>to</italic> a specific angle.
+            The view shows the histogram of frequency of usage of a rotatable element per angle. More precisely, it shows how many times a rotatable elements was moved
+            <i>to</i> a specific angle.
             <br>For this purpose, the values were rounded to the nearest integer.
             <br>Furthermore, all angles that were measured outside the pre-defined range of the element are coloured <b style='color: red;'>red</b>.
             <br>Note, these histograms show exactly the same results as the <i>Double Grouped Radial Histograms</i> on the top of the page, except that the values outside the range were not truncated.
@@ -3595,7 +3603,7 @@
         <p class='p_text'>
             The view shows the histogram of frequency of usage of a rotatable element by angle.
             <br> More precisely, it shows how many times a rotatable elements was moved
-            <italic>by</italic> a specific angle.
+            <i>by</i> a specific angle.
             <br>For this purpose, the values were rounded to the nearest integer.
         </p>
     </div>
@@ -3633,8 +3641,6 @@
             </div>
         </div>
     </div>
-
-</div>
 </div>
 
 <div class="container">
@@ -3653,14 +3659,12 @@
 
         </p>
     </div>
-    <br><br>
+
 
     <div id="ToFromScatter" class="collapse">
-
         <div style='text-align: right;position:relative;right:13%'>
 
             <i id='toggleViewTFS' style='font-size:2em;cursor: pointer;' title="Fit to Screen" class="fas fa-compress-arrows-alt"></i>
-
         </div>
         <div style='text-align: center;'>
             <div id="scatter_0"></div>
@@ -3733,19 +3737,17 @@
 
     <div class='introtext'>
         <p class='p_text'>
-            This view shows the interactive scatter plot matrix for the four rotatable elements.
-            <br> Each cell is initself a scatter plot that compares the state of two elements.
-            <br>Recall, a <i>state of an element </i> is the angle at a given moment in time.
+            This view shows the interactive scatter plot matrix for the four rotatable elements. Each cell is initself a scatter plot that compares the state of two elements. Recall, a <i>state of an element </i> is the angle at a given moment in time.
             <br>As the matrix is symettric, only the left upper triangle is drawn.
             <br><br>This plot includes brushing and linking.
             <ul>
                 <li>Brushing: Draw a rectangle over points in a cell by keeping the left mouse down. To get back to the normal view, double click anywhere on the plot,</li>
                 <li>Linking: This will highlight the same points in all other cells. In this particular case, it highlights all the points that represent states with the same timestamp as the ones in the recatngle.</li>
             </ul>
+            <p class='p_text'>Note, this visualization takes a few seconds to load.</p>
 
         </p>
     </div>
-    <br><br>
 
     <div id="ScatterMatrix" class="collapse">
 
@@ -3763,7 +3765,7 @@
 <h1 style='position:relative;left:50px; width: 500px'>Trace View</h1>
 
 <p style='position: relative;left:100px;width: 80%'>
-    This section includes visualizations about the trace of a person in the Mock-up.
+    <b style="color: red;">This visualization has not yet been updated with the new data, and thus does not work at the moment.</b><br> This section includes visualizations about the trace of a person in the Mock-up.
     <br>The <i>trace</i> is used to approximate the performance of human. This is done by mapping every sensor in the Mock-up to a letter. <br> By doing so, the list of sensor measurements (ordered by their timestamp and filterd by the given filters)
     turns into a long string. We call a substing of a certain size (5 or 10) a <i>word</i>.
 </p>
@@ -3775,12 +3777,12 @@
         <b>Most Common Words</b> <br> This view shows the ranking of the top 15 most common words. For this, every word of a given wordlength is extracted from the string and compared with each other.
         <br> There are various modes that can be set:
         <ul>
-            <li>wordlength: The length of a word, i.e. the length of a sequence of actions by a test-subject.</li>
-            <li>maximal distance: The maximal allowed distance of a word to count as an occurence. The distance is computed using the Levensthein Edit distance. </li>
-            <li>letter per: Every sensor either maps uniquely to a letter (<i>sensor</i>) or every sensor in the same room map to the same letter (<i>room</i>). </li>
-            <li>modus: This sets how to create the long string. The <i>normal</i> mode applies no modification, while <i>reduced</i> removes any consecutive duplicate sensors (e.g. AABCCCD turns to ABCD). And latly <i>no-closed</i> removes any sensor meauserments
-                for 'CLOSED' events.</li>
-            <li>Time-Interval: This implementation is still slow, and in order to compensate for this, the time filters on top are NOT applied for this view. Instead, intervals of 3 hours can be selected to filter the data for.</li>
+            <li><b>wordlength</b>: The length of a word, i.e. the length of a sequence of actions by a test-subject.</li>
+            <li><b>maximal distance</b>: The maximal allowed distance of a word to count as an occurence. The distance is computed using the Levensthein Edit distance. </li>
+            <li><b>letter per</b>: Every sensor either maps uniquely to a letter (<i>sensor</i>) or every sensor in the same room map to the same letter (<i>room</i>). </li>
+            <li><b>modus</b>: This sets how to create the long string. The <i>normal</i> mode applies no modification, while <i>without-repeats</i> removes any consecutive duplicate sensors (e.g. AABCCCD turns to ABCD). And latly <i>no-closed</i> removes
+                any sensor meauserments for 'CLOSED' events.</li>
+            <li><b>Time-Interval</b>: This implementation is still slow, and in order to compensate for this, the time filters on top are NOT applied for this view. Instead, intervals of 3 hours can be selected to filter the data for.</li>
         </ul>
         <p class='p_text'>
             The bars in the charts are linked to two other visualizaions, explained in the next two sections.
@@ -4059,7 +4061,6 @@
             <select id='wordlength_select' style='position: relative; left: 110px; width:50px' class='filter_field'>
                 <option value=5>5</option>
                 <option value=10>10</option>
-
             </select>
 
             <label id='input_label' style='position: relative; left: 150px'> maximal distance: </label>
@@ -4079,7 +4080,7 @@
             <label id='input_label' style='position: relative; left: 90px'> Modus: </label>
             <select id='mode_select' style='position: relative; left: -20px; width:150px' class='filter_field'>
                 <option value='All'>normal</option>
-                <option value='RED'>reduced</option>
+                <option value='RED'>without-repeats</option>
                 <option value='OC'>without-closed</option>
 
             </select>
@@ -4096,8 +4097,6 @@
             <option value=15>15:00-18:00</option>
             <option value=18>18:00-21:00</option>
             <option value=21>21:00-00:00</option>
-
-
             </select>
 
         </div>

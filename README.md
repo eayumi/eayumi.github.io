@@ -16,7 +16,7 @@ A description and instuctions when needed are included in the tool.
 
 ## Usage
 There are two ways to use the tool.
-The first is to open the application in a webbrowser of your choosing at https://eayumi.github.io.
+The first is to open the application in a webbrowser of your choosing at https://eayumi.github.io. It is advised to use Chrome or Microsoft Edge.
 The second option is to use a local host. Users with a Mac computer should use the first option.
 
 The user needs only internet access and open a local host.

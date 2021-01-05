@@ -118,7 +118,7 @@ function freqDistr_abs_comp(data_g1, data_g2) {
                 "translate(" + (width / 2) + " ," +
                 (h + margin.top / 2 - 10) + ")")
             .style("text-anchor", "middle")
-            .attr('font-size', '15px') //12
+            .attr('font-size', '12px') //12
             .text("Angle");
 
         //add the y axis
@@ -134,7 +134,7 @@ function freqDistr_abs_comp(data_g1, data_g2) {
             .attr("x", (margin.bottom * 2 - h * 1.3))
             .attr("dy", "0.71em")
             .attr("text-anchor", "end")
-            .attr('font-size', '15px') //12
+            .attr('font-size', '12px') //12
             .text("Frequency");
 
         //the bars
@@ -202,6 +202,8 @@ function freqDistr_rot_comp(data_g1, data_g2) {
      * @param {int} index 
      */
     function draw_histo(index, side, data, g) {
+        var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
+
 
         //staple all values that lie outside the pre-defined range
 
@@ -285,7 +287,7 @@ function freqDistr_rot_comp(data_g1, data_g2) {
                 "translate(" + (width / 2) + " ," +
                 (h + margin.top / 2 - 10) + ")")
             .style("text-anchor", "middle")
-            .attr('font-size', '15px')
+            .attr('font-size', '12px')
             .text("Angle");
 
         //add the y axis
@@ -301,7 +303,7 @@ function freqDistr_rot_comp(data_g1, data_g2) {
             .attr("x", (margin.bottom * 2 - h * 1.3))
             .attr("dy", "0.71em")
             .attr("text-anchor", "end")
-            .attr('font-size', '15px')
+            .attr('font-size', '13px')
             .text("Frequency");
 
         //the bars

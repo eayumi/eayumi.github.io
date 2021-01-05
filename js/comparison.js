@@ -139,6 +139,7 @@ for (var k = 0; k < 4; k++) {
         '<br>' + 'Inner: (-, -)')
 }
 
+
 //tectures for the second bars (for group 2)
 var texture_inner = textures.paths() //tecture of inner bars
     .d("hexagons")
@@ -260,6 +261,17 @@ function radial_comparison() {
                 .stroke("white")
                 .background(complement[i]))
         }
+        textu = textures.paths()
+            .d("hexagons")
+            .size(0.6)
+            .strokeWidth(0.3)
+            .stroke('red')
+            .background('white')
+        d3.selectAll('#text_fill').append('rect')
+            .attr('width', 13)
+            .attr('height', 13)
+            .attr("fill", textu.url())
+        d3.selectAll('#text_fill').call(textu)
 
 
         //4. Coupling function, that filters (for the current filters set) the data of the differnt visualizations in the main view and updates them.
@@ -1530,6 +1542,7 @@ function radial_comparison() {
                     .padRadius(innerRadius)
 
                 // Add the bars
+
                 var barchart = svg.append("g")
                     .selectAll("path")
                     .data(dataset)

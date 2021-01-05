@@ -79,7 +79,7 @@ function draw_percentage_bar_chart_per_group(side, data_to_draw, scale, g) {
 
     overview_weeks.append('g')
         .attr('class', 'axis')
-        .attr('transform', 'translate(0' + margin.left + ',' + h + ')')
+        .attr('transform', 'translate(0' + (margin.left) + ',' + h + ')')
         .call(d3.axisBottom(x_week)) //.tickFormat(function(d, i) { return data[i].Week_year; }))
         .selectAll("text")
         .style("text-anchor", "end")
@@ -87,7 +87,7 @@ function draw_percentage_bar_chart_per_group(side, data_to_draw, scale, g) {
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
         .attr("transform", function(d) {
-            return "rotate(-45)"
+            return "rotate(-60)"
         });
 
     //lable for x axis
