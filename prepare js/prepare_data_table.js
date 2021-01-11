@@ -10,6 +10,7 @@ function prepare_data_table() {
         var week_to_find_index = data_profile.map(x => x.Week_Year)
         var week = d3.timeFormat('%V-%y');
         var weekday = d3.timeFormat('%a');
+        var year = d3.timeFormat('%y');
 
         data = data.filter(d => !weeks_out.includes(week(new Date(d.Timestamp))))
 
@@ -383,7 +384,242 @@ function prepare_data_table() {
             data_table[i].SatP = (data_table[i].Sat * 100 / totsat).toFixed(2);
             data_table[i].SunP = (data_table[i].Sun * 100 / totsun).toFixed(2);
         }
+        //Only year 2020
 
+        // Summerized ----------------
+
+        var data_table_igong = [];
+        for (var i = 0; i < sensors.length; i++) {
+            data_table_igong.push({
+                "Sensor": sensors[i],
+                "All": 0,
+                "Single": 0,
+                "Pairs": 0,
+                "eight": 0,
+                "three": 0,
+                "four": 0,
+                "six": 0,
+                "Student": 0,
+                "Employed": 0,
+                "UnRet": 0,
+                "Part": 0,
+                "female": 0,
+                "male": 0,
+                "mixed": 0,
+                "Mon": 0,
+                "Tue": 0,
+                "Wed": 0,
+                "Thu": 0,
+                "Fri": 0,
+                "Sat": 0,
+                "Sun": 0,
+                //Percentage
+                "AllP": 0,
+                "SingleP": 0,
+                "PairsP": 0,
+                "eightP": 0,
+                "threeP": 0,
+                "fourP": 0,
+                "sixP": 0,
+                "StudentP": 0,
+                "EmployedP": 0,
+                "UnRetP": 0,
+                "PartP": 0,
+                "femaleP": 0,
+                "maleP": 0,
+                "mixedP": 0,
+                "MonP": 0,
+                "TueP": 0,
+                "WedP": 0,
+                "ThuP": 0,
+                "FriP": 0,
+                "SatP": 0,
+                "SunP": 0,
+                //Average
+                "AllA": 0,
+                "SingleA": 0,
+                "PairsA": 0,
+                "eightA": 0,
+                "threeA": 0,
+                "fourA": 0,
+                "sixA": 0,
+                "StudentA": 0,
+                "EmployedA": 0,
+                "UnRetA": 0,
+                "PartA": 0,
+                "femaleA": 0,
+                "maleA": 0,
+                "mixedA": 0,
+                "MonA": 0,
+                "TueA": 0,
+                "WedA": 0,
+                "ThuA": 0,
+                "FriA": 0,
+                "SatA": 0,
+                "SunA": 0
+
+            });
+
+        }
+        var singles = data_profile.filter(d => d.Week_Year.substring(3) == '20' && d.Person2 == '').length;
+        var pairs = data_profile.filter(d => d.Week_Year.substring(3) == '20' && d.Person2 != '').length;
+        var all = singles + pairs;
+
+        var eight = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.Age1 == d.Age2 && d.Age1 == "18-30") || (d.Age2 == '' && d.Age1 == "18-30")).length;
+        var three = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.Age1 == d.Age2 && d.Age1 == "30-45") || (d.Age2 == '' && d.Age1 == "30-45")).length;
+        var four = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.Age1 == d.Age2 && d.Age1 == "45-60") || (d.Age2 == '' && d.Age1 == "45-60")).length;
+        var six = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.Age1 == d.Age2 && d.Age1 == "60-75") || (d.Age2 == '' && d.Age1 == "60-75")).length;
+
+        var stds = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.OccupationCategory1 == d.OccupationCategory2 && d.OccupationCategory1 == "A") || (d.OccupationCategory2 == '' && d.OccupationCategory1 == "A")).length;
+        var epms = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.OccupationCategory1 == d.OccupationCategory2 && d.OccupationCategory1 == "B") || (d.OccupationCategory2 == '' && d.OccupationCategory1 == "B")).length;
+        var unrs = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.OccupationCategory1 == d.OccupationCategory2 && d.OccupationCategory1 == "D") || (d.OccupationCategory2 == '' && d.OccupationCategory1 == "D")).length;
+        var parts = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.OccupationCategory1 == d.OccupationCategory2 && d.OccupationCategory1 == "C") || (d.OccupationCategory2 == '' && d.OccupationCategory1 == "C")).length;
+
+        var female = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.Gender1 == d.Gender2 && d.Gender1 == "w") || (d.Gender2 == '' && d.Gender1 == "w")).length;
+        var male = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.Gender1 == d.Gender2 && d.Gender1 == "m") || (d.Gender2 == '' && d.Gender1 == "m")).length;
+        var mix = data_profile.filter(d => d.Week_Year.substring(3) == '20' && (d.Gender1 != d.Gender2 && d.Gender2 !== "")).length;
+
+        console.log(singles);
+
+        var totalAll = 0,
+            totSingle = 0,
+            totParis = 0,
+            toteight = 0,
+            totfour = 0,
+            totthree = 0,
+            totsix = 0,
+            totA = 0,
+            totB = 0,
+            totC = 0,
+            totD = 0,
+            totf = 0,
+            totm = 0,
+            totmix = 0,
+            totmon = 0,
+            tottue = 0,
+            totwed = 0,
+            totthr = 0,
+            totfri = 0,
+            totsat = 0,
+            totsun = 0;
+
+
+        for (var i = 0; i < sensors.length; i++) {
+
+
+            data_per_element[i] = data_per_element[i].filter(d => year(new Date(d.Timestamp)) == '20')
+
+
+            data_table_igong[i].All = data_per_element[i].length;
+            data_table_igong[i].Single = data_per_element[i].filter(d => d.Group == 0).length;
+            data_table_igong[i].Pairs = data_per_element[i].filter(d => d.Group == 1).length;
+
+            data_table_igong[i].eight = data_per_element[i].filter(d => d.Age == '18-30').length;
+            data_table_igong[i].three = data_per_element[i].filter(d => d.Age == '30-45').length;
+            data_table_igong[i].four = data_per_element[i].filter(d => d.Age == '45-60').length;
+            data_table_igong[i].six = data_per_element[i].filter(d => d.Age == '60-75').length;
+
+            data_table_igong[i].Student = data_per_element[i].filter(d => d.Occ == 'A').length;
+            data_table_igong[i].Employed = data_per_element[i].filter(d => d.Occ == 'B').length;
+            data_table_igong[i].UnRet = data_per_element[i].filter(d => d.Occ == 'D').length;
+            data_table_igong[i].Part = data_per_element[i].filter(d => d.Occ == 'C').length;
+
+            data_table_igong[i].female = data_per_element[i].filter(d => d.Gender == 'w').length;
+            data_table_igong[i].male = data_per_element[i].filter(d => d.Gender == 'm').length;
+            data_table_igong[i].mixed = data_per_element[i].filter(d => d.Gender == 2).length;
+
+            data_table_igong[i].Mon = data_per_element[i].filter(d => d.Weekday == "Mon").length;
+            data_table_igong[i].Tue = data_per_element[i].filter(d => d.Weekday == "Tue").length;
+            data_table_igong[i].Wed = data_per_element[i].filter(d => d.Weekday == "Wed").length;
+            data_table_igong[i].Thu = data_per_element[i].filter(d => d.Weekday == "Thu").length;
+            data_table_igong[i].Fri = data_per_element[i].filter(d => d.Weekday == "Fri").length;
+            data_table_igong[i].Sat = data_per_element[i].filter(d => d.Weekday == "Sat").length;
+            data_table_igong[i].Sun = data_per_element[i].filter(d => d.Weekday == "Sun").length;
+
+            //upd
+
+            totalAll += data_table_igong[i].All;
+            totSingle += data_table_igong[i].Single;
+            totParis += data_table_igong[i].Pairs;
+            toteight += data_table_igong[i].eight;
+            totthree += data_table_igong[i].three;
+            totfour += data_table_igong[i].four;
+            totsix += data_table_igong[i].six;
+            totA += data_table_igong[i].Student;
+            totB += data_table_igong[i].Employed;
+            totC += data_table_igong[i].Part;
+            totD += data_table_igong[i].UnRet;
+            totf += data_table_igong[i].female;
+            totm += data_table_igong[i].male;
+            totmix += data_table_igong[i].mixed;
+            totmon += data_table_igong[i].Mon;
+            tottue += data_table_igong[i].Tue;
+            totwed += data_table_igong[i].Wed;
+            totthr += data_table_igong[i].Thu;
+            totfri += data_table_igong[i].Fri;
+            totsat += data_table_igong[i].Sat;
+            totsun += data_table_igong[i].Sun;
+        }
+        for (var i = 0; i < sensors.length; i++) {
+
+            //----Average Per Week----
+            data_table_igong[i].AllA = (data_per_element[i].length / all).toFixed(2);
+            data_table_igong[i].SingleA = (data_table_igong[i].Single / singles).toFixed(2);
+            data_table_igong[i].PairsA = (data_table_igong[i].Pairs / pairs).toFixed(2);
+
+            data_table_igong[i].eightA = (data_table_igong[i].eight / eight).toFixed(2);
+            data_table_igong[i].threeA = (data_table_igong[i].three / three).toFixed(2);
+            data_table_igong[i].fourA = (data_table_igong[i].four / four).toFixed(2);
+            data_table_igong[i].sixA = (data_table_igong[i].six / six).toFixed(2);
+
+            data_table_igong[i].StudentA = (data_table_igong[i].Student / stds).toFixed(2);
+            data_table_igong[i].EmployedA = (data_table_igong[i].Employed / epms).toFixed(2);
+            data_table_igong[i].UnRetA = (data_table_igong[i].UnRet / unrs).toFixed(2);
+            data_table_igong[i].PartA = (data_table_igong[i].Part / parts).toFixed(2);
+
+            data_table_igong[i].femaleA = (data_table_igong[i].female / female).toFixed(2);
+            data_table_igong[i].maleA = (data_table_igong[i].male / male).toFixed(2);
+            data_table_igong[i].mixedA = (data_table_igong[i].mixed / mix).toFixed(2);
+
+            data_table_igong[i].MonA = (data_table_igong[i].Mon / all).toFixed(2);
+            data_table_igong[i].TueA = (data_table_igong[i].Tue / all).toFixed(2);
+            data_table_igong[i].WedA = (data_table_igong[i].Wed / all).toFixed(2);
+            data_table_igong[i].ThuA = (data_table_igong[i].Thu / all).toFixed(2);
+            data_table_igong[i].FriA = (data_table_igong[i].Fri / all).toFixed(2);
+            data_table_igong[i].SatA = (data_table_igong[i].Sat / all).toFixed(2);
+            data_table_igong[i].SunA = (data_table_igong[i].Sun / all).toFixed(2);
+        }
+
+        for (var i = 0; i < sensors.length; i++) {
+            //----Average Per Week----
+            data_table_igong[i].AllP = (data_per_element[i].length * 100 / totalAll).toFixed(2);
+            data_table_igong[i].SingleP = (data_table_igong[i].Single * 100 / totSingle).toFixed(2);
+            data_table_igong[i].PairsP = (data_table_igong[i].Pairs * 100 / totParis).toFixed(2);
+
+            data_table_igong[i].eightP = (data_table_igong[i].eight * 100 / toteight).toFixed(2);
+            data_table_igong[i].threeP = (data_table_igong[i].three * 100 / totthree).toFixed(2);
+            data_table_igong[i].fourP = (data_table_igong[i].four * 100 / totfour).toFixed(2);
+            data_table_igong[i].sixP = (data_table_igong[i].six * 100 / totsix).toFixed(2);
+
+            data_table_igong[i].StudentP = (data_table_igong[i].Student * 100 / totA).toFixed(2);
+            data_table_igong[i].EmployedP = (data_table_igong[i].Employed * 100 / totB).toFixed(2);
+            data_table_igong[i].UnRetP = (data_table_igong[i].UnRet * 100 / totD).toFixed(2);
+            data_table_igong[i].PartP = (data_table_igong[i].Part * 100 / totC).toFixed(2);
+
+            data_table_igong[i].femaleP = (data_table_igong[i].female * 100 / totf).toFixed(2);
+            data_table_igong[i].maleP = (data_table_igong[i].male * 100 / totm).toFixed(2);
+            data_table_igong[i].mixedP = (data_table_igong[i].mixed * 100 / totmix).toFixed(2);
+
+            data_table_igong[i].MonP = (data_table_igong[i].Mon * 100 / totmon).toFixed(2);
+            data_table_igong[i].TueP = (data_table_igong[i].Tue * 100 / tottue).toFixed(2);
+            data_table_igong[i].WedP = (data_table_igong[i].Wed * 100 / totwed).toFixed(2);
+            data_table_igong[i].ThuP = (data_table_igong[i].Thu * 100 / totthr).toFixed(2);
+            data_table_igong[i].FriP = (data_table_igong[i].Fri * 100 / totfri).toFixed(2);
+            data_table_igong[i].SatP = (data_table_igong[i].Sat * 100 / totsat).toFixed(2);
+            data_table_igong[i].SunP = (data_table_igong[i].Sun * 100 / totsun).toFixed(2);
+        }
+
+        //profile
         var data_profile_table = [{
             "name": "Single",
 
@@ -417,8 +653,12 @@ function prepare_data_table() {
 
         console.log(data_table);
         console.log(data_profile_table)
+        console.log(data_table_igong)
+
 
         toJson(data_table, 'data_table.json')
+        toJson(data_table_igong, 'data_table_2020.json')
+
 
         toJson(data_profile_table, 'data_profile_table.json')
 
