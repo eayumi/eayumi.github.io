@@ -3,6 +3,10 @@ function prepare_data_table() {
 
         var data_processed = [];
         console.log(data_profile)
+        console.log(weeks_single)
+
+
+
         var week_to_find_index = data_profile.map(x => x.Week_Year)
         var week = d3.timeFormat('%V-%y');
         var weekday = d3.timeFormat('%a');
@@ -380,12 +384,43 @@ function prepare_data_table() {
             data_table[i].SunP = (data_table[i].Sun * 100 / totsun).toFixed(2);
         }
 
+        var data_profile_table = [{
+            "name": "Single",
 
+            "subjects": weeks_single.length,
+            "eight": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.Age1 == "18-30").length,
+            "three": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.Age1 == "30-45").length,
+            "four": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.Age1 == "45-60").length,
+            "six": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.Age1 == "60-75").length,
+            "Student": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.OccupationCategory1 == "A").length,
+            "Employed": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.OccupationCategory1 == "B").length,
+            "UnRet": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.OccupationCategory1 == "D").length,
+            "Part": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.OccupationCategory1 == "C").length,
+            "female": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.Gender1 == "w").length,
+            "male": data_profile.filter(d => weeks_single.includes(d.Week_Year) && d.Gender1 == "m").length,
+            "mixed": '-'
+        }, {
+            "name": "Pairs",
+            "subjects": weeks_double.length * 2 + " (" + weeks_double.length + ")",
+            "eight": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age1 == "18-30").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age2 == "18-30").length,
+            "three": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age1 == "30-45").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age2 == "30-45").length,
+            "four": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age1 == "45-60").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age2 == "45-60").length,
+            "six": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age1 == "60-75").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Age2 == "60-75").length,
+            "Student": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory1 == "A").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory2 == "A").length,
+            "Employed": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory1 == "B").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory2 == "B").length,
+            "UnRet": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory1 == "D").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory2 == "D").length,
+            "Part": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory1 == "C").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.OccupationCategory2 == "C").length,
+            "female": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Gender1 == "w").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Gender2 == "w").length,
+            "male": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Gender1 == "m").length + data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Gender2 == "m").length,
+            "mixed": data_profile.filter(d => weeks_double.includes(d.Week_Year) && d.Genders.includes('w') && d.Genders.includes('m')).length
+        }];
 
+        console.log(data_table);
+        console.log(data_profile_table)
 
-        console.log(data_table)
         toJson(data_table, 'data_table.json')
 
+        toJson(data_profile_table, 'data_profile_table.json')
 
 
 

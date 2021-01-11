@@ -27,6 +27,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 
+    <script src="../js/data_table.js"></script>
+
+
     <style>
         html {
             overflow-x: hidden;
@@ -43,7 +46,6 @@
         .container {
             text-align: center;
             padding: 5px;
-            overflow-x: scroll;
         }
         
         .container table {
@@ -54,7 +56,29 @@
             width: 70%
         }
         
-        .avgButton {}
+        .overButton {
+            border: 1px solid black;
+        }
+        
+        .excelButton {
+            border: 1px solid rgb(39, 160, 39);
+        }
+        
+        .catButton {
+            border: 1px solid steelblue
+        }
+        
+        .catButton:hover {
+            background-color: lightgray;
+        }
+        
+        .overButton:hover {
+            background-color: lightgray;
+        }
+        
+        .excelButton :hover {
+            background-color: lightgray;
+        }
     </style>
 
 
@@ -102,7 +126,9 @@
 <p style='position: relative;left:100px;width: 80%'>
     <b style="color: red;">The list of the test-subject is not updated as of yet. Therefore colums regarding age, occupation, single/pairs and gender are not complete, while colums like 'All' and the Weekdays are.
     The data considered range from 11.09.2019 to the last week of 2020 (upto and including 01.03.2021).</b><br>
-    <br>This page shows a table listing the amount of usage (rotations or open/close action) that was measured per sensor. The values can either be shown as <b>absolute </b>number of observations, <b>average</b> by number of weeks or as the <b>percentage</b>    across all the sensors. Furthermore, rows can be reordered for any column and the colums can be toggled . These include the following:
+    <br>This page shows two tables. The first table <i>Test-Subject Meta-Information </i>lists the number of times a certain attribute is observed amongst all test-subjects. <br> The second table lists the usage (rotations or open/close action) that was
+    measured per sensor. The values can either be shown as <b>absolute </b>number of observations, <b>average</b> by number of weeks or as the <b>percentage</b> across all the sensors. Furthermore, rows can be reordered for any column and the colums can
+    be added/removed using buttons. This is possible for the following subject attributes. The respective buttons have a <text style='color: steelblue'>steelblue</text> border.
     <ul style='position: relative;left:100px;'>
         <li><b>Age</b>: This includes the age of all single test-subjects and pairs of same age. The categories include: 18-30,30-45,45-60 and 60-75.</li>
         <li><b>Gender</b>: This includes the gender of all single test-subjects and pairs. <i>mixed</i> includes pairs of female and male test-subject, <br> female include single female test-subjects as well as pairs where both subjects are female (and same
@@ -115,480 +141,20 @@
 <p style='position: relative;left:100px;width: 80%'>
     Note, the columns do not all fit onto the page. In this case, horizontal scrolling is activated.
 </p>
-<h4 id="title" style='position: relative;left:13%'></h4>
+<h2 style='position: relative;left:50px'>Test-Subject Meta-Information (Quantity)</h2>
+
 <div class="container">
-    <div id="overButton"></div>
-    <table id="example" class="display" style="width:80%; "></table>
+    <table id="profile" class="display" style="width:90%; "></table>
 </div>
+<h2 style='position: relative; left:50px'>Sensor Data Measurement Quantity by Sensor and Meta-Information <text id="title" style="font-size:medium"></text>
+</h2>
+<div class="container" style='  overflow-x: scroll;'>
+    <table id="example" class="display" style="width:90%; ">
+    </table>
+</div>
+
 <script>
-    d3.json('../data/data_table.json').then(function(data_table) {
-
-        //age, occ, gender, wkd
-        var currentClassesShow = 'normal';
-        var ageToggle = 0;
-        var occToggle = 0;
-        var genderToggle = 0;
-        var wkdToggle = 0;
-
-        document.getElementById('title').innerHTML = 'Absolute Values';
-
-
-        var table = $('#example').DataTable({
-            "paging": false,
-            "info": false,
-            dom: 'Bfrtip',
-            "searching": false,
-            "data": data_table,
-            fixedHeader: false,
-            "columns": [{
-                    "data": "Sensor",
-                    "title": "Sensor"
-                }, {
-                    "data": "All",
-                    "title": "All",
-                    className: "normal"
-
-                }, {
-                    "data": "Single",
-                    "title": "Single",
-                    className: "normal"
-
-                }, {
-                    "data": "Pairs",
-                    "title": "Pairs",
-                    className: "normal"
-
-                }, {
-                    "data": "eight",
-                    "title": "18-30",
-                    className: "agenormal"
-                }, {
-                    "data": "three",
-                    "title": "30-45",
-                    className: "agenormal"
-                }, {
-                    "data": "four",
-                    "title": "45-60",
-                    className: "agenormal"
-                }, {
-                    "data": "six",
-                    "title": "60-75",
-                    className: "agenormal"
-                }, {
-                    "data": "Student",
-                    "title": "Student",
-                    className: "occnormal"
-                }, {
-                    "data": "Employed",
-                    "title": "Employed",
-                    className: "occnormal"
-                }, {
-                    "data": "UnRet",
-                    "title": "Unemp./ Retired",
-                    className: "occnormal"
-                }, {
-                    "data": "Part",
-                    "title": "Part-Time Emp.",
-                    className: "occnormal"
-                }, {
-                    "data": "female",
-                    "title": "female",
-                    className: "gendernormal"
-                }, {
-                    "data": "male",
-                    "title": "male",
-                    className: "gendernormal"
-                }, {
-                    "data": "mixed",
-                    "title": "mixed",
-                    className: "gendernormal"
-                }, {
-                    "data": "Mon",
-                    "title": "Mon",
-                    className: "wkdnormal"
-                }, {
-                    "data": "Tue",
-                    "title": "Tue",
-                    className: "wkdnormal"
-                }, {
-                    "data": "Wed",
-                    "title": "Wed",
-                    className: "wkdnormal"
-                }, {
-                    "data": "Thu",
-                    "title": "Thu",
-                    className: "wkdnormal"
-                }, {
-                    "data": "Fri",
-                    "title": "Fri",
-                    className: "wkdnormal"
-                }, {
-                    "data": "Sat",
-                    "title": "Sat",
-                    className: "wkdnormal"
-                }, {
-                    "data": "Sun",
-                    "title": "Sun",
-                    className: "wkdnormal"
-                },
-                //averageby weeks
-                {
-                    "data": "AllA",
-                    "title": "All",
-                    className: "avg"
-
-                }, {
-                    "data": "SingleA",
-                    "title": "Single",
-                    className: "avg"
-
-                }, {
-                    "data": "PairsA",
-                    "title": "Pairs",
-                    className: "avg"
-
-                }, {
-                    "data": "eightA",
-                    "title": "18-30",
-                    className: "ageavg"
-                }, {
-                    "data": "threeA",
-                    "title": "30-45",
-                    className: "ageavg"
-                }, {
-                    "data": "fourA",
-                    "title": "45-60",
-                    className: "ageavg"
-                }, {
-                    "data": "sixA",
-                    "title": "60-75",
-                    className: "ageavg"
-                }, {
-                    "data": "StudentA",
-                    "title": "Student",
-                    className: "occavg"
-                }, {
-                    "data": "EmployedA",
-                    "title": "Employed",
-                    className: "occavg"
-                }, {
-                    "data": "UnRetA",
-                    "title": "Unemp./ Retired",
-                    className: "occavg"
-                }, {
-                    "data": "PartA",
-                    "title": "Part-Time Emp.",
-                    className: "occavg"
-                }, {
-                    "data": "femaleA",
-                    "title": "female",
-                    className: "genderavg"
-                }, {
-                    "data": "maleA",
-                    "title": "male",
-                    className: "genderavg"
-                }, {
-                    "data": "mixedA",
-                    "title": "mixed",
-                    className: "genderavg"
-                }, {
-                    "data": "MonA",
-                    "title": "Mon",
-                    className: "wkdavg"
-                }, {
-                    "data": "TueA",
-                    "title": "Tue",
-                    className: "wkdavg"
-                }, {
-                    "data": "WedA",
-                    "title": "Wed",
-                    className: "wkdavg"
-                }, {
-                    "data": "ThuA",
-                    "title": "Thu",
-                    className: "wkdavg"
-                }, {
-                    "data": "FriA",
-                    "title": "Fri",
-                    className: "wkdavg"
-                }, {
-                    "data": "SatA",
-                    "title": "Sat",
-                    className: "wkdavg"
-                }, {
-                    "data": "SunA",
-                    "title": "Sun",
-                    className: "wkdavg"
-                },
-                //percentageacross all sensors
-                {
-                    "data": "AllP",
-                    "title": "All",
-                    className: "perc"
-
-                }, {
-                    "data": "SingleP",
-                    "title": "Single",
-                    className: "perc"
-
-                }, {
-                    "data": "PairsP",
-                    "title": "Pairs",
-                    className: "perc"
-
-                }, {
-                    "data": "eightP",
-                    "title": "18-30",
-                    className: "ageperc"
-                }, {
-                    "data": "threeP",
-                    "title": "30-45",
-                    className: "ageperc"
-                }, {
-                    "data": "fourP",
-                    "title": "45-60",
-                    className: "ageperc"
-                }, {
-                    "data": "sixP",
-                    "title": "60-75",
-                    className: "ageperc"
-                }, {
-                    "data": "StudentP",
-                    "title": "Student",
-                    className: "occperc"
-                }, {
-                    "data": "EmployedP",
-                    "title": "Employed",
-                    className: "occperc"
-                }, {
-                    "data": "UnRetP",
-                    "title": "Unemp./ Retired",
-                    className: "occperc"
-                }, {
-                    "data": "PartP",
-                    "title": "Part-Time Emp.",
-                    className: "occperc"
-                }, {
-                    "data": "femaleP",
-                    "title": "female",
-                    className: "genderperc"
-                }, {
-                    "data": "maleP",
-                    "title": "male",
-                    className: "genderperc"
-                }, {
-                    "data": "mixedP",
-                    "title": "mixed",
-                    className: "genderperc"
-                }, {
-                    "data": "MonP",
-                    "title": "Mon",
-                    className: "wkdperc"
-                }, {
-                    "data": "TueP",
-                    "title": "Tue",
-                    className: "wkdperc"
-                }, {
-                    "data": "WedP",
-                    "title": "Wed",
-                    className: "wkdperc"
-                }, {
-                    "data": "ThuP",
-                    "title": "Thu",
-                    className: "wkdperc"
-                }, {
-                    "data": "FriP",
-                    "title": "Fri",
-                    className: "wkdperc"
-                }, {
-                    "data": "SatP",
-                    "title": "Sat",
-                    className: "wkdperc"
-                }, {
-                    "data": "SunP",
-                    "title": "Sun",
-                    className: "wkdperc"
-                }
-
-
-
-            ],
-            dom: 'Bfrtip',
-            buttons: {
-                name: 'primary',
-                buttons: ['excel',
-                    //
-                    {
-                        text: 'Average',
-                        action: function() {
-                            currentClassesShow = 'avg'
-                            document.getElementById('title').innerHTML = 'Average Values';
-
-                            table.columns(".normal").visible(false);
-                            table.columns(".perc").visible(false);
-                            table.columns(".avg").visible(true);
-
-
-                            table.columns(".occnormal").visible(false);
-                            table.columns(".agenormal").visible(false);
-                            table.columns(".gendernormal").visible(false);
-                            table.columns(".wkdnormal").visible(false);
-
-                            table.columns(".wkdperc").visible(false);
-                            table.columns(".ageperc").visible(false);
-                            table.columns(".genderperc").visible(false);
-                            table.columns(".occperc").visible(false);
-
-                            if (ageToggle == 1) table.columns(".age" + currentClassesShow).visible(true);
-                            if (occToggle == 1) table.columns(".occ" + currentClassesShow).visible(true);
-                            if (genderToggle == 1) table.columns(".gender" + currentClassesShow).visible(true);
-                            if (wkdToggle == 1) table.columns(".wkd" + currentClassesShow).visible(true);
-
-
-
-                        }
-                    }, {
-                        text: 'Percentage',
-                        className: 'overButton',
-
-                        action: function() {
-                            currentClassesShow = 'perc'
-
-                            document.getElementById('title').innerHTML = 'Percentage Values';
-                            table.columns(".avg").visible(false);
-                            table.columns(".perc").visible(true);
-                            table.columns(".normal").visible(false);
-
-
-                            table.columns(".occavg").visible(false);
-                            table.columns(".wkdavg").visible(false);
-                            table.columns(".ageavg").visible(false);
-                            table.columns(".genderavg").visible(false);
-
-
-                            table.columns(".occnormal").visible(false);
-                            table.columns(".wkdnormal").visible(false);
-                            table.columns(".agenormal").visible(false);
-                            table.columns(".gendernormal").visible(false);
-
-                            if (ageToggle == 1) table.columns(".age" + currentClassesShow).visible(true);
-                            if (occToggle == 1) table.columns(".occ" + currentClassesShow).visible(true);
-                            if (genderToggle == 1) table.columns(".gender" + currentClassesShow).visible(true);
-                            if (wkdToggle == 1) table.columns(".wkd" + currentClassesShow).visible(true);
-
-                        }
-                    }, {
-                        text: 'Absolute',
-                        className: 'overButton',
-
-                        action: function() {
-
-                            document.getElementById('title').innerHTML = 'Absolute Values';
-                            currentClassesShow = 'normal';
-                            table.columns(".avg").visible(false);
-                            table.columns(".perc").visible(false);
-                            table.columns(".normal").visible(true);
-
-                            table.columns(".occperc").visible(false);
-                            table.columns(".wkdperc").visible(false);
-                            table.columns(".ageperc").visible(false);
-                            table.columns(".genderperc").visible(false);
-
-                            table.columns(".ageavg").visible(false);
-                            table.columns(".occavg").visible(false);
-                            table.columns(".genderavg").visible(false);
-                            table.columns(".wkdavg").visible(false);
-
-
-                            if (ageToggle == 1) table.columns(".age" + currentClassesShow).visible(true);
-                            if (occToggle == 1) table.columns(".occ" + currentClassesShow).visible(true);
-                            if (genderToggle == 1) table.columns(".gender" + currentClassesShow).visible(true);
-                            if (wkdToggle == 1) table.columns(".wkd" + currentClassesShow).visible(true);
-
-                        }
-                    }, {
-                        text: 'Age',
-                        action: function() {
-                            if (ageToggle == 1) {
-                                table.columns(".age" + currentClassesShow).visible(false);
-                                ageToggle = 0
-                            } else {
-                                table.columns(".age" + currentClassesShow).visible(true);
-                                ageToggle = 1
-
-                            }
-                        }
-                    }, {
-                        text: 'Gender',
-                        action: function() {
-                            if (genderToggle == 1) {
-                                table.columns(".gender" + currentClassesShow).visible(false);
-                                genderToggle = 0
-                            } else {
-                                table.columns(".gender" + currentClassesShow).visible(true);
-                                genderToggle = 1
-
-                            }
-                        }
-                    }, {
-                        text: 'Weekday',
-                        action: function() {
-                            if (wkdToggle == 1) {
-                                table.columns(".wkd" + currentClassesShow).visible(false);
-                                wkdToggle = 0
-                            } else {
-                                table.columns(".wkd" + currentClassesShow).visible(true);
-                                wkdToggle = 1
-
-                            }
-                        }
-                    }, {
-                        text: 'Occupation',
-                        action: function() {
-                            if (occToggle == 1) {
-                                table.columns(".occ" + currentClassesShow).visible(false);
-                                occToggle = 0
-                            } else {
-                                table.columns(".occ" + currentClassesShow).visible(true);
-                                occToggle = 1
-
-                            }
-                        }
-                    }
-                ]
-            }
-
-
-        });
-
-
-        $(document).ready(function() {
-            table
-        });
-
-
-        table.columns(".occavg").visible(false);
-        table.columns(".occperc").visible(false);
-        table.columns(".wkdavg").visible(false);
-        table.columns(".wkdperc").visible(false);
-        table.columns(".ageperc").visible(false);
-        table.columns(".genderperc").visible(false);
-        table.columns(".ageavg").visible(false);
-        table.columns(".genderavg").visible(false);
-        table.columns(".avg").visible(false);
-        table.columns(".perc").visible(false);
-        table.columns(".occnormal").visible(false);
-        table.columns(".wkdnormal").visible(false);
-        table.columns(".agenormal").visible(false);
-        table.columns(".gendernormal").visible(false);
-        table.columns(".normal").visible(true);
-
-
-
-
-
-
-    });
+    data_table()
 </script>
 
 </html>
