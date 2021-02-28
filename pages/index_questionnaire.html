@@ -16,8 +16,12 @@
 
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
+
+    <script src="../js/dataCheck.js"></script>
+
     <script src="../js/grouped_bar_chart_vert.js"></script>
     <script src="../js/grouped_bar_chart_horz.js"></script>
+
 
     <script src="../js/piecharts.js"></script>
     <script src="../js/grouped_bar_chart_vert_score.js"></script>
@@ -126,8 +130,15 @@
 
 <h1 style='text-align: center;'>Questionnaire Results</h1>
 <p style='position: relative;left:100px;width: 80%'>
-
+    This page illustrates the results of the questionnaires collected by the test-subjects. <br> The questions denoted with <b>(Y/N)</b> are yes or no questions, <b>(MC)</b> are multiple-choice questions and the questions <b>(W)</b> are questions that
+    were written answeres. The written answeres are evaluated by counting how often generalized keywords were mentioned. The explanation of every keyword is displays on the right of the bar charts on click on the bars.
+    <br>Most charts show the option to view the results for all test-subjects (<b>All</b>) or grouped into single and pairs of test-subjects (<b>Single/Pairs</b>).
+    <br> For the vertical bar chart, the y axis shos the frequency of the answers, given by the x axis. The opposit is the case for the horizontal bar charts.
+    <br> As the questionnaire is in German, so are the answers. <br> As a reminder, the English translation of the elements are: (Drehwand - Rotatable Wall), (Drehschrank - Rotatable Closet), (Lampe Drehwand - Lamp A), (Lampe Aussenwand - Lamp B)
+    <br><b>Some people did not fill out every question. The number of answeres given by singles/pairs my thus vary from question to question.</b>
 </p>
+
+
 
 <h2 style='position: relative;left:30px'>1. Fragen zum Raum</h2>
 
@@ -136,11 +147,12 @@
     <button type="button" id='tog11a'>Alle</button>
     <button type="button" id='tog11sp'>Singel/Pairs</button>
 </div>
+<br>
 <div id='Qone' style='position: relative;left:50px'></div>
 <div id='AllQone' style='position: relative;left:50px'></div>
 
 
-<h4 style='position: relative;left:50px'>Q1.2 Was wollten Sie damit erreichen?</h4>
+<h4 style='position: relative;left:50px'>Q1.2 Was wollten Sie damit erreichen? (W)</h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
     <button type="button" id='tog12a'>Alle</button>
@@ -187,6 +199,19 @@
 <div id='Qonefour' style='position: relative;left:50px'></div>
 <div id='AllQonefour' style='position: relative;left:50px'></div>
 
+<h4 style='position: relative;left:50px'>Sensordaten für Q1.3/4 : Totale Anzahl Rotationen grösser als ein gegebener Cutoff Wert.</h4>
+<div style='text-align:right;position:relative;right:50%'>
+    <button type="button" id='togd14a'>Alle</button>
+    <button type="button" id='togd14sp'>Singel/Pairs</button>
+
+    <label for="theta" style="font-size: small">     Cutoff value: </label><input type="text" id="theta" value="4" style="width: 50px">
+    <button type="button" id="button_theta" onclick="dataCheck()">Submit</button>
+</div>
+<br>
+<br>
+<div id='Dataonefour' style='position: relative;left:50px'></div>
+<div id='AllDataonefour' style='position: relative;left:50px'></div>
+
 <h4 style='position: relative;left:50px'>Q1.5 Sind die beweglichen Teile einfach in ihrer Handhabung (Y/N)</h4>
 
 <h5 style='position: relative;left:100px'>Drehschrank</h5>
@@ -205,7 +230,7 @@
 <div id='Qonefivefive' style='position: relative;left:50px'></div>
 
 
-<h4 style='position: relative;left:50px'>Q1.6 Würden Sie gerne weitherhin mit beweglichen Bauteilen wohnen?</h4>
+<h4 style='position: relative;left:50px'>Q1.6 Würden Sie gerne weitherhin mit beweglichen Bauteilen wohnen? (Single Choice)</h4>
 <div style='text-align:right;position:relative;right:50%'>
     <button type="button" id='tog16a'>Alle</button>
     <button type="button" id='tog16sp'>Singel/Pairs</button>
@@ -215,7 +240,7 @@
 <div id='AllQonesix' style='position: relative;left:50px'></div>
 
 
-<h4 style='position: relative;left:50px'>Q1.7 Was müsste ander sein/worauf könnten sie verzichten, damit sie weiterhin mit beweglicen Bauteilen wohnen würdern?</h4>
+<h4 style='position: relative;left:50px'>Q1.7 Was müsste ander sein/worauf könnten sie verzichten, damit sie weiterhin mit beweglicen Bauteilen wohnen würdern? (W)</h4>
 <div style='text-align:center '>
     <br>
     <div style='text-align:right;position:relative;right:50%'>
@@ -241,7 +266,7 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Q1.8 Wieviel räumlichen Gewinn schaffen die beweglichen Teile? (1= geringer räumlicher Gewinn; 10= hoher räumlicher Gewinn)</h4>
+<h4 style='position: relative;left:50px'>Q1.8 Wieviel räumlichen Gewinn schaffen die beweglichen Teile? (1= geringer räumlicher Gewinn; 10= hoher räumlicher Gewinn) </h4>
 <h5 style='position: relative;left:100px'>Drehschrank</h5>
 <div style='text-align:right;position:relative;right:50%'>
     <button type="button" id='tog181a'>Alle</button>
@@ -346,7 +371,7 @@
 <h5 style='position: relative;left:100px'>Küchenoberfläche</h5>
 <div id='Qtwothreesix' style='position: relative;left:50px'></div>
 
-<h4 style='position: relative;left:50px'>Q2.4 Was würden Sie and der Materialisierung ändern?</h4>
+<h4 style='position: relative;left:50px'>Q2.4 Was würden Sie and der Materialisierung ändern? (W)</h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
     <button type="button" id='tog24a'>Alle</button>
@@ -373,17 +398,17 @@
     </div>
 </div>
 
-<h4 style='position: relative;left:50px'>Q2.5 Gefällt Ihnen das Farbkonzept des Mock-ups?</h4>
+<h4 style='position: relative;left:50px'>Q2.5 Gefällt Ihnen das Farbkonzept des Mock-ups? (Y/N)</h4>
 <div id='Qtwofive' style='position: relative;left:50px'></div>
 
-<h4 style='position: relative;left:50px'>Q2.6 Ist die Temperatur im Mock-up zu kalt/warm?</h4>
+<h4 style='position: relative;left:50px'>Q2.6 Ist die Temperatur im Mock-up zu kalt/warm?(MC)</h4>
 <div id='Qtwosix' style='position: relative;left:50px'></div>
 
 <h2 style='position: relative;left:30px'>3. Fragen zu Privatheit und Intimität</h2>
 
 
 
-<h4 style='position: relative;left:50px'>Q3.1 Wie wichtig ist es Ihenne eine Trennung zwischen privateren ud öffentlicheren Zonen herzustellen? (1= nicht wichtig; 10=sehr wichtig)</h4>
+<h4 style='position: relative;left:50px'>Q3.1 Wie wichtig ist es Ihnen eine Trennung zwischen privateren udd öffentlicheren Zonen herzustellen? (1= nicht wichtig; 10=sehr wichtig)</h4>
 <div style='text-align:right;position:relative;right:50%'>
     <button type="button" id='tog31a'>Alle</button>
     <button type="button" id='tog31sp'>Singel/Pairs</button>
@@ -393,7 +418,7 @@
 <div id='AllQthreeone' style='position: relative;left:50px'></div>
 
 
-<h4 style='position: relative;left:50px'>Q3.2 Wie nehmen Sie die Trennung zwischen privaten und öffentlichen Zonen im Mock-up wahr?
+<h4 style='position: relative;left:50px'>Q3.2 Wie nehmen Sie die Trennung zwischen privaten und öffentlichen Zonen im Mock-up wahr?(W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -423,7 +448,7 @@
 </div>
 
 
-<h4 style='position: relative;left:50px'>Q3.3 Gibt es Situationen, in denen Sie die Zonen bwusst nutzen, bzw. Ändern? Welche sind dies und welche räumliche Situationen versuchen Sie dann herzustellen?
+<h4 style='position: relative;left:50px;width:80%'>Q3.3 Gibt es Situationen, in denen Sie die Zonen bewusst nutzen, bzw. Ändern? Welche sind dies und welche räumliche Situationen versuchen Sie dann herzustellen? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -454,12 +479,12 @@
 <h2 style='position: relative;left:30px'>4. Fragen zur Repräsentation</h2>
 
 
-<h4 style='position: relative;left:50px'>Q4.1 Räumen Sie auf bevor Sie Besuch empfangen?</h4>
+<h4 style='position: relative;left:50px'>Q4.1 Räumen Sie auf bevor Sie Besuch empfangen? (Y/N</h4>
 <div id='Qfourone' style='position: relative;left:50px'></div>
 
 <h2 style='position: relative;left:30px;'>5. Testwohnen zu zweit</h2>
 
-<h4 style='position: relative;left:50px'>Q5.1 Wie benutzen Sie die beweglichen Bauteile gemeinsam?
+<h4 style='position: relative;left:50px'>Q5.1 Wie benutzen Sie die beweglichen Bauteile gemeinsam? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -477,7 +502,9 @@
                 <text id="Qfiveonedescription_title" style="font-weight: bold;">
             </text>
                 <br>
-                <text id="Qfiveonedescription">Klicke auf einen Balken um die Beschreibung für die zugehörige Kategorie zu sehen.</text>
+                <text id="Qfiveonedescription">Klicke auf einen Balken um die Beschreibung für die zugehörige Kategorie zu sehen.
+                     
+                </text>
                 <br><br><br><br>
             </div>
         </div>
@@ -486,11 +513,11 @@
     </div>
 </div>
 
-<h4 style='position: relative;left:50px'>Q5.2 Kommt man sich bei der Benutzung der beweglichen Bauteile in die Quere?</h4>
+<h4 style='position: relative;left:50px'>Q5.2 Kommt man sich bei der Benutzung der beweglichen Bauteile in die Quere? (Y/N)</h4>
 <div id='Qfivetwo' style='position: relative;left:50px'></div>
 
 
-<h4 style='position: relative;left:50px'>Q5.3 Wie geschieht die Absprache über die gewählte Raumkonstellation. Wenn man das Mock-up als Paar benutzt.
+<h4 style='position: relative;left:50px'>Q5.3 Wie geschieht die Absprache über die gewählte Raumkonstellation, wenn man das Mock-up als Paar benutzt? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -517,11 +544,12 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Q5.4 Gibt es bei Ihnen eine Person, die"zuständig" für die Raumänderungen ist?</h4>
+<h4 style='position: relative;left:50px'>Q5.4 Gibt es bei Ihnen eine Person, die"zuständig" für die Raumänderungen ist? (Y/N)</h4>
 <div id='Qfivefour' style='position: relative;left:50px'></div>
 
+<h2 style='position: relative;left:30px;'>6. Allgemeines</h2>
 
-<h4 style='position: relative;left:50px'>Q6.1 Was gäbe es nachzurüsten?
+<h4 style='position: relative;left:50px'>Q6.1 Was gäbe es nachzurüsten? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -548,7 +576,7 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Q6.2 Wie würden Sie die beweglichen Bauteile verbessern?
+<h4 style='position: relative;left:50px'>Q6.2 Wie würden Sie die beweglichen Bauteile verbessern? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -575,7 +603,7 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Q6.3 Welche weiteren Bauteile wären beweglich sinnvoll?
+<h4 style='position: relative;left:50px'>Q6.3 Welche weiteren Bauteile wären beweglich sinnvoll? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -594,7 +622,9 @@
                 <text id="Qsixthreedescription_title" style="font-weight: bold;">
             </text>
                 <br>
-                <text id="Qsixthreedescription">Klicke auf einen Balken um die Beschreibung für die zugehörige Kategorie zu sehen.</text>
+                <text id="Qsixthreedescription">Klicke auf einen Balken um die Beschreibung für die zugehörige Kategorie zu sehen.
+                    <br>
+                </text>
                 <br><br><br><br>
             </div>
         </div>
@@ -602,7 +632,7 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Q6.4 Gibt es bestimmte Konstellationen zu bestimmten ZEITEN des Tages und wenn ja, welche sind diese?
+<h4 style='position: relative;left:50px'>Q6.4 Gibt es bestimmte Konstellationen zu bestimmten ZEITEN des Tages und wenn ja, welche sind diese? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -629,7 +659,7 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Q6.5 Gibt es bestimmte Konstellationen zu einer bestimmten NUTZUNG des Raumes und wenn ja, welche sind diese?
+<h4 style='position: relative;left:50px'>Q6.5 Gibt es bestimmte Konstellationen zu einer bestimmten NUTZUNG des Raumes und wenn ja, welche sind diese? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -656,7 +686,7 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Q6.6 Würden Sie die Wohnung häufiger verlassen als wenn Ihnen mehr Raum zu Verfügung steht?
+<h4 style='position: relative;left:50px'>Q6.6 Würden Sie die Wohnung häufiger verlassen als wenn Ihnen mehr Raum zu Verfügung steht? (W)
 </h4>
 <br>
 <div style='text-align:right;position:relative;right:50%'>
@@ -689,12 +719,14 @@
     grouped_bar_chart_vert()
     piecharts()
     grouped_bar_chart_horz()
-
+</script>
+<script>
     $('#AllQone').hide()
     $('#AllQonetwo').hide()
     $('#AllQonethree').hide()
     $('#AllQonesix').hide()
     $('#AllQonefour').hide()
+    $('#AllDataonefour').hide()
     $('#AllQoneseven').hide()
     $('#AllQoneeightone').hide()
     $('#AllQoneeighttwo').hide()
@@ -756,6 +788,14 @@
     $("#tog14sp").on('click', function() {
         $('#AllQonefour').hide()
         $('#Qonefour').show()
+    });
+    $("#togd14a").on('click', function() {
+        $('#AllDataonefour').show()
+        $('#Dataonefour').hide()
+    });
+    $("#togd14sp").on('click', function() {
+        $('#AllDataonefour').hide()
+        $('#Dataonefour').show()
     });
     $("#tog16a").on('click', function() {
         $('#AllQonesix').show()
@@ -947,9 +987,21 @@
         $('#Qsixsix').show()
     });
 </script>
-<br>
-<h1 style='text-align: center;'>Zonen</h1>
 
+<br>
+
+<h1 style='text-align: center;'>Zonen</h1>
+<p style='position: relative;left:100px;width: 80%'>
+    This section is an attempt on correlating the answers of the questionnairs with the actual observed data of the Mock-up. <br> The user can define <b>intervals</b> in which to divide the possible positions of the rotational elements. An example division
+    is already given in the input fields below.
+    <br>The bar charts below show how long the element was used in an interval. to be able to compare the single and pairs effectively, the height of a bar shows the <b>relative</b> duration of use (between 0 and 1) instead of the absolut duration (in
+    ms). Especially the difference of use of the rotatable wall bewteen single and pairs of test-subjects might give further insights.
+    <br> To update the charts click the corresponding <b>Submit</b> button. This will also draw the respective elements in the floor-plan with the given angles.
+    <br> Keep in mind to delimit the angles with commas. The range of rotation for each element is given next to its name.
+    <br> The chart can also be viewed by weekday or total week. This can be changed by the dropdown selection given below the input fields.
+
+    <br> As a reminder, the English translation of the elements are: (Drehwand - Rotatable Wall), (Drehschrank - Rotatable Closet), (Lampe Drehwand - Lamp A), (Lampe Aussenwand - Lamp B)
+</p>
 <div style='text-align:left '>
     <div style="position:relative; display:inline-block;width: 45%;left: 150px" id='xx'>
         <br><br><br>
@@ -3805,15 +3857,53 @@
 
     </div>
 </div>
-<h4 style='position: relative;left:50px'>Drehwand</h4>
-<div id='ring0' style='position: relative;left:50px'></div>
-<h4 style='position: relative;left:50px'>Drehschrank</h4>
+<br>
+<br>
+<div style='position: relative;left:150px'>
+
+    <!--<select id="group_input">
+    <option value=0>Day</option>
+    <option value=1>Night</option>-->
+    </select> <label style="font-size: small;">Weekday:</label>
+    <select id="wkd_input">
+    <option value=0>All</option>
+    <option value="Mon">Monday</option>
+    <option value="Tue">Tuesday</option>
+    <option value="Wed">Wednesday</option>
+    <option value="Thu">Thursday</option>
+    <option value="Fri">Friday</option>
+    <option value="Sat">Saturday</option>
+    <option value="Sun">Sunday</option>
+  </select></div>
+
+
+<h4 style='position: relative;left:100px'>Drehwand</h4>
+<div id='histo0' style='position: relative;left:75px;display:inline-block;width: 45%;'></div>
+<h4 style='position: relative;left:100px'>Drehschrank</h4>
+<div id='histo1' style='position: relative;left:75px;display:inline-block;width: 45%;'></div>
+<h4 style='position: relative;left:100px'>Lampe Drehwand</h4>
+<div id='histo2' style='position: relative;left:75px;display:inline-block;width: 45%;'></div>
+<h4 style='position: relative;left:100px'>Lampe Aussenwand</h4>
+<div id='histo3' style='position: relative;left:75px;display:inline-block;width: 45%;'></div>
+
+<!--
+<div style='text-align:left '>
+    <div id='ringS0' style='position: relative;left:50px;display:inline-block;width: 45%;'></div>
+    <div id='ringD0' style="width: 45%;position:relative;float: right; right:5%;"></div>
+
+</div>
+-->
 <div id='ring1' style='position: relative;left:50px'></div>
-
-<h4 style='position: relative;left:50px'>Lampe Drehwand</h4>
 <div id='ring2' style='position: relative;left:50px'></div>
-
-<h4 style='position: relative;left:50px'>Lampe Aussenwand</h4>
 <div id='ring3' style='position: relative;left:50px'></div>
+<script>
+    dataCheck();
+    enterButton(0)
+    enterButton(1)
+    enterButton(2);
+    enterButton(3);
+</script>
+
+
 
 </html>

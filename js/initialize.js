@@ -89,6 +89,9 @@ function initialize() {
 
         //filter for only 'double' trial profiles and get all the weeks
         weeks_double = data_profile.filter(x => x.Person2 != '').map(x => x.Week_Year);
+        console.log(weeks_single)
+        console.log(weeks_double)
+
 
         //gender of pairs of test-subjects (both) w, (both) m or mixed
         for (var i = 0; i < data_profile.length; i++) {

@@ -1,24 +1,23 @@
 [{
-    "Qonetwo": ["Raum nach Nutz und Bedarf formen und verändern, Raumwirkung testen.",
-        "Objekte aus dem Weg schaffen.",
+    "Qonetwo": ["Raum nach Nutz und Bedarf formen und verändern. Die Raumwirkung testen.",
+
         "(Visuell) Privatsphäre schaffen.",
-        "Beleuchtung kontrollieren und optimieren.Benutzung der Drehwand als Reflektionsoberfläche.",
-        "Raumbelüftung mittels Drehwand und Drehschrank.",
-        ""
+        "Beleuchtung kontrollieren und optimieren. Benutzung der Drehwand als Reflektionsoberfläche.",
+        "Raumbelüftung durch rotation der Drehwand und des Drehschrankes.",
+        "Andere Gründe wie zB. Objekte aus dem Weg schaffen."
     ],
     "Qoneseven": [
-        "Die beweglichen Elemente nehmen zu viel Platz ein. Kollisionen und Verletzungen sind Gefahren.",
+        "Die beweglichen Elemente nehmen zu viel Platz ein. Es besteht die Gefahr von Kollisionen und Verletzungen.",
         "Die Schubladen der Podeste sind schwer zu handhaben. Möbel und Teppiche erschweren den Gebrauch der hinteren Podestfächer.",
-        "Die Drehwand ermöglicht keine akustische Trennung des Mock-ups. Geruch (aus der Küche) weitet sich in der ganzen Wohnung aus.",
+        "Die Drehwand ermöglicht keine akustische Trennung des Mock-ups. Ein Bewohner bemerkt, dass der Geruch aus der Küche sich in der ganzen Wohnung ausweitet.",
         "Es hat wenig Ablageflächen und Stauräume. Insbesondere Kleiderschränke und Regale.",
-        "Die beweglichen Elemente und Podeste sollten besser zu handhaben sein, um sie mehr zu verwenden. Dies beinhaltet die Anpassung der Elemente für kleinere und schwächere Personen.",
+        "Die beweglichen Elemente und Podeste sollten besser zu handhaben sein, um sie mehr zu verwenden. Dies beinhaltet die Anpassung der Elemente für kleinere und ältere Personen.",
         "Auf bewegliche Lampen kann verzichtet werden.",
-        "Auf die Drehwand kann (teilweise) verzichtet werden. Vorgeschlagene Alternativen sind: Ersatz durch Vorhang, Verkürzung oder Erweiterung der Wand mit zusätzlicher Funktionalität (zB. Regal). Gründe dafür ist die Gefahr von Verletzungen und Mangel von akustischer Trennung.",
-        "Die Anzahl Spiegel sollte reduziert werden.",
-        "Beweliche Elemente wurden kaum bewegt. Nutzung des Mock-ups als Ferienwohnung.",
-        "Nichts.",
-        "Keine Antwort gegeben.",
-        "Bewegliche Elemente nicht nur rotierbar sondern auch lateral beweglich zB. mithilfe von Rollen."
+        "Auf die Drehwand kann (teilweise) verzichtet werden. Vorgeschlagene Alternativen sind: Ersatz durch Vorhang, Verkürzung oder Erweiterung der Wand mit zusätzlicher Funktionalität (zB. Regal). Gründe dafür ist die Gefahr von Verletzungen und Mangel an (akustischer) Trennung.",
+        "Auf Spiegel kann verzichtet werden.",
+        "Beweliche Elemente wurden kaum bewegt. Nutzung des Mock-ups als Ferienwohnung. Bewegliche Elemente nicht nur rotierbar sondern auch lateral beweglich zB. mithilfe von Rollen.",
+        "Nichts oder keine Antwort gegeben."
+
     ],
     "Qtwofour": [
 
@@ -32,8 +31,7 @@
         "Die Tische sind Flecken und Schmutzanfällig.  Die Farbe gefällt nicht.",
         "Die Drehwand ist zu schwer. Leichteres Material sollte verwendet werden.",
         "Kissen gefallen nicht. Farbakzente fehlen. Der Spiegel im Bad ist zu gross.",
-        "Nichts.",
-        "Keine Antwort gegeben."
+        "Nichts oder keine Antwort gegeben."
 
     ],
     "Qthreetwo":
@@ -45,14 +43,13 @@
         "Die grossen weiten Fenster macht es schwierig private Zonen herzustellen."
     ],
     "Qthreethree": [
-        "Zur Schlafenszeit wird mit der Drehwand ein Schlafbereich geschaffen. Oft wird der Raum ganz abgeschlossen. In einigen Fällen wird der Zugang zu Küche oder zum Bad offengelassen.",
+        "Zur Schlafenszeit wird mit der Drehwand ein Schlafbereich geschaffen. Oft wird der Raum ganz abgeschlossen. In einigen Fällen wird der Zugang zur Küche oder zum Bad offengelassen.",
         "Die Zonen ändern sich zwischen Tag und Nacht.",
-        "Bei Besuch und Essen wird der Schlafraum mit der Drehwand verdeckt, so dass die Küche offen ist. Im Allgemeinen wird versuch den Wohnzimmerbereich zu vergrössern.",
+        "Bei Besuch und Essen wird der Schlafbereich mit der Drehwand verdeckt, so dass die Küche offen ist. Im Allgemeinen wird versucht den Wohnzimmerbereich zu vergrössern.",
         "Wenn gekocht wird und in einigen Fällen bei Besuch wird mit der Drehwand und dem Drehschrank die Küche abgeschlossen.",
         "Kreiere separate Räume für mehr Privatsphäre.",
         "Ermögliche bestmögliche Beleuchtung durch die beweglichen Elemente, insbesondere die Drehwand.",
         "Für die Belüftung werden Zonen aufgehoben und verändert.",
-        "Schliesse den Schlafraum während dem Essen.",
         "Der Drehschrank wird zur Haustüre gedreht und die Küche und den Wohnzimmerbereich zu verbinden.",
         "Kreiere einen Arbeitsraum mit mehr Privatsphäre.",
         "Behalte den Raum immer halb offen: verschiedene Zonen aber immer mit einander Verbunden.",
@@ -62,7 +59,7 @@
     ],
     "Qfiveone": [
         "Vereinbarung/Zustimmung der Nutzung im Voraus.",
-        "Die Bauteile werden als Raumteiler genutzt um separate Räume (mit Privatsphäre) herzustellen.",
+        "Die Bauteile werden als Raumteiler genutzt um separate Räume (mit Privatsphäre) herzustellen. Diese Antwort bezieht sich mehr auf die Benutzung der Bauteile im Raum als auf die Benutzung als Paar. ",
         "Die Bauteile werden nicht bewegt. Die Positionierung ist relativ fix.",
         "Je nach Situation (Bedarf, Tageszeit etc.) anders.",
         "Die Bauteile werden nie gmeinsam bewegt. Es ist nicht immer die selbe Stellung bevorzugt und die Bauteile werden hin und her bewegt.",
@@ -75,15 +72,15 @@
         ""
 
     ],
-    "Qsixone": ["Es fehlen Sitzglegenheiten (Sofa, Sitzkissen, Stühle).",
+    "Qsixone": ["Es fehlen Sitzglegenheiten (Sofa, Sitzkissen, Stühle am Esstisch).",
         "Die Drehwand muss verbessert werden. Vorschläge sind Griffe um Verletzungen zu vermeiden, Verkürzung um Platz zu sparen und Kollisionen zu verhindern, die Wand erhöhen um eine bessere akustische Trennung zu ermöglichen, die Wand im Drehzentrum teilen, sodass beide Enden individuell gedreht werden können oder die rotierende Wand durch eine Schiebewand zu ersetzen.",
         "Besseres Lichtsystem/Lichtschalter oder zusätzliche Leselampen.",
-        "Mehr Stauraum und Ablagefächer. Insbesondere um individuelles Eigentum und Kleider zu versorgen. zB Kleiderschrank, Einbauschränke, Bücherregal, Schuhregal.",
+        "Mehr Stauraum und Ablagefächer. Insbesondere um persöhnliches Eigentum und Kleider zu versorgen. zB Kleiderschrank, Einbauschränke, Bücherregal, Schuhregal.",
         "Klimaanlage, (nachhaltige) Heizung etc. Verbesserung der ringhörigkeit der Lüftung (zu laut/stark).",
         "Es fehlt ein Arbeitsplatz. Ein Vorschlag wäre den Schlafraum so nachzurüsten, dass er am Tag als Arbeitsplatz verwendet werden kann.",
         "Arretierung der Fenster, vor allem die Balkontüren.",
         "Eine Garderobe/Eingangsbereich für nasse/dreckige Schuhe, Schirme, Jacken etc.",
-        "Beleuchtung ist nachzurüsten entweder durch Lampen, hellere Farben oder Fenster.",
+        "Beleuchtung ist nachzurüsten. Entweder durch Lampen, hellere Farben oder Fenster.",
         "Lautsprecher, bessere Induktionsherd und Wasseranlage.",
         "Nichts oder keine Antwort gegeben.",
         "Küchenschränke zu hoch und mit Griffen zu ergänzen.",
@@ -91,15 +88,14 @@
     ],
     "Qsixtwo":
 
-        ["'Beweglich' nicht nur durch Rotationen. Vorschläge sind Rollen an Möbel, Höhenverstellugen, Aufteilung der Drehwand in zwei Teile, Schiebewand etc.",
+        ["'Beweglich' nicht nur durch Rotationen. Vorschläge sind Rollen an Möbel, Höhenverstellugen der Lampen, Aufteilung der Drehwand in zwei Teile, Schiebewand etc.",
         "Die beweglichen Elemente sind zu schwer/gross und nehmen zu viel Raum ein. Sie sollten verkürzt/verkleinert oder gar ganz weggelassen werden. Insbesondere die Drehwand wird als zu breit und der Drehschrank als zu schwer gesehen.",
-        "Podestschubladen sind zu schwer und nicht handhablich. Möglicherweise mit Rollen versehen.",
+        "Podestschubladen sind zu schwer und nicht handhablich. Mann könnte es möglicherweise mit Rollen versehen.",
         "Die Funktionalität der Bauteile verbessern/erweitern, zB. Drehwand mit Einbauschrank/Bücherregal.",
-        "Die Drehwand kann höher sein um eine bessere akustische Trennung zu ermöglichen.",
+        "Die Drehwand sollte höher sein um eine bessere akustische Trennung des Raumes zu ermöglichen.",
         "Bessere Griffe für die Drehwand und den Drehschrank für Einklemmschutz.",
-        "EMPTY",
         "Mehr/indirekte Lampen hinzufügen, verschieben oder verlängern.",
-        "Der Drehschrank von der Spiegelseite öffnen.",
+        "Den Drehschrank von der Spiegelseite öffnen können. Dadurch wäre es nicht nötig den Drehschrank zu rotieren um den zeiten Teil zu öffnen.",
         "Nichts, oder keine Antwort."
     ],
     "Qsixthree":
@@ -116,19 +112,22 @@
     ],
     "Qsixfour":
 
-        ["Verschiedene Konstellationen nach Tageszeit/tageslicht.",
-        "Die Drehwand ist tagsüber so gedreht, dass der Schlafraum offen ist aber übernacht zu.",
-        "Die Drehwand ist tagsüber so gedreht, dass der Schlafraum verschlossen ist aber übernacht offen.",
+        ["Verschiedene Konstellationen nach Tageszeit/Tageslicht.",
+        "Die Drehwand ist tagsüber so gedreht, dass der Schlafbereich offen ist und übernacht zu.",
+        "Die Drehwand ist tagsüber so gedreht, dass der Schlafbereich verschlossen ist und übernacht offen.",
         "Die Küche wird mit der Drehwand abgeschlossen.",
-        "Konstellationen ändern sich je nach Licht und Temperatur im Raum. Zum Beispiel um Wärme zu konservieren oder um zu Lüften."
+        "Konstellationen ändern sich je nach Licht und Temperatur im Raum. Zum Beispiel um Wärme zu konservieren oder um zu Lüften.",
+        "Nein oder keine Antwort gegeben.",
+        "Die Drehwand wird Morgens benutzt um Privatsphäre zu kreieren."
+
+
     ],
 
     "Qsixfive":
 
-        ["Die Drehwand wird verwendet um ein Schlafzimmer zu bilden.",
-        "Privatsphäre am Morgen.",
+        [
         "Die Drehwand wird verwendet um ein Schlafzimmer zu bilden.",
-        "",
+
         "Der Podest wird als Sitzplatz verwendet.",
         "Verwende die Drehwand um den Wohnbereich vom Schlafbereich und der Küche abzutrennen.",
         "Schliesse den Schlafbereich ab mit der Drehwand während Besuch da ist.",
@@ -141,8 +140,8 @@
 
         ["Ja.",
         "Nein.",
-        "Von den Personen, die mit 'JA' geantwortet haben, wird 'Arbeitsplatz/co-working space' als Grund genannt. Die Personen geben an, die Wohnung zu verlassen um vor allem Ausswärts einen Arbeitsplatz zu finden. Entweder weil diese Möglichkeit im Mock-up nicht gegeben ist, oder wenn zwei Personen zugleich Arbeiten möchten, aber keine akustische Trennung/Platz gegeben ist.",
+        "Von den Personen, die mit 'JA' geantwortet haben, wird 'Arbeitsplatz/co-working space' als Grund genannt. Die Personen geben an, die Wohnung zu verlassen um vor allem Ausswärts einen Arbeitsplatz zu finden: Entweder weil diese Möglichkeit im Mock-up nicht gegeben ist, oder wenn zwei Personen zugleich Arbeiten möchten, aber keine akustische Trennung/Platz gegeben ist.",
         "Die Antwort hängt von der Jahreszeit ab.",
-        "Entweder wurde keine Antwort gegeben oder COVID-19 wird als Ursache genannt, weshalb man nicht Antworten kann."
+        "Entweder wurde keine Antwort gegeben oder COVID-19 und der Lockdown wird genannt."
     ]
 }]
