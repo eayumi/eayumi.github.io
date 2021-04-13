@@ -26,5 +26,7 @@ function prepare_data_processed() {
 
         console.log(data_processed);
         toJson(data_processed, 'data_processed.json')
+        names = ['Drehwand', 'Drehschrank', 'LampeAussenwand', 'LampeDrehwand']
+        toJson(data_processed.filter(d => names.includes(d.Sensorname)), 'data_processed_elements.json')
     });
 }

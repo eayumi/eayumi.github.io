@@ -11,14 +11,6 @@ function dataCheck() {
         data_single = data.filter(d => weeks_single.includes(d.Week) && d.Total > theta)
         data_double = data.filter(d => weeks_double.includes(d.Week) && d.Total > theta)
 
-        console.log(data)
-        console.log(data_single)
-        console.log(data_single.filter(d => d.Sensorname == 'Drehschrank').length)
-        console.log(data_double.filter(d => d.Sensorname == 'Drehschrank').length)
-        console.log(data_single.filter(d => d.Sensorname == 'Drehwand').length)
-        console.log(data_double.filter(d => d.Sensorname == 'Drehwand').length)
-
-
 
         var data_sp = [{
                 categorie: "Drehschrank",
@@ -108,7 +100,6 @@ function dataCheck() {
 
         ]
 
-        console.log(data_sp)
         histo_trans_time(data_sp, ['rgb(87, 162, 192)', 'rgb(235, 122, 69)'], 'Dataonefour')
         histo_trans_time(data_all, ['rosybrown'], 'AllDataonefour')
 

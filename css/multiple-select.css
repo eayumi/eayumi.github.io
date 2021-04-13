@@ -241,3 +241,21 @@
 .ms-drop .ms-no-results {
     display: none;
 }
+
+.multiselector_1 .ms-choice {
+    background: rgb(87, 162, 192, 0.25);
+}
+
+.multiselector_2 .ms-choice {
+    background: rgba(235, 122, 69, 0.25);
+}
+
+.multiselector_1,
+.multiselector_2 {
+    text-align: left;
+}
+
+.bar {
+    position: relative;
+    z-index: -1;
+}

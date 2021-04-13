@@ -9,20 +9,21 @@ function enterButton(index) {
 
     var weeks_single = ["38-19", "39-19", "47-19", "02-20", "06-20", "07-20", "08-20", "10-20", "26-20", "28-20", "30-20", "32-20", "36-20", "38-20", "43-20", "44-20", "49-20", "50-20", "51-20"];
     var weeks_double = ["41-19", "42-19", "44-19", "45-19", "46-19", "48-19", "09-20", "11-20", "19-20", "20-20", "22-20", "24-20", "25-20", "27-20", "29-20", "31-20", "33-20", "34-20", "35-20", "37-20", "39-20", "40-20", "41-20", "42-20", "45-20", "46-20", "47-20", "48-20", "52-20"];
-
-    var group = 0;
+    var week = ["38-19"]
     var wkd = 'Mon';
 
-    identify_transitions(0, y, 0, index, true, wkd, weeks_single)
-    identify_transitions(0, y, 1, index, true, wkd, weeks_double)
-    identify_transitions(1, y, 1, index, true, wkd, weeks_single, weeks_double)
-
+    //identify_transitions(1, y, 1, index, true, wkd, weeks_single, weeks_double);
+    rings_transitions(y, index, wkd, week, 'ringS')
+        //rings_transitions(y, index, wkd, weeks_double, 'ringD')
 
     document.getElementById('wkd_input').addEventListener("change", function(event) {
         wkd = document.getElementById('wkd_input').value;
-        identify_transitions(0, y, 0, index, true, wkd, weeks_single)
-        identify_transitions(0, y, 1, index, true, wkd, weeks_double)
-        identify_transitions(1, y, 1, index, true, wkd, weeks_single, weeks_double)
+
+        //  identify_transitions(1, y, 1, index, true, wkd, weeks_single, weeks_double)
+        //  rings_transitions(y, index, wkd, weeks_single, 'ringS')
+        //     rings_transitions(y, index, wkd, weeks_double, 'ringD')
+
+
 
 
     });
@@ -30,6 +31,121 @@ function enterButton(index) {
 
 }
 
+function rings_transitions(borders, index, wkd, weeks, name) {
+    d3.json('../data/data_snaps_densityPlot.json').then(function(data_raw) {
+        var t1 = [];
+        var data_alt = data_raw.filter(d => d.Element == index && d.Weekday == wkd);
+        var grouped = _.groupBy(data_alt, function(obj) {
+            return obj.Week;
+        });
+        weeks = Object.keys(grouped)
+        for (var k = 0; k < weeks.length; k++) {
+            t1.push(getTransData(grouped[weeks[k]]));
+
+
+        }
+
+        function getTransData(data_alt) {
+
+
+            var i = 0;
+            var cur_zone = 0;
+            var transitions = [];
+            const last = borders.length;
+            var data_ring = [0];
+
+            for (var k = 0; k < borders.length; k++) {
+                data_ring.push(0);
+            }
+            while (i < borders.length) {
+                if (data_alt[0].element_ang[index] < borders[i]) {
+                    transitions.push({
+                        zone: i,
+                        numb: 0,
+                        start: data_alt[0].Timestamp,
+                        duration: 0
+                    })
+                    cur_zone = i
+                    break;
+                } else if (i == borders.length - 1) {
+                    transitions.push({
+                        zone: i,
+                        numb: 0,
+                        start: data_alt[0].Timestamp,
+                        duration: 0
+
+                    })
+                    cur_zone = i
+
+                } else {
+                    i++
+
+                }
+            }
+
+            function return_zone(angle) {
+                z = 0;
+                while (z < last) {
+                    if (angle < borders[z]) {
+                        return z;
+                    } else {
+                        z++
+                    }
+                }
+                return z
+            }
+
+            i = 0;
+            j = 0;
+
+            while (i < data_alt.length) {
+                new_zone = return_zone(data_alt[i].element_ang[index]);
+                data_ring[new_zone]++;
+
+
+
+                if (new_zone != cur_zone) {
+                    transitions.push({
+                        zone: new_zone,
+                        numb: 0,
+                        start: data_alt[i].Timestamp,
+                        duration: 0
+
+                    })
+                    cur_zone = new_zone;
+                    transitions[j].duration = new Date(data_alt[i].Timestamp) - new Date(transitions[j].start)
+
+                    j++
+
+                } else {
+                    transitions[j].numb++;
+                }
+                i++
+            }
+            return transitions //,data_ring;
+        }
+
+        const maxrange = [237, 186, 157, 320];
+
+        var v = borders.slice();
+        v.unshift(0)
+
+        data_ring_time_t1 = t1.map(arr => arr.map(d => ({ zone: d.zone, dur: d.duration })))
+
+
+        //  d3.selectAll('#ring' + name).remove();
+
+        for (var k = 0; k < data_ring_time_t1.length; k++) {
+            ringgraph_trans_time(data_ring_time_t1[k], name + index, borders.length + 1, v, maxrange[index]);
+        }
+
+
+        //   ringgraph_trans_within(data_ring, 'ring', v);
+
+
+
+    });
+}
 
 function identify_transitions(design, borders, g, index, timeopt, wkd, weeks, weeks_) {
     d3.json('../data/data_snaps_densityPlot.json').then(function(data_raw) {
@@ -50,9 +166,6 @@ function identify_transitions(design, borders, g, index, timeopt, wkd, weeks, we
             } else {
                 var data_alt = data_raw.filter(d => d.Element == index && w.includes(d.Week) && d.Weekday == wkd);
             }
-            console.log(data_raw)
-            console.log(data_alt)
-
 
             var i = 0;
             var cur_zone = 0;
@@ -136,7 +249,6 @@ function identify_transitions(design, borders, g, index, timeopt, wkd, weeks, we
         b.unshift(0)
         b.push(maxrange[index])
 
-
         if (design == 1) {
             var tot1 = 0;
             var tot2 = 0;
@@ -161,22 +273,10 @@ function identify_transitions(design, borders, g, index, timeopt, wkd, weeks, we
                 }]
             }))
             histo_trans_time(data_all, ['rgb(87, 162, 192)', 'rgb(235, 122, 69)'], 'histo' + index)
+
         }
 
-
-
-        var v = borders.slice();
-        v.unshift(0)
-
-        data_ring_time = t1.map(d => ({ zone: d.zone, dur: d.duration }))
-
-        if (g == 0) ringgraph_trans_time(data_ring_time, 'ringS' + index, borders.length + 1, v, maxrange[index]);
-        if (g == 1) ringgraph_trans_time(data_ring_time, 'ringD' + index, borders.length + 1, v, maxrange[index]);
-
-
         //   ringgraph_trans_within(data_ring, 'ring', v);
-
-
 
     });
 }
@@ -299,11 +399,11 @@ function histo_trans_time(data, color, name) {
 
 
 function ringgraph_trans_time(data, name, nbzones, v, rightmost) {
-    var margin = { top: 50, right: 50, bottom: 50, left: 50 },
-        width = window.innerWidth / 2 - margin.left - margin.right,
+    console.log('hi')
+    var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+        width = window.innerWidth / 4 - margin.left - margin.right,
         height = width;
 
-    d3.selectAll('#ring' + name).remove();
 
     var svg = d3.select('#' + name)
         .append("svg")
@@ -356,24 +456,24 @@ function ringgraph_trans_time(data, name, nbzones, v, rightmost) {
         .style("opacity", "1")
         .style('font-size', '12px')
 
+    /*
+        legend.append("rect")
+            .attr("x", width / 2 + 18)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", function(d, i) { return color(i); });
 
-    legend.append("rect")
-        .attr("x", width / 2 + 18)
-        .attr("width", 18)
-        .attr("height", 18)
-        .style("fill", function(d, i) { return color(i); });
+        legend.append("text")
+            .attr("x", width / 2 + 10)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function(d, i) {
+                if (i == v.length - 1) { return ('[' + d + '-' + rightmost + ']') } else { return ('[' + d + '-' + v[i + 1] + ']') }
+            });
 
-    legend.append("text")
-        .attr("x", width / 2 + 10)
-        .attr("y", 9)
-        .attr("dy", ".35em")
-        .style("text-anchor", "end")
-        .text(function(d, i) {
-            if (i == v.length - 1) { return ('[' + d + '-' + rightmost + ']') } else { return ('[' + d + '-' + v[i + 1] + ']') }
-        });
-
-    legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
-
+        legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+    */
 
 }
 
