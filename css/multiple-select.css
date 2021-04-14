@@ -254,8 +254,3 @@
 .multiselector_2 {
     text-align: left;
 }
-
-.bar {
-    position: relative;
-    z-index: -1;
-}

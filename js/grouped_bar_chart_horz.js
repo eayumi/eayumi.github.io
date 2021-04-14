@@ -256,6 +256,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
 
     svg_g.append("g")
         .attr("class", "x axis")
+        .attr("id", "xax_group")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis_g)
         .append("text")
@@ -479,7 +480,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
             .attr("id", "xax")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis)
-            .append("text")
+            .append("text").attr("id", "xax")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", ".71em")
@@ -521,6 +522,8 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
 
         if (!first) svg_g.selectAll(".bartext").remove()
         svg_g.selectAll("#xax_group").remove()
+
+
 
         categoriesNames_g = data_.map(function(d) { return d.categorie; });
         rateNames_g = data_[0].values.map(function(d) { return d.rate; });
@@ -577,9 +580,24 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
             .attr("class", "y axis")
             .style('opacity', '0')
             .call(yAxis_g)
+            //----------------------------------------
+        svg_g.append("g")
+            .attr("class", "x axis")
+            .attr("id", "xax_group")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis_g)
+            .append("text")
+            .attr("id", "xax_group_text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .style('font-weight', 'bold')
+            .text("Value"); //To change the font size of texts
 
 
         svg_g.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
+        svg_g.select('.x').transition().duration(500).delay(1300).style('opacity', '1');
 
         //label
 
@@ -630,22 +648,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
 
         legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
 
-        //----------------------------------------
-        svg_g.append("g")
-            .attr("class", "x axis")
-            .attr("id", "xax_group")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis_g)
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .style('font-weight', 'bold')
-            .text("Value"); //To change the font size of texts
 
-        svg_g
-            .call(yAxis_g)
     }
 
 
@@ -660,8 +663,9 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
         data_group_perc = datas_group[1];
 
         if (this.checked) {
-            update_g(data_group_perc, false, true)
             update(data_perc, false, true)
+            update_g(data_group_perc, false, true)
+
         } else {
             update(data, false, false)
             update_g(data_group, false, false)
