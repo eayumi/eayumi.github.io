@@ -148,7 +148,8 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
 
     var color_all = d3.scaleOrdinal()
         .range(['rosybrown']);
-
+    var color_g = d3.scaleOrdinal()
+        .range(['darkseagreen', 'darksalmon']);
     var svg = d3.select('#' + name).append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -523,6 +524,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
         if (!first) svg_g.selectAll(".bartext").remove()
         svg_g.selectAll("#xax_group").remove()
 
+        svg_g.selectAll(".legend").remove()
 
 
         categoriesNames_g = data_.map(function(d) { return d.categorie; });
@@ -553,7 +555,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
             .attr('class', 'bar')
             .attr("height", y1_g.bandwidth())
             .attr("y", function(d) { return y1_g(d.rate); })
-            .style("fill", function(d) { return color(d.rate) })
+            .style("fill", function(d) { return color_g(d.rate) })
             .attr("x", function(d) { return 0 })
             .attr("width", function(d) { return 0; })
             .on("click", function(d, i) {
@@ -563,10 +565,10 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
                 document.getElementById(name + 'description_title').innerHTML = title[d.index] + ':'
             })
             .on("mouseover", function(d) {
-                d3.select(this).style("fill", d3.rgb(color(d.rate)).darker(2));
+                d3.select(this).style("fill", d3.rgb(color_g(d.rate)).darker(2));
             })
             .on("mouseout", function(d) {
-                d3.select(this).style("fill", color(d.rate));
+                d3.select(this).style("fill", color_g(d.rate));
             });
         slice.selectAll("rect")
             .transition()
@@ -625,7 +627,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
 
         //Legend
         var legend = svg_g.selectAll(".legend")
-            .data(data[0].values.map(function(d) { return d.rate; }))
+            .data(data_[0].values.map(function(d) { return d.rate; }))
             .enter().append("g")
             .attr("class", "legend")
             .attr("transform", function(d, i) { return "translate(0," + ((i * 20) - margin.top) + ")"; })
@@ -637,7 +639,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
             .attr("x", width - 18)
             .attr("width", 18)
             .attr("height", 18)
-            .style("fill", function(d) { return color(d); });
+            .style("fill", function(d) { return color_g(d); });
 
         legend.append("text")
             .attr("x", width - 24)

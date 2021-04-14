@@ -243,11 +243,11 @@
 }
 
 .multiselector_1 .ms-choice {
-    background: rgb(87, 162, 192, 0.25);
+    background: rgba(143, 188, 143, 0.3);
 }
 
 .multiselector_2 .ms-choice {
-    background: rgba(235, 122, 69, 0.25);
+    background: rgba(233, 150, 122, 0.3)
 }
 
 .multiselector_1,
