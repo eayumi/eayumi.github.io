@@ -1,0 +1,141 @@
+<html>
+<title>Basic Cutoff Plot</title>
+<link rel='stylesheet' href='../css/styles.css'>
+
+
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+
+<script src="../js/add/deg_per_ms_scatter.js"></script>
+
+<style>
+    .d3-tip {
+        line-height: 1;
+        font-weight: bold;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        border-radius: 2px;
+    }
+    /* Creates a small triangle extender for the tooltip */
+    
+    .d3-tip:after {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 10px;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.8);
+        content: "\25BC";
+        position: absolute;
+        text-align: center;
+    }
+    /* Style northward tooltips differently */
+    
+    .d3-tip.n:after {
+        margin: -1px 0 0 0;
+        top: 100%;
+        left: 0;
+    }
+    
+    .bar2:hover {
+        fill: brown;
+    }
+    
+    .bar {
+        fill: steelblue;
+    }
+    
+    .bar:hover {
+        fill: brown;
+    }
+    
+    .axis {
+        font: 10px sans-serif;
+    }
+    
+    .axis path,
+    .axis line {
+        fill: 'white';
+        stroke: black;
+        shape-rendering: crispEdges;
+    }
+    
+    .grid line {
+        stroke: grey;
+        stroke-opacity: 0.7;
+        shape-rendering: crispEdges;
+    }
+    
+    .grid path {
+        stroke-width: 0;
+    }
+</style>
+<header>
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Complete Overview 
+                <i class="fa fa-caret-down"></i>
+              </button>
+            <div class="dropdown-content">
+                <a href="index_ridgeline_elaborate.html">Ridgeline</a>
+                <a href="index_weekly.html">Weekly Overview</a>
+                <a href="index_overlay.html">Overlay Weekly Profile</a>
+                <a href="index_daily.html">Daily Overview</a>
+
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" style='background-color: dodgerblue;
+            color: white;'>Main Sensor Data Evaluation
+                <i class="fa fa-caret-down"></i>
+              </button>
+            <div class="dropdown-content">
+                <a href="index_tofromscatter.html">To-From Scatter</a>
+                <a href='index_freqDistr.html'> Frequency Distribution (scatter)</a>
+                <a href='index_MovmentFreqDistr.html'>Movement Frequency Distribution</a>
+                <a href='index_degperms.html'>Degree per Second</a>
+                <a href='index_scatter.html' style='background-color: rgb(65, 142, 219); color: white;'>Degree per Second (scatter)</a>
+                <a href="index_cutoff.html">Data Range</a>
+
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Profile
+                <i class="fa fa-caret-down"></i>
+              </button>
+            <div class="dropdown-content">
+                <a href="index_parset.html">Parset</a>
+                <a href="index_radar.html">Radar Chart</a>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</header>
+<div class='introtext'>
+    <p>
+        In this scatterplot, each dot represents a measured movement of the corresponding element, how many degrees it was moved in total and in what duration (milisecods).introtext
+    </p>
+</div style='margin-left: 50px; margin-top:50px'>
+<div>
+    <div class="scatterDrehwand"></div>
+    <div class="scatterDrehschrank"></div>
+    <div class="scatterLampeAussenwand"></div>
+    <div class="scatterLampeDrehwand"></div>
+</div>
+
+<body>
+
+    <script>
+        deg_per_ms_scatter();
+    </script>
+</body>
+
+
+</html>

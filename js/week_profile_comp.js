@@ -122,7 +122,7 @@ function week_profile_comp(data_g1, data_g2) {
 
 
     // set the dimensions and margins of the graph
-    var margin = { right: 100, left: 50 },
+    var margin = { right: 100, left: 50, top: 0 },
         width = Math.min((window.innerWidth / 2 * 0.95), (window.innerHeight * 0.95)) - 100,
         w = width - margin.left - margin.right;
 
@@ -180,23 +180,26 @@ function week_profile_comp(data_g1, data_g2) {
             const ELEMENT2 = max_per_week_g2.length - 1;
 
             var margin = { top: 50, right: 100, bottom: 80, left: 50 },
-                width = Math.min((window.innerWidth / 2 * 0.95), (window.innerHeight * 0.95)) - 100,
-                height = Math.min((window.innerWidth / 2 * 0.95), (window.innerHeight * 0.95)) - 120,
+                width = Math.min((window.innerWidth / 2 * 1.4), (window.innerHeight * 0.95)) - 100,
+                height = Math.min((window.innerWidth / 2 * 1.4), (window.innerHeight * 0.95)) - 120,
                 w = width - margin.left - margin.right,
-                h = height - margin.top - margin.bottom;
+                h = height - margin.top - margin.bottom,
+                height_label = width * 1.2;
+            margin.top += height_label - width;
+
 
             var svg_g1 = d3.select("#div_week_p" + index + l)
                 .append("svg")
                 .attr('id', 'week_p' + index + l)
                 .attr("width", width)
-                .attr("height", height)
+                .attr("height", height_label)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             var svg_g2 = d3.select("#div_week_p" + index + r)
                 .append("svg")
                 .attr('id', 'week_p' + index + r)
                 .attr("width", width)
-                .attr("height", height)
+                .attr("height", height_label)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -253,15 +256,15 @@ function week_profile_comp(data_g1, data_g2) {
 
             //---------------------------------------SETUP DONE-----------------------------------------------------------------
             svg_g1.append("text")
-                .attr('x', w / 2).attr('y', h + margin.top)
+                .attr('x', w / 2).attr('y', h + 50)
                 .attr("text-anchor", "middle")
                 .style("font-size", "13px")
-                .text("Frequency of Use per Day  and per Week of Group " + 1 + " for " + titlename);
+                .text("Frequency of Use per Weekday of Group " + 1 + " for " + titlename);
             svg_g2.append("text")
-                .attr('x', w / 2).attr('y', h + margin.top)
+                .attr('x', w / 2).attr('y', h + 50)
                 .attr("text-anchor", "middle")
                 .style("font-size", "13px")
-                .text("Frequency of Use per Day  and per Week of Group " + 2 + " for " + titlename);
+                .text("Frequency of Use per Weekday of Group " + 2 + " for " + titlename);
 
 
             var s_g1 = keys_g1.length - 1;
@@ -300,7 +303,9 @@ function week_profile_comp(data_g1, data_g2) {
                 .append("text")
                 .attr('x', w + 20)
                 .attr('y', function(d, i) {
-                    return h / s_g1 * i + margin.top / 2;
+                    return ((height_label - margin.top + 20) / s_g1 * i) - 100;
+                    // return h / s_g2 * i + 25; //margin.top/2;
+
                 })
                 .text(function(d) { return 'week ' }).style("fill", "black")
                 .style("font-size", 13)
@@ -387,7 +392,7 @@ function week_profile_comp(data_g1, data_g2) {
                 .append("text")
                 .attr('x', w + 20)
                 .attr('y', function(d, i) {
-                    return h / s_g2 * i + margin.top / 2;
+                    return ((height_label - margin.top + 40) / s_g2 * i) - 120;
                 })
                 .text(function(d) { return 'week ' }).style("fill", "black")
                 .style("font-size", 13)

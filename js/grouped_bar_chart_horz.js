@@ -6,22 +6,22 @@ function grouped_bar_chart_horz() {
         var quotes = datas[2][0]
 
 
-        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q1.21", $Qonetwo_1, $Qonetwo_2, 'Qonetwo', 'tog12g', [32, 16, 8, 4, 1], ['Raumformung', 'Privatsphäre', 'Beleuchtung', 'Lüftung', 'Andere'], 0.7) //['Drehschrank', 'Drehwand', 'Lampe Drehwand', 'Lampe Aussenwand']
+        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q1.21", $Qonetwo_1, $Qonetwo_2, 'Qonetwo', 'tog12g', [32, 16, 8, 4, 1], ['Raumwirkung', 'Privatsphäre', 'Lichtverhältnisse', 'Raumbelüftung', 'Andere'], 0.7) //['Drehschrank', 'Drehwand', 'Lampe Drehwand', 'Lampe Aussenwand']
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q1.7", $Qoneseven_1, $Qoneseven_2, 'Qoneseven', 'tog17g', [512, 256, 128, 64, 32, 16, 8, 4, 2, 1], ['Raum', 'Podest', 'Akustische Trennung', 'Stauraum', 'Handhabung', 'Fixierung Lampen', 'Drehwand', 'Spiegel', 'Andere', 'N/A'], 1)
 
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q2.4", $Qtwofour_1, $Qtwofour_2, 'Qtwofour', 'tog24g', [1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1], ['Vorhang', 'Boden', 'Chromstahl', 'Bad', 'Wand', 'Griffe', 'Balkon', 'Tisch', 'Drehwand', 'Andere', 'N/A'], 1)
 
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q3.2", $Qthreetwo_1, $Qthreetwo_2, 'Qthreetwo', 'tog32g', [8, 4, 2, 1], ['Nicht gut', 'Nur Visuell', 'Gut', 'Andere'], 0.6)
-        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q3.3", $Qthreethree_1, $Qthreethree_2, 'Qthreethree', 'tog33g', [4096, 2048, 1024, 512, 256, 64, 32, 16, 8, 4, 2, 1], ['Schlafen', 'Tag/Nacht', 'Besuch/Raum', 'Küche', 'Privatsphäre', 'Beleuchtung', 'Belüftung', 'Verbindung', 'Arbeitsraum', 'halb offen', 'Nein, keine', 'Andere'], 1.1)
+        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q3.3", $Qthreethree_1, $Qthreethree_2, 'Qthreethree', 'tog33g', [4096, 2048, 1024, 512, 256, 64, 32, 16, 8, 4, 2, 1], ['Schlafen', 'Tag/Nacht', 'Besuch/Raum', 'Küche', 'Privatsphäre', 'Lichtverhältnisse', 'Belüftung', 'Verbindung', 'Arbeitsraum', 'halb offen', 'Nein, keine', 'Andere'], 1.1)
 
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q5.1", $Qfiveone_1, $Qfiveone_2, 'Qfiveone', 'tog51g', [32, 16, 8, 4, 2, 1], ['Vereinbarung', 'Raumteiler', 'relativ fix', 'Situativ', 'Individuell', ' N/A'], 0.7)
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q5.3", $Qfivethree_1, $Qfivethree_2, 'Qfivethree', 'tog53g', [16, 8, 2, 1], ['keine Absprache', 'Absprache', 'Andere', 'N/A'], 0.6)
 
-        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.1", $Qsixone_1, $Qsixone_2, 'Qsixone', 'tog61g', [16192, 8096, 4096, 2048, 256, 128, 64, 32, 16, 8, 4, 2, 1], ['Sitzgelegenheit', 'Drehwand', 'Beleuchtung', 'Stauraum', 'Temperatur', 'Arbeitsplatz', 'Arreiterung', 'Garderobe', 'Bad', 'Küche', 'Schlafraum', 'Andere', 'N/A', ], 1.1)
+        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.1", $Qsixone_1, $Qsixone_2, 'Qsixone', 'tog61g', [16192, 8096, 4096, 2048, 256, 128, 64, 32, 16, 8, 4, 2, 1], ['Sitzgelegenheit', 'Drehwand', 'Lichtverhältnisse', 'Stauraum', 'Temperatur', 'Arbeitsplatz', 'Arreiterung', 'Garderobe', 'Bad', 'Küche', 'Schlafraum', 'Andere', 'N/A', ], 1.1)
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.2", $Qsixtwo_1, $Qsixtwo_2, 'Qsixtwo', 'tog62g', [512, 256, 128, 32, 16, 8, 4, 2, 1], ['Dimension', 'Grösse', 'Podest', 'Funktionalität', 'Akustische Trennung', 'Griffe', 'Lampen', 'Drehschrank', 'N/A'], 0.9)
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.3", $Qsixthree_1, $Qsixthree_2, 'Qsixthree', 'tog63g', [256, 128, 64, 4, 2, 1], ['Tisch', 'Lampen', 'Kleiderstange', 'Bett', 'Andere', 'N/A'], 0.6)
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.4", $Qsixfour_1, $Qsixfour_2, 'Qsixfour', 'tog64g', [256, 128, 32, 8, 2, 1], ['Tag/Nacht', 'Verschlossen (S)', 'Offen (S)', 'Elemente', 'Morgens', 'N/A'], 0.8)
-        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.5", $Qsixfive_1, $Qsixfive_2, 'Qsixfive', 'tog65g', [128, 64, 32, 16, 8, 4, 2, 1], ['Schlaf', 'Podestsitz', 'Trennung', 'Besuch', 'Lüftung', 'Arbeit', 'Kochen', 'N/A'], 0.8)
+        draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.5", $Qsixfive_1, $Qsixfive_2, 'Qsixfive', 'tog65g', [128, 64, 32, 16, 8, 4, 2, 1], ['Schlaf', 'Podestsitz', 'Trennung', 'Besuch', 'Raumbelüftung', 'Arbeit', 'Kochen', 'N/A'], 0.8)
         draw_grouped_bar_chart_horz(data, textdesc, quotes, "q6.6", $Qsixsix_1, $Qsixsix_2, 'Qsixsix', 'tog66g', [16, 8, 4, 2, 1], ['Ja', 'Nein', 'Arbeitsplatz', 'Jahreszeit', 'N/A'], 0.6)
 
     })

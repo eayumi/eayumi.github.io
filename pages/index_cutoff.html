@@ -1,0 +1,128 @@
+<html>
+<title>Data Range</title>
+<link rel='stylesheet' href='../css/styles.css'>
+
+<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+
+<script src="../js/add/cleaveland_dot.js"></script>
+
+
+<style>
+    .axis {
+        font: 5px sans-serif;
+    }
+    
+    .axis path,
+    .axis line {
+        fill: 'white';
+        stroke: black;
+        shape-rendering: crispEdges;
+    }
+    
+    .grid line {
+        stroke: rgb(0, 0, 0);
+        stroke-opacity: 0.2;
+        shape-rendering: crispEdges;
+    }
+    
+    .grid path {
+        stroke-width: 0;
+    }
+</style>
+
+<header>
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Complete Overview 
+            <i class="fa fa-caret-down"></i>
+          </button>
+            <div class="dropdown-content">
+                <a href="index_ridgeline_elaborate.html">Ridgeline</a>
+                <a href="index_weekly.html">Weekly Overview</a>
+                <a href="index_overlay.html">Overlay Weekly Profile</a>
+                <a href="index_daily.html">Daily Overview</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button style='background-color: dodgerblue;
+            color: white;' class="dropbtn">Main Sensor Data Evaluation 
+            <i class="fa fa-caret-down"></i>
+          </button>
+            <div class="dropdown-content">
+
+                <a href="index_tofromscatter.html">To From Scatter</a>
+                <a href='index_freqDistr.html'> Frequency Distribution (scatter)</a>
+                <a href='index_MovmentFreqDistr.html'>Movement Frequency Distribution</a>
+                <a href='index_degperms.html'>Degree per Second</a>
+                <a href='index_scatter.html'>Degree per Second (scatter)</a>
+                <a href="index_cutoff.html" style='background-color: rgb(65, 142, 219); color: white;'>Data Range</a>
+
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Profile
+            <i class="fa fa-caret-down"></i>
+          </button>
+            <div class="dropdown-content">
+                <a href="index_parset.html">Parset</a>
+                <a href="index_radar.html">Radar Chart</a>
+
+
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Data Shift
+                <i class="fa fa-caret-down"></i>
+              </button>
+            <div class="dropdown-content">
+                <a href="index_data_shift_bar.html">Shift Bar Chart</a>
+                <a href="index_data_shift_amout.html">Shift Amount Bar Chart</a>
+                <a href="index_data_shift_stacked.html">Stacked Shift Bar Chart</a>
+                <a href="index_data_shift_stacked_perc.html">Shift Bar Chart Percent</a>
+                <a href="index_scatterTF_shift.html">Shift To/From Scatter</a>
+                <a href="index_shift_time.html">Shift Time</a>
+                <a href="index_while_move.html">While Movements </a>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</header>
+<div class="introtext">
+    <p>
+        This Cleaveland plot shows the daily range of the measured data for the corresponding element.
+        <br> The coulors have the following meaning:
+    </p>
+    <svg width='15' height='10'><circle cx= '5' cy='5'r= '5' style='fill:#4C4082 '></circle> </svg> <label>Maximal Value <br></label>
+    <svg width='15' height='10'><circle cx= '5' cy='5'r= '5' style='fill: #69b3a2  '></circle> </svg> <label>Minimal Value<br></label>
+    <svg width='15' height='10'><circle cx= '5' cy='5'r= '5' style='fill:crimson '></circle> </svg> <label>Value is outside the defined range for rotation of the element. (eg. negative)<br></label>
+    <svg width='15' height='10'><circle cx= '5' cy='5'r= '5' style='fill:darkgrey '></circle> </svg> <label>No movement measured<br></label>
+
+</div>
+
+<div style='margin-left: 50px'>
+    <div class="scatterDrehwand"></div>
+    <div class="scatterDrehschrank"></div>
+    <div class="scatterLampeAussenwand"></div>
+    <div class="scatterLampeDrehwand"></div>
+    <div class="svg"></div>
+
+</div>
+
+<body>
+
+
+
+    <script>
+        cleaveland();
+    </script>
+</body>
+
+
+</html>

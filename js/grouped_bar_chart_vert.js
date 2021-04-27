@@ -27,16 +27,16 @@ function grouped_bar_chart_vert() {
             draw_grouped_bar_chart_vert_score(data, "q2.35", $Qtwothreefive_1, $Qtwothreefive_2, 'tog235g', 'Qtwothreefive')
             draw_grouped_bar_chart_vert_score(data, "q2.36", $Qtwothreesix_1, $Qtwothreesix_2, 'tog236g', 'Qtwothreesix')
 
-            qtwofive(data, 'q2.5', 'Qtwofive', 0)
+            qtwofive(data, 'q2.5', 'Qtwofive', 0, $Qtwofive_1)
 
             threeOpt(data, 'q2.6', $Qtwosix_1, $Qtwosix_2, 'tog26g', 'Qtwosix', 'zu kalt', 'angenehm', 'zu warm')
 
             draw_grouped_bar_chart_vert_score(data, "q3.1", $Qthreeone_1, $Qthreeone_2, 'tog31g', 'Qthreeone')
 
-            qtwofive(data, 'q4.1', 'Qfourone', 0)
+            qtwofive(data, 'q4.1', 'Qfourone', 0, $Qfourone_1)
 
-            qtwofive(data, 'q5.2', 'Qfivetwo', 1)
-            qtwofive(data, 'q5.4', 'Qfivefour', 1)
+            qtwofive(data, 'q5.2', 'Qfivetwo', 1, $Qfivetwo_1)
+            qtwofive(data, 'q5.4', 'Qfivefour', 1, $Qfivefour_1)
 
 
 

@@ -1,0 +1,324 @@
+[
+  {
+    "Sensor": "LampeAussenwand",
+    "Line1": "Is the sensor for the lamp on the outer wall.",
+    "Line2": "It records the current position, specified by angle.",
+    "Line3": "The y-axis describes the degree of the angle.",
+    "Line4": ""
+  },
+  {
+    "Sensor": "LampeDrehwand",
+    "Line1": "Is the sensor for the lamp on top of the Drehwand (revolving wall).",
+    "Line2": "It records the current position, specified by angle.",
+    "Line3": "The y-axis describes the degree of the angle.",
+    "Line4": ""
+  },
+  {
+    "Sensor": "Drehwand",
+    "Line1": "Is the sensor for the Drehwand (revolving wall).",
+    "Line2": "It records the current position, specified by angle.",
+    "Line3": "The y-axis describes the degree of the angle.",
+    "Line4": ""
+  },
+  {
+    "Sensor": "Drehschrank",
+    "Line1": "Is the sensor for the Drehschrank (revolving closet)",
+    "Line2": "It records the current position, specified by angle.",
+    "Line3": "The y-axis describes the degree of the angle.",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Fen_Oben_Str",
+    "Line1": "Is the sensor for the upper window in the kitchen.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Fen_Unten_Str",
+    "Line1": "Is the sensor for the lower window in the kitchen.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "S_Fen_Oben_Str",
+    "Line1": "Is the sensor for the upper window in the bedroom (Schlafzimer).",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "S_Fen_Unten_Str",
+    "Line1": "Is the sensor for the lower window in the bedroom (Schlafzimmer).",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "S_Boden_Wand_cyr",
+    "Line1": "Is the sensor for the floor platform door, adjacent to the longwall.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "description"
+  },
+  {
+    "Sensor": "S_Boden_Kueche_cyr",
+    "Line1": "Is the sensor for the floor platform door, adjacent to the kitchen.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "S_Schub_Wand_cyr",
+    "Line1": "Is the sensor for the floor platform drawer, adjacent to the longwall.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "description"
+  },
+  {
+    "Sensor": "S_Schub_Kueche_cyr",
+    "Line1": "Is the sensor for the floor platform drawer, adjacent to the kitchen.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "H_Putz_cyr",
+    "Line1": "Is the sensor for the Drehschrank door, intended for cleaning utensils.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "H_Graderobe_cyr",
+    "Line1": "Is the sensor for the Drehschrank door, intended for clothes etc.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "H_Tuer_Str",
+    "Line1": "Is the sensor for main door.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "B_Tuer_Str",
+    "Line1": "Is the sensor for the bathroom door.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "B_Schrank_cyr",
+    "Line1": "Is the sensor for the bathroom mirror cabinet.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "B_Wasch_cyr",
+    "Line1": "Is the sensor for the bathroom sink cabinet.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "W_Schub_Bad_cyr",
+    "Line1": "Is the sensor for the floor platform drawer, adjacent to the bathroom.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "W_Schub_Wand_cyr",
+    "Line1": "Is the sensor for the floor platform drawer, adjacent to the long wall.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "W_Boden_Bad_cyr",
+    "Line1": "Is the sensor for the floor platform door, adjacent to the bathroom.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "description"
+  },
+  {
+    "Sensor": "W_Boden_Wand_cyr",
+    "Line1": "Is the sensor for the floor platform door, adjacent to the longwall.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "description"
+  },
+  {
+    "Sensor": "W_Fen_Bad_Str",
+    "Line1": "Is the sensor for the window in the livingroom, adjacent to the bathroom.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "description"
+  },
+  {
+    "Sensor": "W_Fen_Wand_Str",
+    "Line1": "Is the sensor for the window in the livingroom, adjacent to the longwall.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "description"
+  },
+  {
+    "Sensor": "K_Schrank_Oben_01_cyr",
+    "Line1": "Is the sensor for the first upper kitchen cabinet form the left.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Schrank_Oben_02_cyr",
+    "Line1": "Is the sensor for the second upper kitchen cabinet form the left.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Schrank_Oben_03_cyr",
+    "Line1": "Is the sensor for the third upper kitchen cabinet form the left.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Schrank_Oben_04_cyr",
+    "Line1": "Is the sensor for the fourth upper kitchen cabinet form the left.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Schrank_Oben_05_cyr",
+    "Line1": "Is the sensor for the fifth upper kitchen cabinet form the left.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Kuehl_cyr",
+    "Line1": "Is the sensor for the refrigerator door.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Abfall_cyr",
+    "Line1": "Is the sensor for the sink garbage door in the kitchen",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Wasch_Str",
+    "Line1": "Is the sensor for the dishwasher door.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Ofen_Str",
+    "Line1": "Is the sensor for the oven door.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Schub_Oben_cyr",
+    "Line1": "Is the sensor for the topmost drawer next to the oven.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "K_Ofen_Schub_cyr",
+    "Line1": "Is the sensor for the drawer below the oven.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "K_Schub_Mitte_cyr",
+    "Line1": "Is the sensor for the middle drawer next to the oven.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_Schub_Unten_cyr",
+    "Line1": "Is the sensor for the lowest drawer next to the oven.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "K_IT_cyr",
+    "Line1": "Is the sensor for the fusebox.",
+    "Line2": "It records the time it was opened or closed.",
+    "Line3": "The y-axis describes the states OPEN (1) or CLOSED (0).",
+    "Line4": ""
+  },
+  {
+    "Sensor": "W_Balkon_cyrspec_switch",
+    "Line1": "Is the sensor outside the balcony, recording 'switch'.",
+    "Line2": "?",
+    "Line3": "The y-axis describes the states ON (1) or OFF (0).",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "W_Balkon_cyrspec_temp",
+    "Line1": "Is the sensor outside the balcony, measuring the temperature.",
+    "Line2": "It recorded the current temperature in Celsius.",
+    "Line3": "The y-axis describes the temperature.",
+    "Line4": ""
+  },
+  {
+    "Sensor": "W_Balkon_cyrspec_light",
+    "Line1": "Is the sensor outside the balcony, measuring light.",
+    "Line2": "?",
+    "Line3": "?",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "W_Balkon_cyrspec_moist",
+    "Line1": "Is the sensor outside the balcony, measuring moisture.",
+    "Line2": "?",
+    "Line3": "?",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "H_Eingang_cyrspec_switch",
+    "Line1": "Is the sensor outside to the entrance, recording 'switch'.",
+    "Line2": "?",
+    "Line3": "The y-axis describes the states ON (1) or OFF (0).",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "H_Eingag_cyrspec_temp",
+    "Line1": "Is the sensor outside to the entrance, recording the temperature.",
+    "Line2": "It recorded the current temperature in Celsius.",
+    "Line3": "The y-axis describes the temperature.",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "H_Eingag_cyrspec_light",
+    "Line1": "Is the sensor outside to the entrance, measuring light. (intensity?)",
+    "Line2": "?",
+    "Line3": "?",
+    "Line4": "?"
+  },
+  {
+    "Sensor": "H_Eingag_cyrspec_moist",
+    "Line1": "Is the sensor outside to the entrance, measuring moisture.",
+    "Line2": "?",
+    "Line3": "?",
+    "Line4": "?"
+  }
+]

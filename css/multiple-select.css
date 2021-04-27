@@ -250,7 +250,12 @@
     background: rgba(233, 150, 122, 0.3)
 }
 
+.multiselector_3 .ms-choice {
+    background: rgba(233, 122, 191, 0.1)
+}
+
 .multiselector_1,
-.multiselector_2 {
+.multiselector_2,
+.multiselector_3 {
     text-align: left;
 }
