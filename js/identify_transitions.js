@@ -286,13 +286,16 @@ function histo_trans_time(data, color, name) {
     var tot = 0;
     var tot_single = 0; 
     var tot_double = 0;
-    
+    console.log('data');
+    console.log(data);
+
     for(var j = 0;j <4; j++){
-        tot_single+= data[j].values[0].value;
-        if(data[j].values.length >0) tot_double+= data[j].values[1].value;
-
-
-        
+      if(name == 'AllDataonefour'){
+             tot_single+= data[j].values[0].value;
+      }else{
+             tot_single+= data[j].values[0].value;
+             tot_double+= data[j].values[1].value;
+        }
     }
     tot = tot_single+tot_double;
     
