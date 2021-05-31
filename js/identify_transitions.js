@@ -282,7 +282,18 @@ function identify_transitions(design, borders, g, index, timeopt, wkd, weeks, we
 }
 
 function histo_trans_time(data, color, name) {
+    
+    var tot = 0;
+    
+    for(var j = 0;j <data.length; j++){
+        tot+= data[j].values;
+    }
+    console.log('tot');
+    console.log(tot);
+    console.log(data);
     d3.selectAll('#ring' + name).remove();
+        d3.selectAll('.bartext').remove();
+
 
 
     var margin = { top: 50, right: 20, bottom: 30, left: 40 },
@@ -395,6 +406,24 @@ function histo_trans_time(data, color, name) {
         .text(function(d) { return d; });
 
     legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+    
+    var label = slice.selectAll(".bartext")
+            .data(function(d) { return d.values; })
+            .enter()
+            .append("text")
+            .attr("class", "bartext")
+            .attr("text-anchor", "middle")
+            .style("opacity", "0")
+            .attr("fill", "black")
+            .attr("x", function(d) { return x1(d.rate) + (x1.bandwidth() / 2); })
+            .attr("y", function(d) { return y(d.value) - 3 })
+            .text(function(d) {
+                if (d.value == 0) return ""
+                return d.value+", "+(d.value/tot * 100).toFixed(1) + "%"
+            })
+            .style('font-size', '12px');
+
+        label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
 }
 
 
