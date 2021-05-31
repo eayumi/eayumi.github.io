@@ -127,7 +127,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
 
     var tot_single = data_grouped[0].DS + data_grouped[0].DW + data_grouped[0].LA + data_grouped[0].LD
     var tot_double = data_grouped[1].DS + data_grouped[1].DW + data_grouped[1].LA + data_grouped[1].LD
-    var tot_alles = data_alles.DS + data_alles.DW + data_alles.LA + data_alles.LD
+    var tot_alles =tot_single+tot_double;
     var data_sp = [{
             categorie: "Drehschrank",
             values: [{
