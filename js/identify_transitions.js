@@ -290,9 +290,7 @@ function histo_trans_time(data, color, name) {
     for(var j = 0;j <4; j++){
         console.log(data[j].values[0]);
         tot_single+= data[j].values[0].value;
-        tot_double+= data[j].values[1].value;
-        console.log(data[j].values[1]);
-        console.log(data[j].values[1].value);
+        if(datas[j].values.length >0) tot_double+= data[j].values[1].value;
 
 
         
