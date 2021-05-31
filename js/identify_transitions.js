@@ -286,7 +286,7 @@ function histo_trans_time(data, color, name) {
     var tot = 0;
     
     for(var j = 0;j <data.length; j++){
-        tot+= data[j].values;
+        tot+= data[j].value;//values
     }
     console.log('tot');
     console.log(tot);
@@ -408,7 +408,7 @@ function histo_trans_time(data, color, name) {
     legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
     
     var label = slice.selectAll(".bartext")
-            .data(function(d) { return d.values; })
+            .data(function(d) { return d.value; })//values
             .enter()
             .append("text")
             .attr("class", "bartext")
