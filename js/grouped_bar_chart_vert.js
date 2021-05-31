@@ -27,7 +27,7 @@ function grouped_bar_chart_vert() {
             draw_grouped_bar_chart_vert_score(data, "q2.35", $Qtwothreefive_1, $Qtwothreefive_2, 'tog235g', 'Qtwothreefive')
             draw_grouped_bar_chart_vert_score(data, "q2.36", $Qtwothreesix_1, $Qtwothreesix_2, 'tog236g', 'Qtwothreesix')
 
-            qtwofive(data, 'q2.5', 'Qtwofive', 0, $Qtwofive_1)
+            qtwofive(data, 'q2.5', 'Qtwofive', 0, $Qtwofive_1) //pie
 
             threeOpt(data, 'q2.6', $Qtwosix_1, $Qtwosix_2, 'tog26g', 'Qtwosix', 'zu kalt', 'angenehm', 'zu warm')
 
@@ -127,7 +127,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
 
     var tot_single = data_grouped[0].DS + data_grouped[0].DW + data_grouped[0].LA + data_grouped[0].LD
     var tot_double = data_grouped[1].DS + data_grouped[1].DW + data_grouped[1].LA + data_grouped[1].LD
-
+    var tot_alles = data_alles.DS + data_alles.DW + data_alles.LA + data_alles.LD
     var data_sp = [{
             categorie: "Drehschrank",
             values: [{
@@ -257,9 +257,36 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
         }
 
     ]
-    var tot = tot_single + tot_double;
 
+    var data_all_perc = [{
+            categorie: "Drehschrank",
+            values: [{
+                value: (data_alles[0].DS / tot_alles).toFixed(4),
+                rate: "All Test Subjects"
+            }]
+        },
+        {
+            categorie: "Drehwand",
+            values: [{
+                value: (data_alles[0].DW / tot_alles).toFixed(4),
+                rate: "All Test Subjects"
+            }]
+        },
+        {
+            categorie: "Lampe Drehwand",
+            values: [{
+                value: (data_alles[0].LD / tot_alles).toFixed(4),
+                rate: "All Test Subjects"
+            }]
+        }, {
+            categorie: "Lampe Aussenwand",
+            values: [{
+                value: (data_alles[0].LA / tot_alles).toFixed(4),
+                rate: "All Test Subjects"
+            }]
+        }
 
+    ]
 
     //---------------------CHART---------------------------------
 
@@ -503,8 +530,11 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
         if (this.checked) {
             update_g(data_group_perc, false, true)
             update(data_sp_perc, false, true)
+            update_all(data_all_perc, false, true)
+
         } else {
             update(data_sp, false, false)
+            update_all(data_all, false, false)
             update_g(data_group, false, false)
 
         }
@@ -646,6 +676,120 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
             .text("Value");
 
         svg.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
+
+    }
+
+    function update_all(data_, first, perc) {
+        if (perc) {
+            var yAxis_all = d3.axisLeft().tickFormat(d => Math.round(d * 100))
+                .scale(y_all)
+        } else {
+            var yAxis_all = d3.axisLeft()
+                .scale(y_all)
+        }
+        if (!first) svg_all.selectAll(".bartext").remove()
+
+        svg_all.selectAll("#yax").remove()
+        console.log(data_)
+        y_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
+
+        svg_all.selectAll([".bar", ".slice"])
+            .remove()
+            .exit()
+            .data(data_)
+
+        var slice = svg_all.selectAll(".slice")
+            .data(data_)
+            .enter().append("g")
+            .attr("class", "g")
+            .attr("transform", function(d) { return "translate(" + x0_all(d.categorie) + ",0)"; });
+
+        var u = slice.selectAll("rect")
+            .data(function(d) { return d.values; })
+
+        u.enter().append("rect")
+            .attr('class', 'bar')
+            .attr("x", function(d) { return x1_all(d.rate); })
+            .attr("y", function(d) { return y_all(0); })
+            .attr("width", x1_all.bandwidth())
+            .attr("height", function(d) { return height - y_all(0); })
+            .style("fill", function(d) { return color_all(d.rate) })
+            .on("mouseover", function(d) {
+                d3.select(this).style("fill", d3.rgb(color_all(d.rate)).darker(2));
+            })
+            .on("mouseout", function(d, i) {
+                d3.select(this).style("fill", color_all(d.rate));
+            });
+        slice.selectAll("rect")
+            .transition()
+            .delay(function(d) { return Math.random() * 1000; })
+            .duration(1000)
+            .attr("y", function(d) { return y_all(d.value); })
+            .attr("height", function(d) { return height - y_all(d.value); });
+
+        //label
+
+
+        var label = slice.selectAll(".bartext")
+            .data(function(d) { return d.values; })
+            .enter()
+            .append("text")
+            .attr("class", "bartext")
+            .attr("text-anchor", "middle")
+            .style("opacity", "0")
+            .attr("fill", "black")
+            .attr("x", function(d) { return x1_all(d.rate) + (x1_all.bandwidth() / 2); })
+            .attr("y", function(d) { return y_all(d.value) - 3 })
+            .text(function(d) {
+                if (d.value == 0) return ""
+                if (perc) return (d.value * 100).toFixed(1) + "%"
+                return d.value;
+            })
+            .style('font-size', '12px');
+
+        label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        //Legend
+        var legend = svg.selectAll(".legend")
+            .data(data_[0].values.map(function(d) { return d.rate; }))
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(0," + ((i * 20) - margin.top) + ")"; })
+            .style("opacity", "0")
+            .style('font-size', '12px')
+
+
+        legend.append("rect")
+            .attr("x", width - 18)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", function(d) { return color_all(d); });
+
+        legend.append("text")
+            .attr("x", width - 24)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function(d) { return d; });
+
+        legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        // Remove old elements
+
+        svg_all.append("g")
+            .attr("class", "y axis")
+            .attr("id", 'yax')
+            .style('opacity', '0')
+            .call(yAxis_all)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .style('font-weight', 'bold')
+            .text("Value");
+
+        svg_all.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
 
     }
 
@@ -809,7 +953,7 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
 
     var tot_single = data_grouped[0].w + data_grouped[0].m + data_grouped[0].y + data_grouped[0].n;
     var tot_double = data_grouped[1].w + data_grouped[1].m + data_grouped[1].y + data_grouped[1].n;
-
+    var tot_alles = tot_single + tot_double;
 
     var data_sp = [{
             categorie: "Eine Woche",
@@ -936,6 +1080,36 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
             categorie: "Nein, lieber nicht",
             values: [{
                 value: data_alles[0].n,
+                rate: "All Test Subjects"
+            }]
+        }
+
+    ]
+
+    var data_all_perc = [{
+            categorie: "Eine Woche",
+            values: [{
+                value: (data_alles[0].w / tot_alles).toFixed(4),
+                rate: "All Test Subjects"
+            }]
+        },
+        {
+            categorie: "Einen Monat",
+            values: [{
+                value: (data_alles[0].m / tot_alles).toFixed(4),
+                rate: "All Test Subjects"
+            }]
+        },
+        {
+            categorie: "Ein Jahr und länger",
+            values: [{
+                value: (data_alles[0].y / tot_alles).toFixed(4),
+                rate: "All Test Subjects"
+            }]
+        }, {
+            categorie: "Nein, lieber nicht",
+            values: [{
+                value: (data_alles[0].n / tot_alles).toFixed(4),
                 rate: "All Test Subjects"
             }]
         }
@@ -1183,9 +1357,12 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
         if (this.checked) {
             update_g(data_group_perc, false, true)
             update(data_sp_perc, false, true)
+            update_all(data_all_perc, false, true)
         } else {
             update(data_sp, false, false)
             update_g(data_group, false, false)
+            update_all(data_all, false, false)
+
 
         }
 
@@ -1326,6 +1503,120 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
             .text("Value");
 
         svg.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
+
+    }
+
+    function update_all(data_, first, perc) {
+        if (perc) {
+            var yAxis_all = d3.axisLeft().tickFormat(d => Math.round(d * 100))
+                .scale(y_all)
+        } else {
+            var yAxis_all = d3.axisLeft()
+                .scale(y_all)
+        }
+        if (!first) svg_all.selectAll(".bartext").remove()
+
+        svg_all.selectAll("#yax").remove()
+        console.log(data_)
+        y_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
+
+        svg_all.selectAll([".bar", ".slice"])
+            .remove()
+            .exit()
+            .data(data_)
+
+        var slice = svg_all.selectAll(".slice")
+            .data(data_)
+            .enter().append("g")
+            .attr("class", "g")
+            .attr("transform", function(d) { return "translate(" + x0_all(d.categorie) + ",0)"; });
+
+        var u = slice.selectAll("rect")
+            .data(function(d) { return d.values; })
+
+        u.enter().append("rect")
+            .attr('class', 'bar')
+            .attr("x", function(d) { return x1_all(d.rate); })
+            .attr("y", function(d) { return y_all(0); })
+            .attr("width", x1_all.bandwidth())
+            .attr("height", function(d) { return height - y_all(0); })
+            .style("fill", function(d) { return color_all(d.rate) })
+            .on("mouseover", function(d) {
+                d3.select(this).style("fill", d3.rgb(color_all(d.rate)).darker(2));
+            })
+            .on("mouseout", function(d, i) {
+                d3.select(this).style("fill", color_all(d.rate));
+            });
+        slice.selectAll("rect")
+            .transition()
+            .delay(function(d) { return Math.random() * 1000; })
+            .duration(1000)
+            .attr("y", function(d) { return y_all(d.value); })
+            .attr("height", function(d) { return height - y_all(d.value); });
+
+        //label
+
+
+        var label_all = slice.selectAll(".bartext")
+            .data(function(d) { return d.values; })
+            .enter()
+            .append("text")
+            .attr("class", "bartext")
+            .attr("text-anchor", "middle")
+            .style("opacity", "0")
+            .attr("fill", "black")
+            .attr("x", function(d) { return x1_all(d.rate) + (x1_all.bandwidth() / 2); })
+            .attr("y", function(d) { return y_all(d.value) - 3 })
+            .text(function(d) {
+                if (d.value == 0) return ""
+                if (perc) return (d.value * 100).toFixed(1) + "%"
+                return d.value;
+            })
+            .style('font-size', '12px');
+
+        label_all.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        //Legend
+        var legend = svg_all.selectAll(".legend")
+            .data(data_[0].values.map(function(d) { return d.rate; }))
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(0," + ((i * 20) - margin.top) + ")"; })
+            .style("opacity", "0")
+            .style('font-size', '12px')
+
+
+        legend.append("rect")
+            .attr("x", width - 18)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", function(d) { return color_all(d); });
+
+        legend.append("text")
+            .attr("x", width - 24)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function(d) { return d; });
+
+        legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        // Remove old elements
+
+        svg_all.append("g")
+            .attr("class", "y axis")
+            .attr("id", 'yax')
+            .style('opacity', '0')
+            .call(yAxis_all)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .style('font-weight', 'bold')
+            .text("Value");
+
+        svg_all.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
 
     }
 

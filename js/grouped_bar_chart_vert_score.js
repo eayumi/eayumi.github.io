@@ -660,8 +660,11 @@ function draw_grouped_bar_chart_vert_score(data_alt, quest, selector1, selector2
         if (this.checked) {
             update_g(data_group_perc, false, true)
             update(data_sp_perc, false, true)
+            update_all(data_all_perc, false, true)
+
         } else {
             update(data_sp, false, false)
+            update_all(data_all, false, false)
             update_g(data_group, false, false)
 
         }
@@ -802,6 +805,119 @@ function draw_grouped_bar_chart_vert_score(data_alt, quest, selector1, selector2
             .text("Value");
 
         svg.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
+
+    }
+
+    function update_all(data_, first, perc) {
+        if (perc) {
+            var yAxis_all = d3.axisLeft().tickFormat(d => Math.round(d * 100))
+                .scale(y_all)
+        } else {
+            var yAxis_all = d3.axisLeft()
+                .scale(y_all)
+        }
+        if (!first) svg_all.selectAll(".bartext").remove()
+
+        svg_all.selectAll("#yax").remove()
+        y_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
+
+        svg_all.selectAll([".bar", ".slice"])
+            .remove()
+            .exit()
+            .data(data_)
+
+        var slice = svg_all.selectAll(".slice")
+            .data(data_)
+            .enter().append("g")
+            .attr("class", "g")
+            .attr("transform", function(d) { return "translate(" + x0_all(d.categorie) + ",0)"; });
+
+        var u = slice.selectAll("rect")
+            .data(function(d) { return d.values; })
+
+        u.enter().append("rect")
+            .attr('class', 'bar')
+            .attr("x", function(d) { return x1_all(d.rate); })
+            .attr("y", function(d) { return y_all(0); })
+            .attr("width", x1_all.bandwidth())
+            .attr("height", function(d) { return height - y_all(0); })
+            .style("fill", function(d) { return color_all(d.rate) })
+            .on("mouseover", function(d) {
+                d3.select(this).style("fill", d3.rgb(color_all(d.rate)).darker(2));
+            })
+            .on("mouseout", function(d, i) {
+                d3.select(this).style("fill", color_all(d.rate));
+            });
+        slice.selectAll("rect")
+            .transition()
+            .delay(function(d) { return Math.random() * 1000; })
+            .duration(1000)
+            .attr("y", function(d) { return y_all(d.value); })
+            .attr("height", function(d) { return height - y_all(d.value); });
+
+        //label
+
+
+        var label = slice.selectAll(".bartext")
+            .data(function(d) { return d.values; })
+            .enter()
+            .append("text")
+            .attr("class", "bartext")
+            .attr("text-anchor", "middle")
+            .style("opacity", "0")
+            .attr("fill", "black")
+            .attr("x", function(d) { return x1_all(d.rate) + (x1_all.bandwidth() / 2); })
+            .attr("y", function(d) { return y_all(d.value) - 3 })
+            .text(function(d) {
+                if (d.value == 0) return ""
+                if (perc) return (d.value * 100).toFixed(1) + "%"
+                return d.value;
+            })
+            .style('font-size', '12px');
+
+        label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        //Legend
+        var legend = svg_all.selectAll(".legend")
+            .data(data_[0].values.map(function(d) { return d.rate; }))
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(0," + ((i * 20) - margin.top) + ")"; })
+            .style("opacity", "0")
+            .style('font-size', '12px')
+
+
+        legend.append("rect")
+            .attr("x", width - 18)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", function(d) { return color_all(d); });
+
+        legend.append("text")
+            .attr("x", width - 24)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function(d) { return d; });
+
+        legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        // Remove old elements
+
+        svg_all.append("g")
+            .attr("class", "y axis")
+            .attr("id", 'yax')
+            .style('opacity', '0')
+            .call(yAxis_all)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .style('font-weight', 'bold')
+            .text("Value");
+
+        svg_all.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
 
     }
 
@@ -967,6 +1083,10 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
     }]
     var tot_single = single.filter(d => d[quest] >= 0 && d[quest] <= 2).length;
     var tot_double = double.filter(d => d[quest] >= 0 && d[quest] <= 2).length;
+    var tot_alles = tot_single + tot_double;
+
+
+
 
     var data_all = [{
             categorie: A,
@@ -986,6 +1106,29 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
             categorie: C,
             values: [{
                 value: data_alles[0].score[2],
+                rate: "All Test Subject"
+            }]
+        }
+    ]
+
+    var data_all_perc = [{
+            categorie: A,
+            values: [{
+                value: (data_alles[0].score[0] / tot_alles).toFixed(4),
+                rate: "All Test Subject"
+            }]
+        },
+        {
+            categorie: B,
+            values: [{
+                value: (data_alles[0].score[1] / tot_alles).toFixed(4),
+                rate: "All Test Subject"
+            }]
+        },
+        {
+            categorie: C,
+            values: [{
+                value: (data_alles[0].score[2] / tot_alles).toFixed(4),
                 rate: "All Test Subject"
             }]
         }
@@ -1206,9 +1349,11 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
     svg_g.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
     svg_all.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
 
+    console.table(data_all_perc)
 
     update(data_sp, true, false);
     update_g(data_sp, true, false);
+
 
 
     var slice_all = svg_all.selectAll(".slice")
@@ -1299,8 +1444,11 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
         if (this.checked) {
             update_g(data_group_perc, false, true)
             update(data_sp_perc, false, true)
+            update_all(data_all_perc, false, true)
+
         } else {
             update(data_sp, false, false)
+            update_all(data_all, false, false)
             update_g(data_group, false, false)
 
         }
@@ -1442,6 +1590,120 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
             .text("Value");
 
         svg.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
+
+    }
+
+    function update_all(data_, first, perc) {
+        if (perc) {
+            var yAxis_all = d3.axisLeft().tickFormat(d => Math.round(d * 100))
+                .scale(y_all)
+        } else {
+            var yAxis_all = d3.axisLeft()
+                .scale(y_all)
+        }
+        if (!first) svg_all.selectAll(".bartext").remove()
+
+        svg_all.selectAll("#yax").remove()
+        console.log(data_)
+        y_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
+
+        svg_all.selectAll([".bar", ".slice"])
+            .remove()
+            .exit()
+            .data(data_)
+
+        var slice = svg_all.selectAll(".slice")
+            .data(data_)
+            .enter().append("g")
+            .attr("class", "g")
+            .attr("transform", function(d) { return "translate(" + x0_all(d.categorie) + ",0)"; });
+
+        var u = slice.selectAll("rect")
+            .data(function(d) { return d.values; })
+
+        u.enter().append("rect")
+            .attr('class', 'bar')
+            .attr("x", function(d) { return x1_all(d.rate); })
+            .attr("y", function(d) { return y_all(0); })
+            .attr("width", x1_all.bandwidth())
+            .attr("height", function(d) { return height - y_all(0); })
+            .style("fill", function(d) { return color_all(d.rate) })
+            .on("mouseover", function(d) {
+                d3.select(this).style("fill", d3.rgb(color_all(d.rate)).darker(2));
+            })
+            .on("mouseout", function(d, i) {
+                d3.select(this).style("fill", color_all(d.rate));
+            });
+        slice.selectAll("rect")
+            .transition()
+            .delay(function(d) { return Math.random() * 1000; })
+            .duration(1000)
+            .attr("y", function(d) { return y_all(d.value); })
+            .attr("height", function(d) { return height - y_all(d.value); });
+
+        //label
+
+
+        var label = slice.selectAll(".bartext")
+            .data(function(d) { return d.values; })
+            .enter()
+            .append("text")
+            .attr("class", "bartext")
+            .attr("text-anchor", "middle")
+            .style("opacity", "0")
+            .attr("fill", "black")
+            .attr("x", function(d) { return x1_all(d.rate) + (x1_all.bandwidth() / 2); })
+            .attr("y", function(d) { return y_all(d.value) - 3 })
+            .text(function(d) {
+                if (d.value == 0) return ""
+                if (perc) return (d.value * 100).toFixed(1) + "%"
+                return d.value;
+            })
+            .style('font-size', '12px');
+
+        label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        //Legend
+        var legend = svg.selectAll(".legend")
+            .data(data_[0].values.map(function(d) { return d.rate; }))
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(0," + ((i * 20) - margin.top) + ")"; })
+            .style("opacity", "0")
+            .style('font-size', '12px')
+
+
+        legend.append("rect")
+            .attr("x", width - 18)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", function(d) { return color_all(d); });
+
+        legend.append("text")
+            .attr("x", width - 24)
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "end")
+            .text(function(d) { return d; });
+
+        legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+        // Remove old elements
+
+        svg_all.append("g")
+            .attr("class", "y axis")
+            .attr("id", 'yax')
+            .style('opacity', '0')
+            .call(yAxis_all)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .style('font-weight', 'bold')
+            .text("Value");
+
+        svg_all.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
 
     }
 

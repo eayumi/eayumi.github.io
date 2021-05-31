@@ -204,6 +204,7 @@ function draw_piecharts(title, data, name, quest, opt, selector, d_index) {
     //kokokara
 
     function redraw(data) {
+        datatot = data.Ja + data.Nein
 
         svg.selectAll('#textDesc').remove()
         console.log('redraw ' + name)
@@ -230,7 +231,10 @@ function draw_piecharts(title, data, name, quest, opt, selector, d_index) {
             .enter()
             .append('text')
             .attr('id', 'textDesc')
-            .text(function(d) { return d.data.key + "(" + d.value + ")" })
+            .text(function(d) {
+                return d.data.key + "(" + d.value + ", " + (d.value / datatot * 100).toFixed(1) +
+                    "%)"
+            })
             .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
             .style("text-anchor", "middle")
             .style("font-size", 12)
