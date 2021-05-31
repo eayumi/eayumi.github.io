@@ -284,12 +284,20 @@ function identify_transitions(design, borders, g, index, timeopt, wkd, weeks, we
 function histo_trans_time(data, color, name) {
     
     var tot = 0;
+    var tot_single = 0; 
+    var tot_double = 0;
     
     for(var j = 0;j <data.length; j++){
-        tot+= data[j].value;//values
+        tot_single+= data[j].values[0].value
+        tot_double+= data[j].values[1].value
+        
     }
+    tot = tot_single+tot_double;
+    
     console.log('tot');
     console.log(tot);
+    console.log(tot_single)
+    console.log(tot_double)
     console.log(data);
     d3.selectAll('#ring' + name).remove();
         d3.selectAll('.bartext').remove();
@@ -408,7 +416,7 @@ function histo_trans_time(data, color, name) {
     legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
     
     var label = slice.selectAll(".bartext")
-            .data(function(d) { return d.value; })//values
+            .data(function(d) { return d.values; })//values
             .enter()
             .append("text")
             .attr("class", "bartext")
@@ -417,9 +425,10 @@ function histo_trans_time(data, color, name) {
             .attr("fill", "black")
             .attr("x", function(d) { return x1(d.rate) + (x1.bandwidth() / 2); })
             .attr("y", function(d) { return y(d.value) - 3 })
-            .text(function(d) {
+            .text(function(d,i) {
                 if (d.value == 0) return ""
-                return d.value+", "+(d.value/tot * 100).toFixed(1) + "%"
+                if(i == 0)return  d.value+", "+(d.value/tot_single * 100).toFixed(1) + "%"
+                if(i == 1)return  d.value+", "+(d.value/tot_double * 100).toFixed(1) + "%"
             })
             .style('font-size', '12px');
 
