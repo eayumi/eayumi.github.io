@@ -21,8 +21,49 @@ function freqDistr_abs_comp(data_g1, data_g2) {
 
     //draw bar charts for each group and each element
     for (var i = 0; i < 4; i++) {
-        draw_histo(i, '_left', data_g1, 0);
-        draw_histo(i, '_right', data_g2, 1);
+
+
+        //map data to 'to' angle, rounded and nest per angle
+        var data_nest_g1 = d3.nest().key(function(d) {
+            to = Math.round(d.To);
+            return to
+        }).entries(data_g1.filter(x => x.Sensorname == element[i]));
+
+        var data_ready_g1 = data_nest_g1.map(d => d.values = { "angle": d.key, "freq": d.values.length });
+
+        data_ready_g1.sort(function(x, y) {
+            return d3.descending(parseInt(x.freq), parseInt(y.freq));
+        });
+
+        var maxfreq_g1 = data_ready_g1[0].freq;
+
+        data_ready_g1 = data_ready_g1.sort(function(x, y) {
+            return d3.ascending(parseInt(x.angle), parseInt(y.angle));
+        });
+
+        var data_nest_g2 = d3.nest().key(function(d) {
+            to = Math.round(d.To);
+            return to
+        }).entries(data_g2.filter(x => x.Sensorname == element[i]));
+
+        var data_ready_g2 = data_nest_g2.map(d => d.values = { "angle": d.key, "freq": d.values.length });
+
+
+
+        data_ready_g2.sort(function(x, y) {
+            return d3.descending(parseInt(x.freq), parseInt(y.freq));
+        });
+
+
+        var maxfreq_g2 = data_ready_g2[0].freq;
+
+        data_ready_g2 = data_ready_g2.sort(function(x, y) {
+            return d3.ascending(parseInt(x.angle), parseInt(y.angle));
+        });
+
+        var max = Math.max(maxfreq_g1, maxfreq_g2);
+        draw_histo(i, '_left', data_ready_g1, 0, max);
+        draw_histo(i, '_right', data_ready_g2, 1, max);
 
     }
 
@@ -35,12 +76,12 @@ function freqDistr_abs_comp(data_g1, data_g2) {
      * @param {} data 
      * @param {int} g group
      */
-    function draw_histo(index, side, data, g) {
+    function draw_histo(index, side, data_ready, g) {
         var maxrange = [238, 187, 158, 321]
 
 
         //map data to 'to' angle, rounded and nest per angle
-        var data_nest = d3.nest().key(function(d) {
+        /*  var data_nest = d3.nest().key(function(d) {
             to = Math.round(d.To);
             return to
         }).entries(data.filter(x => x.Sensorname == element[index]));
@@ -50,7 +91,7 @@ function freqDistr_abs_comp(data_g1, data_g2) {
         data_ready.sort(function(x, y) {
             return d3.ascending(parseInt(x.angle), parseInt(y.angle));
         });
-
+*/
         var minang = data_ready[0].angle;
         var maxang = data_ready[data_ready.length - 1].angle;
 
@@ -99,7 +140,7 @@ function freqDistr_abs_comp(data_g1, data_g2) {
         data_ready = data_ready.slice(1) //.slice(0, data_ready.length - 1)
 
         x.domain(data_ready.map(function(d) { return d.angle; }))
-        var max = d3.max(data_ready, function(d) { return +d.freq; });
+            // var max = d3.max(data_ready, function(d) { return +d.freq; });
 
         y.domain([0, max]).ticks(20);
 
@@ -191,8 +232,42 @@ function freqDistr_rot_comp(data_g1, data_g2) {
         h = height - margin.top - margin.bottom;
 
     for (var i = 0; i < 4; i++) {
-        draw_histo(i, '_left', data_g1, 0);
-        draw_histo(i, '_right', data_g2, 1);
+        var data_nest_g1 = d3.nest().key(function(d) {
+            to = Math.round(d.Total);
+            return to
+        }).entries(data_g1.filter(x => x.Sensorname == element[i]));
+
+        var data_ready_g1 = data_nest_g1.map(d => d.values = { "angle": d.key, "freq": d.values.length });
+        data_ready_g1.sort(function(x, y) {
+            return d3.descending(parseInt(x.freq), parseInt(y.freq));
+        });
+        var max_g1 = data_ready_g1[0].freq
+
+        //consle.log(data_nest)
+        data_ready_g1 = data_ready_g1.sort(function(x, y) {
+            return d3.ascending(parseInt(x.angle), parseInt(y.angle));
+        });
+
+        var data_nest_g2 = d3.nest().key(function(d) {
+            to = Math.round(d.Total);
+            return to
+        }).entries(data_g2.filter(x => x.Sensorname == element[i]));
+
+        var data_ready_g2 = data_nest_g2.map(d => d.values = { "angle": d.key, "freq": d.values.length });
+        data_ready_g2.sort(function(x, y) {
+            return d3.descending(parseInt(x.freq), parseInt(y.freq));
+        });
+        var max_g2 = data_ready_g2[0].freq
+
+        //consle.log(data_nest)
+        data_ready_g2 = data_ready_g2.sort(function(x, y) {
+            return d3.ascending(parseInt(x.angle), parseInt(y.angle));
+        });
+
+        var max = Math.max(max_g1, max_g2);
+
+        draw_histo(i, '_left', data_ready_g1, 0, max);
+        draw_histo(i, '_right', data_ready_g2, 1, max);
 
     }
 
@@ -201,13 +276,14 @@ function freqDistr_rot_comp(data_g1, data_g2) {
      * 
      * @param {int} index 
      */
-    function draw_histo(index, side, data, g) {
+    function draw_histo(index, side, data_ready, g) {
         var names = ['Rotatable Wall', 'Rotatable Closet', 'Lamp B', 'Lamp A'];
 
 
         //staple all values that lie outside the pre-defined range
 
         //DO PLOT ON 'TO' DATA
+        /*
         var data_nest = d3.nest().key(function(d) {
             to = Math.round(d.Total);
             return to
@@ -219,7 +295,7 @@ function freqDistr_rot_comp(data_g1, data_g2) {
         data_ready.sort(function(x, y) {
             return d3.ascending(parseInt(x.angle), parseInt(y.angle));
         });
-
+*/
         var minang = data_ready[0].angle;
         var maxang = data_ready[data_ready.length - 1].angle;
 
@@ -269,7 +345,7 @@ function freqDistr_rot_comp(data_g1, data_g2) {
         data_ready = data_ready.slice(1) //.slice(0, data_ready.length - 1)
 
         x.domain(data_ready.map(function(d) { return d.angle; }))
-        var max = d3.max(data_ready, function(d) { return +d.freq; });
+            // var max = d3.max(data_ready, function(d) { return +d.freq; });
 
         y.domain([0, max]).ticks(20);
 

@@ -322,7 +322,11 @@
 
     <button type="button" id='togd14a'>Alle</button>
     <button type="button" id='togd14sp'>Single/Pairs</button>
+    <button type="button" id='togd14g'>Custom (Apply)</button>
 
+    <br><label></label><select multiple="multiple" class='multiselector_1 Qonespec_1' placeholder="Group 1 Filter"> </select>
+    <label> </label><select multiple="multiple" class='multiselector_2 Qonespec_2' placeholder="Group 2 Filter"> </select>
+    <br>
     <label for="theta" style="font-size: small">Cutoff value: </label><input type="text" id="theta" value="4" style="width: 50px">
     <button type="button" id="button_theta" onclick="dataCheck()">Submit</button>
 </div>
@@ -1560,6 +1564,10 @@
     var $Qfourone_1 = $('.Qfourone_1')
     var $Qfivetwo_1 = $('.Qfivetwo_1')
     var $Qfivefour_1 = $('.Qfivefour_1')
+
+    var $Qonespec_1 = $('.Qonespec_1')
+    var $Qonespec_2 = $('.Qonespec_2')
+
 
     filter_quest()
 

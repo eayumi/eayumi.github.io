@@ -5,7 +5,7 @@ function filter_quest() {
     selectors = ['.Qonetwo', '.Qoneseven', '.Qtwofour', '.Qthreetwo', '.Qthreethree', '.Qfiveone', '.Qfivethree', '.Qsixone', '.Qsixtwo', '.Qsixthree', '.Qsixfour', '.Qsixfive', '.Qsixsix',
         '.Qone', '.Qonethree', '.Qonefour', '.Qonesix', '.Qoneeightone', '.Qoneeighttwo', '.Qoneeightthree', '.Qoneeightfour', '.Qoneeightfive', '.Qtwooneone', '.Qtwoonetwo', '.Qtwotwo',
         '.Qtwothreeone', '.Qtwothreetwo', '.Qtwothreethree', '.Qtwothreefour', '.Qtwothreefive', '.Qtwothreesix',
-        '.Qtwofive', '.Qtwosix', '.Qthreeone', '.Qfourone', '.Qfivetwo', '.Qfivefour', '.Qonefiveone', '.Qonefivetwo', '.Qonefivethree', '.Qonefivefour', '.Qonefivefive'
+        '.Qtwofive', '.Qtwosix', '.Qthreeone', '.Qfourone', '.Qfivetwo', '.Qfivefour', '.Qonefiveone', '.Qonefivetwo', '.Qonefivethree', '.Qonefivefour', '.Qonefivefive', '.Qonespec'
     ];
 
 

@@ -14,13 +14,34 @@ function filter_data_comp() {
 
     console.log('FILTER_DATA()')
 
-    d3.json('../data/data_processed.json').then(function(data_g1) {
+
+    Promise.all([d3.json('../data/data_processed.json'), d3.json('../data/data_processed_Besucher.json')]).then(function(datas) {
+
+        var checkBox = document.getElementById("check_besucher_g1");
+        if (checkBox.checked == false) {
+            var data_g1 = datas[0];
+            console.log('normal data for g1')
+        } else {
+            var data_g1 = datas[1];
+            console.log('without B data for g1')
+        }
+
+        var checkBox_2 = document.getElementById("check_besucher_g2");
+        if (checkBox_2.checked == false) {
+            var data_g2 = JSON.parse(JSON.stringify(datas[0]));
+            console.log('normal data for g2')
+
+        } else {
+            var data_g2 = JSON.parse(JSON.stringify(datas[1]));
+            console.log('without B data for g2')
+
+        }
 
         //current filters
         var filter_g1 = window.glb_filter_comp[0];
         var filter_g2 = window.glb_filter_comp[1];
 
-        var data_g2 = JSON.parse(JSON.stringify(data_g1));
+
 
         //data for case where weekday is not considered in the visualization
         var data_no_weekday_filter_g1 = [];
@@ -198,6 +219,7 @@ function filter_data_comp() {
         ]);
         //do the same for data_scatter_matrix.json
         d3.json('../data/data_scatter_matrix.json').then(function(data) {
+
 
             var data_sm_g1 = data;
             var data_sm_g2 = JSON.parse(JSON.stringify(data_sm_g1));

@@ -230,7 +230,11 @@ const maxrange = [237, 186, 157, 320];
 function radial_comparison() {
 
     //1. Read in data_snaps, containing all states of the Mockup
-    d3.json('../data/data_snaps_densityPlot.json').then(function(data_snaps) {
+    // d3.json('../data/data_snaps_densityPlot.json').then(function(data_snaps) {
+    Promise.all([d3.json('../data/data_snaps_densityPlot.json'), d3.json('../data/data_snaps_densityPlot_Besucher.json')]).then(function(datas_scan) {
+
+        var data_snaps = datas_scan[0];
+        var data_snaps_B = datas_scan[1];
 
         //2. draws elements at 0 degrees in the floor plan
         document.querySelectorAll(['.DW-5_left', '.DW-5_right']).forEach(el => el.style.transform = 'rotate(' + (-offset[0]) + 'deg)');
@@ -363,8 +367,8 @@ function radial_comparison() {
         //on click on the synch symbol at the filters, this is called. It looks up current filters set and updates all views accordingly.
         //note multi-selects return arrays of values
         d3.selectAll('#filterApply').on('click', function() {
-            //console.log('weeks_filter_comp')
-            //console.log(glb_filter_comp)
+            ////console.log('weeks_filter_comp')
+            ////console.log(glb_filter_comp)
 
             _this = d3.select('#filterApply')
             this.classList.add('icn-spinner-time') //remove class to stop animation
@@ -395,7 +399,7 @@ function radial_comparison() {
 
             //WEEKDAYS FILTERS
             weekdays_1 = $weekday_select_g1.multipleSelect('getSelects');
-            //console.log(weekdays_1)
+            ////console.log(weekdays_1)
 
             if (weekdays_1.length == 7 || weekdays_1.length == 0) {
                 weekdays_1 = [];
@@ -409,7 +413,7 @@ function radial_comparison() {
 
             }
             weekdays_2 = $weekday_select_g2.multipleSelect('getSelects');
-            //console.log(weekdays_2)
+            ////console.log(weekdays_2)
 
             if (weekdays_2.length == 7 || weekdays_2.length == 0) {
                 weekdays_2 = [];
@@ -430,8 +434,8 @@ function radial_comparison() {
 
             //WEEK FILTER
             weeks_ = $week_select_g1.multipleSelect('getSelects');
-            //console.log(weeks_)
-            //console.log(weeks_filter_comp[0])
+            ////console.log(weeks_)
+            ////console.log(weeks_filter_comp[0])
             if (weeks_.length == week_applies.length || weeks_.length == 0) {
                 weeks_ = [];
             } else {
@@ -439,17 +443,17 @@ function radial_comparison() {
             }
 
             weeks_ = $week_select_g2.multipleSelect('getSelects');
-            //console.log(weeks_)
+            ////console.log(weeks_)
             if (weeks_.length == week_applies.length || weeks_.length == 0) {
                 weeks_ = [];
             } else {
                 weeks_filter_comp[1] = weeks_filter_comp[1].filter(x => weeks_.includes(x.Week_Year));
             }
-            //console.log(weeks_filter_comp)
+            ////console.log(weeks_filter_comp)
 
             //AGE FILTER
             ages = $age_select_g1.multipleSelect('getSelects');
-            //console.log(ages)
+            ////console.log(ages)
             if (ages.length == 4 || ages.length == 0) {
                 ages = [];
             } else {
@@ -469,7 +473,7 @@ function radial_comparison() {
             }
 
             ages = $age_select_g2.multipleSelect('getSelects');
-            //console.log(ages)
+            ////console.log(ages)
             if (ages.length == 4 || ages.length == 0) {
                 ages = [];
             } else {
@@ -490,25 +494,25 @@ function radial_comparison() {
 
             //GENDER FILTER
             genders = $gender_select_g1.multipleSelect('getSelects');
-            //console.log(genders)
+            ////console.log(genders)
 
             if (genders.length == 3 || genders.length == 0) {
                 genders = [];
-                //console.log('A')
+                ////console.log('A')
             } else {
                 if (group1 == -1) {
-                    //console.log('B')
+                    ////console.log('B')
 
                     if (!genders.includes('2')) {
-                        //console.log('C')
+                        ////console.log('C')
 
                         weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => (genders.includes(x.Gender1) && genders.includes(x.Gender2) && x.Gender1 == x.Gender2 && x.Group == 1) || (genders.includes(x.Gender1) && x.Group == 0));
                     } else if (genders.length == 1) {
-                        //console.log('D')
+                        ////console.log('D')
 
                         weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => (x.Gender1 == 'm' && x.Gender2 == 'w' && x.Group == 1) || (x.Gender2 == 'm' && x.Gender1 == 'w' && x.Group == 1));
                     } else {
-                        //console.log('E')
+                        ////console.log('E')
 
                         weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => (x.Gender1 == 'm' && x.Gender2 == 'w' && x.Group == 1) || (x.Gender2 == 'm' && x.Gender1 == 'w' && x.Group == 1) ||
                             (genders.includes(x.Gender1) && x.Gender1 == x.Gender2 && x.Group == 1) || (genders.includes(x.Gender1) && x.Group == 0));
@@ -517,22 +521,22 @@ function radial_comparison() {
 
                 } else {
                     if (group1 == 0 && genders.length < 2 && genders[0] != 2) {
-                        //console.log('F')
+                        ////console.log('F')
 
                         weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => genders.includes(x.Gender1));
                     } else if (group1 == 1) {
-                        //console.log('G')
+                        ////console.log('G')
 
                         if (!genders.includes('2')) {
-                            //console.log('H')
+                            ////console.log('H')
 
                             weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => (genders.includes(x.Gender1) && genders.includes(x.Gender2) && x.Gender1 == x.Gender2));
                         } else if (genders.length == 1) {
-                            //console.log('I')
+                            ////console.log('I')
 
                             weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => (x.Gender1 == 'm' && x.Gender2 == 'w' && x.Group == 1) || (x.Gender2 == 'm' && x.Gender1 == 'w' && x.Group == 1));
                         } else {
-                            //console.log('J')
+                            ////console.log('J')
 
                             weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => (x.Gender1 == 'm' && x.Gender2 == 'w' && x.Group == 1) || (x.Gender2 == 'm' && x.Gender1 == 'w' && x.Group == 1) || (genders.includes(x.Gender1) && genders.includes(x.Gender2) && x.Gender1 == x.Gender2 && x.Group == 1) ||
                                 (genders.includes(x.Gender1) && x.Group == 0));
@@ -542,7 +546,7 @@ function radial_comparison() {
                 }
             }
             genders = $gender_select_g2.multipleSelect('getSelects');
-            //console.log(genders)
+            ////console.log(genders)
 
             if (genders.length == 3 || genders.length == 0) {
                 genders = [];
@@ -577,7 +581,7 @@ function radial_comparison() {
             }
             //OCCUPATION FILTER
             occ = $occ_select_g1.multipleSelect('getSelects');
-            //console.log(occ)
+            ////console.log(occ)
 
             if (occ.length == 4 || occ.length == 0) {
                 occ = [];
@@ -596,7 +600,7 @@ function radial_comparison() {
                 }
             }
             occ = $occ_select_g2.multipleSelect('getSelects');
-            //console.log(occ)
+            ////console.log(occ)
 
             if (occ.length == 4 || occ.length == 0) {
                 occ = [];
@@ -616,7 +620,7 @@ function radial_comparison() {
             }
             //HOUSING FILTERS
             housing = $housing_select_g1.multipleSelect('getSelects');
-            //console.log(housing)
+            ////console.log(housing)
 
             if (housing.length == 2 || housing.length == 0) {
                 housing = [];
@@ -635,7 +639,7 @@ function radial_comparison() {
                 }
             }
             housing = $housing_select_g2.multipleSelect('getSelects');
-            //console.log(housing)
+            ////console.log(housing)
 
             if (housing.length == 2 || housing.length == 0) {
                 housing = [];
@@ -655,7 +659,7 @@ function radial_comparison() {
             }
             //LIVING SITUATION FILTERS
             living = $living_select_g1.multipleSelect('getSelects');
-            //console.log(living)
+            ////console.log(living)
 
             if (living.length == 3 || living.length == 0) {
                 living = [];
@@ -675,7 +679,7 @@ function radial_comparison() {
             }
 
             living = $living_select_g2.multipleSelect('getSelects');
-            //console.log(living)
+            ////console.log(living)
 
             if (living.length == 3 || living.length == 0) {
                 living = [];
@@ -695,13 +699,13 @@ function radial_comparison() {
             }
             //ROOMSIZE FILTER
             room = $room_select_g1.multipleSelect('getSelects');
-            //console.log(room)
+            ////console.log(room)
 
             if (room.length == 3 || room.length == 0) {
                 room = [];
 
             } else {
-                ////console.log(room)
+                //////console.log(room)
                 if (group1 == -1) {
                     weeks_filter_comp[0] = weeks_filter_comp[0].filter(x => room.includes(x.RoomsCat1) || room.includes(x.RoomsCat2));
 
@@ -715,13 +719,13 @@ function radial_comparison() {
                 }
             }
             room = $room_select_g2.multipleSelect('getSelects');
-            //console.log(room)
+            ////console.log(room)
 
             if (room.length == 3 || room.length == 0) {
                 room = [];
 
             } else {
-                ////console.log(room)
+                //////console.log(room)
                 if (group2 == -1) {
                     weeks_filter_comp[1] = weeks_filter_comp[1].filter(x => room.includes(x.RoomsCat1) || room.includes(x.RoomsCat2));
 
@@ -736,7 +740,7 @@ function radial_comparison() {
             }
             //RECENT CHANGES FILTER
             change = $change_select_g1.multipleSelect('getSelects');
-            //console.log(change)
+            ////console.log(change)
 
             if (change.length == 3 || change.length == 0) {
                 change = [];
@@ -755,7 +759,7 @@ function radial_comparison() {
             }
 
             change = $change_select_g2.multipleSelect('getSelects');
-            //console.log(change)
+            ////console.log(change)
 
             if (change.length == 3 || change.length == 0) {
                 change = [];
@@ -837,7 +841,7 @@ function radial_comparison() {
                 event.preventDefault();
 
                 val = parseFloat(document.getElementById("input_grouping").value)
-                    ////console.log('grouping set: ' + val + ' ' + grouping_before)
+                    //////console.log('grouping set: ' + val + ' ' + grouping_before)
                 if (val > 0 && val <= 90 && (val % 1) == 0) {
                     grouping_before = grouping;
                     grouping = parseInt(val)
@@ -968,8 +972,27 @@ function radial_comparison() {
                 []
             ];
             //initially whole data_snaps
-            data_snaps_time_filtered[0] = JSON.parse(JSON.stringify(data_snaps));
-            data_snaps_time_filtered[1] = JSON.parse(JSON.stringify(data_snaps));
+            var checkBox = document.getElementById("check_besucher_g1");
+            if (checkBox.checked == false) {
+                data_snaps_time_filtered[0] = JSON.parse(JSON.stringify(data_snaps));
+                //console.log('data_snaps normal data for g1')
+            } else {
+                data_snaps_time_filtered[0] = JSON.parse(JSON.stringify(data_snaps_B));
+                //console.log('data_snaps without B data for g1')
+            }
+
+            var checkBox_2 = document.getElementById("check_besucher_g2");
+            if (checkBox_2.checked == false) {
+                data_snaps_time_filtered[1] = JSON.parse(JSON.stringify(data_snaps));
+                //console.log('data_snaps normal data for g2')
+
+            } else {
+                data_snaps_time_filtered[1] = JSON.parse(JSON.stringify(data_snaps_B));
+                //console.log('data_snaps without B data for g2')
+
+            }
+            //   data_snaps_time_filtered[0] = JSON.parse(JSON.stringify(data_snaps));
+            //  data_snaps_time_filtered[1] = JSON.parse(JSON.stringify(data_snaps));
 
             /**
              * Apply time filter on data_snaps
@@ -1184,6 +1207,7 @@ function radial_comparison() {
 
                 for (var j = 0; j < data_snaps_time_filtered[g].length; j++) {
                     for (var i = 0; i < 4; i++) {
+                        // //console.log(data_snaps_time_filtered[g][j])
                         d = data_snaps_time_filtered[g][j].element_ang[i];
                         //Truncate angles outside the elements range
                         if (d > maxrange[i]) d = maxrange[i];
@@ -1198,8 +1222,8 @@ function radial_comparison() {
             }
 
 
-            //console.log('data_grouped_per_angle after FILTER_BOTH:')
-            //console.log(data_grouped_per_angle)
+            ////console.log('data_grouped_per_angle after FILTER_BOTH:')
+            ////console.log(data_grouped_per_angle)
 
             //Initialize union used later in update_comparison_dataset_inner() 
             for (var i = 0; i < 4; i++) {
@@ -1314,8 +1338,8 @@ function radial_comparison() {
              * @param {} array 
              */
             function filter_both(array) {
-                //  ////console.log('filter both' + filter)
-                // ////console.log(array)
+                //  //////console.log('filter both' + filter)
+                // //////console.log(array)
 
                 var filtered_array = array.slice() //filter: [Weekday, Group,Week,TimeFrom,TimeTo]
 
@@ -1351,7 +1375,7 @@ function radial_comparison() {
                             var c_dur = (filtered_array.map(x => x.time_to_next)).reduce(reducer_sum, 0);
 
 
-                            // ////console.log(g + " " + c1 + " " + c2)
+                            // //////console.log(g + " " + c1 + " " + c2)
                             dataset_outer_chart[i][NRGROUPS * (j) + g].val[0] += c_freq;
                             dataset_outer_chart[i][NRGROUPS * (j) + g].val[1] += c_dur;
 
@@ -1386,8 +1410,8 @@ function radial_comparison() {
                     maxy = Math.max(maxy, d3.max(dataset_outer_chart[i], d => d.val[scale]));
                 }
 
-                //console.log('maxy')
-                //console.log(maxy)
+                ////console.log('maxy')
+                ////console.log(maxy)
 
             }
 
@@ -1453,9 +1477,9 @@ function radial_comparison() {
                  */
                 function updateSelectAll() {
                     k_ = 0
-                    console.log(added)
-                    console.log(removed)
-                    console.log(angles[index])
+                        //console.log(added)
+                        //console.log(removed)
+                        //console.log(angles[index])
                     added = [];
                     angles[index] = [];
 
@@ -1473,10 +1497,10 @@ function radial_comparison() {
                         }
 
                     }
-                    console.log('Select All')
-                    console.log(added)
-                    console.log(removed)
-                    console.log(angles[index])
+                    //console.log('Select All')
+                    //console.log(added)
+                    //console.log(removed)
+                    //console.log(angles[index])
                     update_comparison_dataset_inner();
                     update_density_plots(dataset_inner_chart);
                     update_inner_chart(dataset_inner_chart);
@@ -1784,8 +1808,8 @@ function radial_comparison() {
                         }
                         j++;
                     }
-                    console.log('added')
-                    console.log(added)
+                    //console.log('added')
+                    //console.log(added)
                     var data_inner_updated = [
                         [],
                         [],
@@ -2049,8 +2073,8 @@ function radial_comparison() {
 
                         }
 
-                        //console.log('week_applies_comp  ' + g);
-                        //console.log(week_applies_comp[g]);
+                        ////console.log('week_applies_comp  ' + g);
+                        ////console.log(week_applies_comp[g]);
                         draw_freq_to_week_histo_comp(week_applies_comp[g], scale, g);
 
                     }
@@ -2735,7 +2759,7 @@ function radial_comparison() {
                                 b = c * grouping;
                                 if (newangles.indexOf(b) == -1) {
                                     newangles.push(b);
-                                    ////console.log(newangles)
+                                    //////console.log(newangles)
                                     for (var g = 0; g < NRGROUPS; g++) {
                                         dataset_inner_chart[l][c * NRGROUPS + g].clicked = true;
                                         dataset_outer_chart[l][c * NRGROUPS + g].clicked = true;

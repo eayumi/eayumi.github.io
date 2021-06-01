@@ -21,7 +21,17 @@ function filter_data() {
 
     console.log('FILTER_DATA()')
 
-    d3.json('../data/data_processed.json').then(function(data) {
+    Promise.all([d3.json('../data/data_processed.json'), d3.json('../data/data_processed_Besucher.json')]).then(function(datas) {
+
+        var checkBox = document.getElementById("check_besucher");
+        if (checkBox.checked == false) {
+            var data = datas[0];
+            console.log('normal data')
+        } else {
+            var data = datas[1];
+            console.log('without B data')
+        }
+
         var filter = window.glb_filter;
         console.log(data)
         console.log(filter)
