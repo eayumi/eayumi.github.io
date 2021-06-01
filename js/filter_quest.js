@@ -4185,6 +4185,11 @@ function create_data(data_1, data_2, quest, opt, powTwo, title, A, B, C) {
 
         return data_g1[0]
 
+    } else if (opt == 'spec') {
+        data_1 = data_1.map(d => d.Week)
+        data_2 = data_2.map(d => d.Week)
+        return [data_1, data_2]
+
     }
 }
 

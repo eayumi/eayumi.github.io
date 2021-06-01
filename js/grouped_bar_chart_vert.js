@@ -127,7 +127,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
 
     var tot_single = data_grouped[0].DS + data_grouped[0].DW + data_grouped[0].LA + data_grouped[0].LD
     var tot_double = data_grouped[1].DS + data_grouped[1].DW + data_grouped[1].LA + data_grouped[1].LD
-    var tot_alles =tot_single+tot_double;
+    var tot_alles = tot_single + tot_double;
     var data_sp = [{
             categorie: "Drehschrank",
             values: [{
@@ -521,8 +521,8 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
 
     d3.selectAll('.check' + name).on('change', function() {
         var datas_group = [];
-        console.log('check percent')
-        console.log(name)
+        ////console.log('check percent')
+        ////console.log(name)
         datas_group = filter_data(selector1, selector2, quest, 'vert', [], name);
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
@@ -543,7 +543,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
 
 
     d3.selectAll('#' + tog).on('click', function() {
-        console.log('button')
+        ////console.log('button')
 
         var datas_group = [];
 
@@ -552,7 +552,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
 
-        console.log(d3.select('.check' + name).property("checked"))
+        ////console.log(d3.select('.check' + name).property("checked"))
 
         if (d3.select('.check' + name).property("checked")) {
             update_g(data_group_perc, false, true)
@@ -576,7 +576,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
         if (!first) svg.selectAll(".bartext").remove()
 
         svg.selectAll("#yax").remove()
-        console.log(data_)
+            ////console.log(data_)
         y.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
 
         svg.selectAll([".bar", ".slice"])
@@ -690,7 +690,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
         if (!first) svg_all.selectAll(".bartext").remove()
 
         svg_all.selectAll("#yax").remove()
-        console.log(data_)
+            ////console.log(data_)
         y_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
 
         svg_all.selectAll([".bar", ".slice"])
@@ -794,9 +794,9 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
     }
 
     function update_g(data_, first, perc) {
-        console.log('group data_')
+        ////console.log('group data_')
 
-        console.log(data_)
+        ////console.log(data_)
         categoriesNames_g = data_.map(function(d) { return d.categorie; });
         rateNames_g = data_[0].values.map(function(d) { return d.rate; });
         x0_g.domain(categoriesNames_g);
@@ -1348,8 +1348,8 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
 
     d3.selectAll('.check' + name).on('change', function() {
         var datas_group = [];
-        console.log('check percent')
-        console.log(name)
+        ////console.log('check percent')
+        ////console.log(name)
         datas_group = filter_data(selector1, selector2, quest, 'nonbin', [], name);
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
@@ -1370,7 +1370,7 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
 
 
     d3.selectAll('#' + tog).on('click', function() {
-        console.log('button')
+        ////console.log('button')
 
         var datas_group = [];
 
@@ -1379,7 +1379,7 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
 
-        console.log(d3.select('.check' + name).property("checked"))
+        ////console.log(d3.select('.check' + name).property("checked"))
 
         if (d3.select('.check' + name).property("checked")) {
             update_g(data_group_perc, false, true)
@@ -1403,7 +1403,7 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
         if (!first) svg.selectAll(".bartext").remove()
 
         svg.selectAll("#yax").remove()
-        console.log(data_)
+            ////console.log(data_)
         y.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
 
         svg.selectAll([".bar", ".slice"])
@@ -1517,7 +1517,7 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
         if (!first) svg_all.selectAll(".bartext").remove()
 
         svg_all.selectAll("#yax").remove()
-        console.log(data_)
+            ////console.log(data_)
         y_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
 
         svg_all.selectAll([".bar", ".slice"])
@@ -1621,9 +1621,9 @@ function draw_grouped_bar_chart_vert_nonbin(data_alt, quest, selector1, selector
     }
 
     function update_g(data_, first, perc) {
-        console.log('group data_')
+        ////console.log('group data_')
 
-        console.log(data_)
+        ////console.log(data_)
         categoriesNames_g = data_.map(function(d) { return d.categorie; });
         rateNames_g = data_[0].values.map(function(d) { return d.rate; });
         x0_g.domain(categoriesNames_g);

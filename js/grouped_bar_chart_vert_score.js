@@ -673,7 +673,7 @@ function draw_grouped_bar_chart_vert_score(data_alt, quest, selector1, selector2
 
 
     d3.selectAll('#' + tog).on('click', function() {
-        console.log('button')
+        ////console.log('button')
 
         var datas_group = [];
 
@@ -682,7 +682,7 @@ function draw_grouped_bar_chart_vert_score(data_alt, quest, selector1, selector2
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
 
-        console.log(d3.select('.check' + name).property("checked"))
+        ////console.log(d3.select('.check' + name).property("checked"))
 
         if (d3.select('.check' + name).property("checked")) {
             update_g(data_group_perc, false, true)
@@ -1349,7 +1349,7 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
     svg_g.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
     svg_all.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
 
-    console.table(data_all_perc)
+    ////console.table(data_all_perc)
 
     update(data_sp, true, false);
     update_g(data_sp, true, false);
@@ -1435,8 +1435,8 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
 
     d3.selectAll('.check' + name).on('change', function() {
         var datas_group = [];
-        console.log('check percent')
-        console.log(name)
+        ////console.log('check percent')
+        ////console.log(name)
         datas_group = filter_data(selector1, selector2, quest, 'threeopt', [], '', A, B, C);
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
@@ -1457,7 +1457,7 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
 
 
     d3.selectAll('#' + tog).on('click', function() {
-        console.log('button')
+        ////console.log('button')
 
         var datas_group = [];
 
@@ -1466,7 +1466,7 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
 
-        console.log(d3.select('.check' + name).property("checked"))
+        ////console.log(d3.select('.check' + name).property("checked"))
 
         if (d3.select('.check' + name).property("checked")) {
             update_g(data_group_perc, false, true)
@@ -1490,7 +1490,7 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
         if (!first) svg.selectAll(".bartext").remove()
 
         svg.selectAll("#yax").remove()
-        console.log(data_)
+            ////console.log(data_)
         y.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
 
         svg.selectAll([".bar", ".slice"])
@@ -1604,7 +1604,7 @@ function threeOpt(data_alt, quest, selector1, selector2, tog, name, A, B, C) {
         if (!first) svg_all.selectAll(".bartext").remove()
 
         svg_all.selectAll("#yax").remove()
-        console.log(data_)
+            ////console.log(data_)
         y_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })])
 
         svg_all.selectAll([".bar", ".slice"])

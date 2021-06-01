@@ -133,7 +133,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
         data_all_perc[i].values[0].value = (a == 0) ? 0 : ((a / tot_alles * 100).toFixed(1));
 
     }
-    console.table(data_all_perc)
+    //console.table(data_all_perc)
 
 
 
@@ -531,8 +531,8 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
         rateNames_all = data_[0].values.map(function(d) { return d.rate; });
 
         x_all.domain([0, d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return parseFloat(d.value); }); })]);
-        console.log('maxmaxmaxmax')
-        console.log(d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return parseFloat(d.value); }); }))
+        //console.log('maxmaxmaxmax')
+        //console.log(d3.max(data_, function(categorie) { return d3.max(categorie.values, function(d) { return parseFloat(d.value); }); }))
         y0_all.domain(categoriesNames_all);
         y1_all.domain(rateNames_all).rangeRound([0, y0_all.bandwidth()]);
 
@@ -663,8 +663,8 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
 
 
     d3.selectAll('#' + tog).on('click', function() {
-        console.log('apply')
-        console.log(tog)
+        //console.log('apply')
+        //console.log(tog)
         var datas_group = [];
 
         datas_group = filter_data(selector1, selector2, quest, 'horz', powTwo, title);
@@ -672,7 +672,7 @@ function draw_grouped_bar_chart_horz(data_alt, textdesc, quotes, quest, selector
         data_group = datas_group[0];
         data_group_perc = datas_group[1];
 
-        console.log(d3.select('.check' + name).property("checked"))
+        //console.log(d3.select('.check' + name).property("checked"))
         if (d3.select('.check' + name).property("checked")) {
             update_g(data_group_perc, false, true)
         } else {

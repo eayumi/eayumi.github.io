@@ -282,30 +282,30 @@ function identify_transitions(design, borders, g, index, timeopt, wkd, weeks, we
 }
 
 function histo_trans_time(data, color, name) {
-    
+
     var tot = 0;
-    var tot_single = 0; 
+    var tot_single = 0;
     var tot_double = 0;
     console.log('data');
     console.log(data);
 
-    for(var j = 0;j <4; j++){
-      if(name == 'AllDataonefour'){
-             tot_single+= data[j].values[0].value;
-      }else{
-             tot_single+= data[j].values[0].value;
-             tot_double+= data[j].values[1].value;
+    for (var j = 0; j < 4; j++) {
+        if (name == 'AllDataonefour') {
+            tot_single += data[j].values[0].value;
+        } else {
+            tot_single += data[j].values[0].value;
+            tot_double += data[j].values[1].value;
         }
     }
-    tot = tot_single+tot_double;
-    
+    tot = tot_single + tot_double;
+
     console.log('tot');
     console.log(tot);
     console.log(tot_single)
     console.log(tot_double)
     console.log(data);
     d3.selectAll('#ring' + name).remove();
-        d3.selectAll('.bartext').remove();
+
 
 
 
@@ -337,7 +337,7 @@ function histo_trans_time(data, color, name) {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+    svg.selectAll('.bartext').remove();
 
     var categoriesNames = data.map(function(d) { return d.categorie; });
     var rateNames = data[0].values.map(function(d) { return d.rate; });
@@ -386,6 +386,7 @@ function histo_trans_time(data, color, name) {
         .on("mouseout", function(d) {
             d3.select(this).style("fill", color(d.rate));
         });
+
     slice.selectAll("rect")
         .transition()
         .delay(function(d) { return Math.random() * 1000; })
@@ -419,25 +420,25 @@ function histo_trans_time(data, color, name) {
         .text(function(d) { return d; });
 
     legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
-    
-    var label = slice.selectAll(".bartext")
-            .data(function(d) { return d.values; })//values
-            .enter()
-            .append("text")
-            .attr("class", "bartext")
-            .attr("text-anchor", "middle")
-            .style("opacity", "0")
-            .attr("fill", "black")
-            .attr("x", function(d) { return x1(d.rate) + (x1.bandwidth() / 2); })
-            .attr("y", function(d) { return y(d.value) - 3 })
-            .text(function(d,i) {
-                if (d.value == 0) return ""
-                if(i == 0)return  d.value+", "+(d.value/tot_single * 100).toFixed(1) + "%"
-                if(i == 1)return  d.value+", "+(d.value/tot_double * 100).toFixed(1) + "%"
-            })
-            .style('font-size', '12px');
 
-        label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+    var label = slice.selectAll(".bartext")
+        .data(function(d) { return d.values; }) //values
+        .enter()
+        .append("text")
+        .attr("class", "bartext")
+        .attr("text-anchor", "middle")
+        .style("opacity", "0")
+        .attr("fill", "black")
+        .attr("x", function(d) { return x1(d.rate) + (x1.bandwidth() / 2); })
+        .attr("y", function(d) { return y(d.value) })
+        .text(function(d, i) {
+            if (d.value == 0) return ""
+            if (i == 0) return d.value + ", " + (d.value / tot_single * 100).toFixed(1) + "%"
+            if (i == 1) return d.value + ", " + (d.value / tot_double * 100).toFixed(1) + "%"
+        })
+        .style('font-size', '12px');
+
+    label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
 }
 
 

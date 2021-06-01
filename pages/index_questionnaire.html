@@ -333,6 +333,7 @@
 <br>
 <br>
 <div id='Dataonefour' style='position: relative;left:50px'></div>
+<div id='GroupDataonefour' style='position: relative;left:50px'></div>
 <div id='AllDataonefour' style='position: relative;left:50px'></div>
 
 <h4 style='position: relative;left:50px'>Q1.5 Sind die beweglichen Teile einfach in ihrer Handhabung (Y/N)</h4>
@@ -1658,7 +1659,7 @@
     $('#GroupQsixfour').hide()
     $('#GroupQsixfive').hide()
     $('#GroupQsixsix').hide()
-
+    $('#GroupDataonefour').hide()
 
 
     //-------------------------------------------
@@ -1736,11 +1737,21 @@
     $("#togd14a").on('click', function() {
         $('#AllDataonefour').show()
         $('#Dataonefour').hide()
+        $('#GroupDataonefour').hide()
+
     });
     $("#togd14sp").on('click', function() {
         $('#AllDataonefour').hide()
         $('#Dataonefour').show()
+        $('#GroupDataonefour').hide()
     });
+    $("#togd14g").on('click', function() {
+        $('#AllDataonefour').hide()
+        $('#Dataonefour').hide()
+        $('#GroupDataonefour').show()
+
+    });
+
 
 
     $("#tog16a").on('click', function() {
