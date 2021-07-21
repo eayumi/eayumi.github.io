@@ -130,7 +130,7 @@ function dataCheck() {
 
         histo_trans_time(data_sp, ['rgb(87, 162, 192)', 'rgb(235, 122, 69)'], 'Dataonefour')
         histo_trans_time(data_all, ['rosybrown'], 'AllDataonefour')
-        histo_trans_time(data_all, ['darkseagreen', 'darksalmon'], 'GroupDataonefour')
+        histo_trans_time(data_sp, ['darkseagreen', 'darksalmon'], 'GroupDataonefour')
 
         d3.selectAll('#togd14g').on('click', function() {
             console.log('button')
