@@ -130,6 +130,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
     var tot_alles = tot_single + tot_double;
     var data_sp = [{
             categorie: "Drehschrank",
+            //categorie: "Rotational Closet",
             values: [{
                     value: data_grouped[0].DS,
                     rate: "Single Test Subject"
@@ -142,6 +143,8 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
         },
         {
             categorie: "Drehwand",
+            //categorie: "Rotational Wall",
+
             values: [{
                     value: data_grouped[0].DW,
                     rate: "Single Test Subject"
@@ -154,6 +157,8 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
         },
         {
             categorie: "Lampe Drehwand",
+            //  categorie: "Lamp A",
+
             values: [{
                     value: data_grouped[0].LD,
                     rate: "Single Test Subject"
@@ -165,6 +170,8 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
             ]
         }, {
             categorie: "Lampe Aussenwand",
+            //categorie: "Lamp B",
+
             values: [{
                     value: data_grouped[0].LA,
                     rate: "Single Test Subject"
@@ -182,11 +189,15 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
             categorie: "Drehschrank",
             values: [{
                     value: (data_grouped[0].DS / tot_single).toFixed(4),
-                    rate: "Single Test Subject"
+                    rate: "Single Test Subject",
+                    //  text: "(7)"
+                    text: "(9)"
                 },
                 {
                     value: (data_grouped[1].DS / tot_double).toFixed(4),
-                    rate: "Pairs of Test Subjects"
+                    rate: "Pairs of Test Subjects",
+                    //  text: "(12)"
+                    text: "(7)"
                 }
             ]
         },
@@ -194,11 +205,15 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
             categorie: "Drehwand",
             values: [{
                     value: (data_grouped[0].DW / tot_single).toFixed(4),
-                    rate: "Single Test Subject"
+                    rate: "Single Test Subject",
+                    //  text: "(26)"
+                    text: "(1)"
                 },
                 {
                     value: (data_grouped[1].DW / tot_double).toFixed(4),
-                    rate: "Pairs of Test Subjects"
+                    rate: "Pairs of Test Subjects",
+                    //  text: "(31)"
+                    text: "(1)"
                 }
             ]
         },
@@ -206,22 +221,30 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
             categorie: "Lampe Drehwand",
             values: [{
                     value: (data_grouped[0].LD / tot_single).toFixed(4),
-                    rate: "Single Test Subject"
+                    rate: "Single Test Subject",
+                    //  text: "(10)"
+                    text: "(8)"
                 },
                 {
                     value: (data_grouped[1].LD / tot_double).toFixed(4),
-                    rate: "Pairs of Test Subjects"
+                    rate: "Pairs of Test Subjects",
+                    //  text: "(9)"
+                    text: "(15)"
                 }
             ]
         }, {
             categorie: "Lampe Aussenwand",
             values: [{
                     value: (data_grouped[0].LA / tot_single).toFixed(4),
-                    rate: "Single Test Subject"
+                    rate: "Single Test Subject",
+                    //  text: "(3)"
+                    text: "(17)"
                 },
                 {
                     value: (data_grouped[1].LA / tot_double).toFixed(4),
-                    rate: "Pairs of Test Subjects"
+                    rate: "Pairs of Test Subjects",
+                    //  text: "(4)"
+                    text: "(28)"
                 }
             ]
         }
@@ -574,6 +597,7 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
                 .scale(y)
         }
         if (!first) svg.selectAll(".bartext").remove()
+        if (!first) svg.selectAll(".bartext_2").remove()
 
         svg.selectAll("#yax").remove()
             ////console.log(data_)
@@ -633,7 +657,26 @@ function draw_grouped_bar_chart_vert(data_alt, quest, selector1, selector2, tog,
             })
             .style('font-size', '12px');
 
+        /*var label_2 = slice.selectAll(".bartext_2")
+            .data(function(d) { return d.values; })
+            .enter()
+            .append("text")
+            .attr("class", "bartext_2")
+            .attr("text-anchor", "middle")
+            .style("opacity", "0")
+            .attr("fill", "black")
+            .attr("x", function(d) { return x1(d.rate) + (x1.bandwidth() / 2); })
+            .attr("y", function(d) { return y(d.value) - 12 })
+            .text(function(d) {
+                if (d.value == 0) return ""
+                if (perc) return d.text
+
+                return d.value;
+            })
+            .style('font-size', '12px');*/
+
         label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
 
         //Legend
         var legend = svg.selectAll(".legend")

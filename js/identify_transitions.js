@@ -301,6 +301,202 @@ function histo_trans_time(data, color, name) {
         }
     }
     tot = tot_single + tot_double;
+    for (var j = 0; j < 4; j++) {
+        console.log(name)
+        console.log(data[j].values)
+
+        if (name == 'AllDataonefour') {
+            data[j].values[0].value = data[j].values[0].value / tot * 100;
+        } else {
+            data[j].values[0].value = data[j].values[0].value / tot_single * 100;
+            data[j].values[1].value = data[j].values[1].value / tot_double * 100;
+        }
+    }
+
+
+    console.log('tot');
+    console.log(tot);
+    console.log(tot_single)
+    console.log(tot_double)
+    console.log(data);
+    d3.selectAll('#ring' + name).remove();
+
+
+
+
+    var margin = { top: 50, right: 20, bottom: 30, left: 40 },
+        width = window.innerHeight * 1 - margin.left - margin.right,
+        height = window.innerHeight * 0.6 - margin.top - margin.bottom;
+
+    var x0 = d3.scaleBand()
+        .rangeRound([0, width]).padding(0.1);
+
+    var x1 = d3.scaleBand();
+
+    var y = d3.scaleLinear()
+        .range([height, 0]);
+
+    var xAxis = d3.axisBottom()
+        .scale(x0)
+        .tickSize(0)
+
+    var yAxis = d3.axisLeft()
+        .scale(y)
+
+    var color = d3.scaleOrdinal()
+        .range(color);
+
+    var svg = d3.select('#' + name).append("svg")
+        .attr('id', 'ring' + name)
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    svg.selectAll('.bartext').remove();
+
+    var categoriesNames = data.map(function(d) { return d.categorie; });
+    var rateNames = data[0].values.map(function(d) { return d.rate; });
+
+    x0.domain(categoriesNames);
+    x1.domain(rateNames).rangeRound([0, x0.bandwidth()]);
+    y.domain([0, d3.max(data, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })]);
+
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .style('opacity', '0')
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .style('font-weight', 'bold')
+        .text("Value");
+
+    svg.select('.y').transition().duration(500).delay(1300).style('opacity', '1');
+
+    var slice = svg.selectAll(".slice")
+        .data(data)
+        .enter().append("g")
+        .attr("class", "g")
+        .attr("transform", function(d) { return "translate(" + x0(d.categorie) + ",0)"; });
+
+    slice.selectAll("rect")
+        .data(function(d) { return d.values; })
+        .enter().append("rect")
+        .attr("width", x1.bandwidth())
+        .attr("x", function(d) { return x1(d.rate); })
+        .style("fill", function(d) { return color(d.rate) })
+        .attr("y", function(d) { return y(0); })
+        .attr("height", function(d) { return height - y(0); })
+        .on("mouseover", function(d) {
+            d3.select(this).style("fill", d3.rgb(color(d.rate)).darker(2));
+        })
+        .on("mouseout", function(d) {
+            d3.select(this).style("fill", color(d.rate));
+        });
+
+    slice.selectAll("rect")
+        .transition()
+        .delay(function(d) { return Math.random() * 1000; })
+        .duration(1000)
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) { return height - y(d.value); });
+
+    //label
+
+    //Legend
+    var legend = svg.selectAll(".legend")
+        .data(data[0].values.map(function(d) { return d.rate; }).reverse())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(0," + ((i * 20) - margin.top) + ")"; })
+        .style("opacity", "0")
+        .style('font-size', '12px')
+
+
+    legend.append("rect")
+        .attr("x", width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function(d) { return color(d); });
+
+    legend.append("text")
+        .attr("x", width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d) { return d; });
+
+    legend.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+    var label = slice.selectAll(".bartext")
+        .data(function(d) { return d.values; }) //values
+        .enter()
+        .append("text")
+        .attr("class", "bartext")
+        .attr("text-anchor", "middle")
+        .style("opacity", "0")
+        .attr("fill", "black")
+        .attr("x", function(d) { return x1(d.rate) + (x1.bandwidth() / 2); })
+        .attr("y", function(d) { return y(d.value) - 3 })
+        .text(function(d, i) {
+            if (d.value == 0) return ""
+            if (i == 0) return "(" + (d.value * tot_single / 100).toFixed(0) + ")"
+            if (i == 1) return "(" + (d.value * tot_double / 100).toFixed(0) + ")"
+        })
+        .style('font-size', '10px');
+
+    var label_2 = slice.selectAll(".bartext_2")
+        .data(function(d) { return d.values; }) //values
+        .enter()
+        .append("text")
+        .attr("class", "bartext_2")
+        .attr("text-anchor", "middle")
+        .style("opacity", "0")
+        .attr("fill", "black")
+        .attr("x", function(d) { return x1(d.rate) + (x1.bandwidth() / 2); })
+        .attr("y", function(d) { return (y(d.value) - 12) })
+        .text(function(d, i) {
+            if (d.value == 0) return ""
+            if (i == 0) return d.value.toFixed(1) + "%"
+            if (i == 1) return d.value.toFixed(1) + "%"
+        })
+        .style('font-size', '12px');
+
+    label.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+    label_2.transition().duration(500).delay(function(d, i) { return 1300 + 100 * i; }).style("opacity", "1");
+
+}
+
+function histo_trans_time_original(data, color, name) {
+
+    var tot = 0;
+    var tot_single = 0;
+    var tot_double = 0;
+    console.log('data');
+    console.log(data);
+
+    for (var j = 0; j < 4; j++) {
+        console.log(name)
+        console.log(data[j].values)
+
+        if (name == 'AllDataonefour') {
+            tot_single += data[j].values[0].value;
+        } else {
+            tot_single += data[j].values[0].value;
+            tot_double += data[j].values[1].value;
+        }
+    }
+    tot = tot_single + tot_double;
+
+
 
     console.log('tot');
     console.log(tot);
