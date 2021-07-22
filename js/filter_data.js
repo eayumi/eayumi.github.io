@@ -31,7 +31,7 @@ function filter_data() {
             var data = datas[1];
             console.log('without B data')
         }
-
+        var data = datas[0];
         var filter = window.glb_filter;
         console.log(data)
         console.log(filter)
