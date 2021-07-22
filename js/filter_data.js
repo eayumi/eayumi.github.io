@@ -24,7 +24,7 @@ function filter_data() {
     Promise.all([d3.json('../data/data_processed.json'), d3.json('../data/data_processed_Besucher.json')]).then(function(datas) {
 
         var checkBox = document.getElementById("check_besucher");
-        if (checkBox.checked == false) {
+        if (checkBox == null || checkBox.checked == false) {
             var data = datas[0];
             console.log('normal data')
         } else {
